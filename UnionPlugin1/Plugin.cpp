@@ -3,8 +3,6 @@
 #include "resource.h"
 
 namespace GOTHIC_ENGINE {
-	auto initialized = 0;
-
 	void Game_Entry() {
 	}
 
@@ -42,7 +40,6 @@ namespace GOTHIC_ENGINE {
 		updateConstantsWithOptions();
 		jsonConfig.loadConfig();
 		fillLootTables();
-		initialized = 1;
 	}
 	void Game_Exit() {
 	}
@@ -51,27 +48,22 @@ namespace GOTHIC_ENGINE {
 	}
 
 	void Game_Loop() {
-		/*if (!initialized) {
-			RegisterCommands();
-			updateConstantsWithOptions();
-			jsonConfig.loadConfig();
-			fillLootTables();
-			initialized = 1;
-		}*/
-
-		player->getNpcInRadius(3500);
+		player->goThroughNpcsInRadius(3500);
+		player->randomizeChestsInRadius(1500);
 
 		if (IS_DEBUG) {
 			auto focusNpc = player->GetFocusNpc();
 
 			if (focusNpc) {
-				screen->PrintCY(500, Z JSON_FILE_NAME + " L: " + Z focusNpc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX));
+				ogame->game_text->Printwin("Loot given: " + Z focusNpc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX));
+				ogame->game_text->Printwin("Debug mode: " + Z IS_DEBUG);
+				ogame->game_text->Printwin("Npc Name: " + focusNpc->GetObjectName());
 			}
 
 			auto focusVob = player->GetFocusVob(); 
 
 			if (focusVob) {
-				screen->PrintCY(1000, focusVob->GetObjectName());
+				ogame->game_text->Printwin("Vob name: " + focusVob->GetObjectName());
 			}
 		}
 	}

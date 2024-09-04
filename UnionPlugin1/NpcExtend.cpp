@@ -78,7 +78,7 @@ namespace GOTHIC_ENGINE {
 		}
 	}
 
-	zCArray<oCNpc*> oCNpc::getNpcInRadius(float radius) {
+	zCArray<oCNpc*> oCNpc::goThroughNpcsInRadius(float radius) {
 		ClearVobList();
 		CreateVobList(radius);
 
@@ -101,5 +101,28 @@ namespace GOTHIC_ENGINE {
 		}
 
 		return npcList;
+	}
+
+	void oCNpc::randomizeChestsInRadius(float radius) {
+		ClearVobList();
+		CreateVobList(radius);
+
+		zCArray<zCVob*> vobList = this->vobList;
+		zCArray<oCMobContainer*> chestsList;
+		zCVob* pVob = NULL;
+		oCMobContainer* chest = NULL;
+
+		for (int i = 0; i < vobList.GetNum(); i++) {
+			pVob = vobList.GetSafe(i);
+			if (!pVob)
+				continue;
+			chest = zDYNAMIC_CAST<oCMobContainer>(pVob);
+			if (!chest)
+				continue;
+			if (chest->isRandomized())
+				continue;
+
+			chest->randomize();
+		}
 	}
 }

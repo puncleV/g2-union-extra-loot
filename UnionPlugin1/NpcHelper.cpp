@@ -78,7 +78,7 @@ namespace GOTHIC_ENGINE {
 		"HUN_745_RAFFA",
 	};
 	std::vector<zSTRING> ignoreLootNpcList = { "TOTEM", "CRAIT", "KHUBA", "SUMKHUBI", "PET_JINA" };
-
+	auto AIV_IS_SUMMON_NPC = 91;
 	bool addRandomLootToNpc(oCNpc* npc, std::vector<Loot>& lootTable = NPC_LOOT_TABLE) {
 		auto addedLoot = false;
 		
@@ -179,7 +179,7 @@ namespace GOTHIC_ENGINE {
 		auto npcName = npc->GetObjectName();
 
 		for (auto i = 0; i < ignoreLootNpcList.size(); i += 1) {
-			if (npcName.HasWordI(ignoreLootNpcList[i])) {
+			if (npcName.HasWordI(ignoreLootNpcList[i]) || npc->aiscriptvars[AIV_IS_SUMMON_NPC] == 13771) {
 				return TRUE;
 			}
 		}
