@@ -10,6 +10,7 @@ namespace GOTHIC_ENGINE {
 		EXTRA_LOOT_HORINIS_FACTOR = zoptions->ReadInt("PUNCLEVUTILS", "ExtraLootHorinisFactor", 1000);
 		EXTRA_LOOT_OTHER_FACTOR = zoptions->ReadInt("PUNCLEVUTILS", "ExtraLootOtherFactor", 1250);
 		EXTRA_LOOT_CHEST_BASE_CHANCE = zoptions->ReadInt("PUNCLEVUTILS", "ChestsExtraLootChance", 450);
+		CHESTS_BOSS_DROP_CHANCE = zoptions->ReadInt("PUNCLEVUTILS", "ChestsBossDropChance", 10);
 		EXTRA_LOOT_BASE_STRENGTH_PER_LOOT_MULTIPLIER = zoptions->ReadInt("PUNCLEVUTILS", "BaseStrengthMultiplierForAddedLoot", 1);
 		EXTRA_LOOT_VALUE_STRENGTH_PER_LOOT_MULTIPLIER = zoptions->ReadInt("PUNCLEVUTILS", "ValueBasedStrengthMultiplier", 250);
 		ENEMY_STATS_PER_MULTIPLIER = zoptions->ReadInt("PUNCLEVUTILS", "StrengthenEnemyStatsPerMultiplier", 25);
