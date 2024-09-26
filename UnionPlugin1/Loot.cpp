@@ -12,6 +12,7 @@ namespace GOTHIC_ENGINE {
 		int probabilityOutOf;
 		int minAmount;
 		int maxAmount;
+		int maxAmountOfTries;
 
 		int getRandomItemAmount(oCItem* item) {
 			auto itemName = item->GetObjectName();
@@ -33,55 +34,70 @@ namespace GOTHIC_ENGINE {
 			if (item->HasFlag(ITM_FLAG_MULTI)) {
 				item->amount = getRandomItemAmount(item);
 			}
+			else {
+				item->amount = 1;
+			}
 
 			return item;
 		}
 	public:
 		std::vector <zSTRING> possibleLootNames;
 
-		Loot(int _chanceWeight, int _chanceUpperbound, std::vector <zSTRING> _possibleLootNames, int _minAmount = 1, int _maxAmount = 1) {
+		Loot(int _chanceWeight, int _chanceUpperbound, std::vector <zSTRING> _possibleLootNames, int _minAmount = 1, int _maxAmount = 1, int _maxAmountOfTries = 1) {
 			possibleLootNames = _possibleLootNames;
 			probability = _chanceWeight;
 			probabilityOutOf = _chanceUpperbound;
 			minAmount = _minAmount;
 			maxAmount = _maxAmount;
+			maxAmountOfTries = _maxAmountOfTries;
 		};
 
 		bool tryAddToNpc(oCNpc* npc) {
+			auto result = FALSE;
 			if (!npc) {
-				return FALSE;
+				return result;
 			}
 
-			if (randomizer.Random(0, probabilityOutOf) <= probability) {
-				auto itemName = randomizer.getRandomArrayElement(possibleLootNames);
-				auto item = getItemWithAmount(itemName);
+			for (auto i = 0; i < maxAmountOfTries; i += 1) {
+				if (randomizer.Random(0, probabilityOutOf) <= probability * (EXTRA_LOOT_BASE_CHANCE / 100)) {
+					auto itemName = randomizer.getRandomArrayElement(possibleLootNames);
+					auto item = getItemWithAmount(itemName);
 
-				if (item == nullptr) {
-					return FALSE;
+					if (item == nullptr) {
+						continue;
+					}
+
+					if (SHOULD_ADD_LOOT_TO_PLAYER) {
+						player->PutInInv(item);
+					}
+					else {
+						npc->PutInInv(item);
+						strengthenNpc(npc, item->value);
+					}
+
+					item->Release();
+
+					result = TRUE;
 				}
-
-				if (SHOULD_ADD_LOOT_TO_PLAYER) {
-					player->PutInInv(item);
-				}
-				else {
-					npc->PutInInv(item);
-					strengthenNpc(npc, item->value * item->amount);
-				}
-
-				item->Release();
-
-				return TRUE;
 			}
 
-			return FALSE;
+			return result;
 		};
 
 		void strengthenNpc(oCNpc* npc, int itemValue = 1) {
 			if (npc == player || !SHOULD_STRENGHTEN_ENEMIES) {
 				return;
 			}
+			auto adjustedItemValue = itemValue;
 
-			auto addStrengthMultiplier = (int)(itemValue / EXTRA_LOOT_VALUE_STRENGTH_PER_LOOT_MULTIPLIER) + EXTRA_LOOT_BASE_STRENGTH_PER_LOOT_MULTIPLIER;
+			if (adjustedItemValue < 100) {
+				adjustedItemValue = 100;
+			}
+			else {
+				adjustedItemValue = adjustedItemValue * 1.25;
+			}
+
+			auto addStrengthMultiplier = (int)(adjustedItemValue / EXTRA_LOOT_VALUE_STRENGTH_PER_LOOT_MULTIPLIER) + EXTRA_LOOT_BASE_STRENGTH_PER_LOOT_MULTIPLIER;
 			auto extaHpBasePercent = ENEMY_HP_FACTOR / npc->attribute[NPC_ATR_HITPOINTSMAX];
 			int additionalHp = randomizer.Random(50 * addStrengthMultiplier, npc->attribute[NPC_ATR_HITPOINTSMAX] * extaHpBasePercent * addStrengthMultiplier);
 
@@ -115,22 +131,24 @@ namespace GOTHIC_ENGINE {
 			if (!chest) {
 				return FALSE;
 			}
+			
+			for (auto i = 0; i < maxAmountOfTries; i += 1) {
+				if (randomizer.Random(0, probabilityOutOf) <= probability) {
+					auto itemName = randomizer.getRandomArrayElement(possibleLootNames);
 
-			if (randomizer.Random(0, probabilityOutOf) <= probability) {
-				auto itemName = randomizer.getRandomArrayElement(possibleLootNames);
+					auto item = getItemWithAmount(itemName);
 
-				auto item = getItemWithAmount(itemName);
+					if (SHOULD_ADD_LOOT_TO_PLAYER) {
+						player->PutInInv(item);
+					}
+					else {
+						chest->Insert(item);
+					}
 
-				if (SHOULD_ADD_LOOT_TO_PLAYER) {
-					player->PutInInv(item);
+					item->Release();
+
+					return TRUE;
 				}
-				else {
-					chest->Insert(item);
-				}
-
-				item->Release();
-
-				return TRUE;
 			}
 
 			return FALSE;

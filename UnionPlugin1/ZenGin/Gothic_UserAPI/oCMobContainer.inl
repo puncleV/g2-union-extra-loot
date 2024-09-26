@@ -3,5 +3,5 @@
 // User API for oCMobContainer
 // Add your methods here
 
-void randomize();
-bool isRandomized();
+void addLoot();
+bool lootAdded();

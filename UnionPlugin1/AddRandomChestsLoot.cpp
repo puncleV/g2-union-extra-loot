@@ -15,12 +15,12 @@ namespace GOTHIC_ENGINE {
             {
                 oCMobContainer* firstChest = dynamic_cast<oCMobContainer*> (arrMob[i]);
 
-                if (randomizer.Random(0, getRandomLootUpperound(world)) <= EXTRA_LOOT_CHEST_BASE_CHANCE) {
+                if (randomizer.Random(0, EXTRA_LOOT_CHEST_UPPERBOUND) <= EXTRA_LOOT_CHEST_BASE_CHANCE) {
                     addRandomLootToChest(firstChest, chestsLoot);
                     itemsCounter += 1;
                 }
 
-                if (randomizer.Random(0, getRandomLootUpperound(world)) <= 10) {
+                if (randomizer.Random(0, EXTRA_LOOT_CHEST_UPPERBOUND) <= 10) {
                     addRandomLootToChest(firstChest, bossLoot);
                     itemsCounter += 1;
                 }

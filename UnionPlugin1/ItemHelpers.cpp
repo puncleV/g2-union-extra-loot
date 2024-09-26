@@ -20,10 +20,6 @@ namespace GOTHIC_ENGINE {
 			item->GetObjectName().HasWordI("ITMW_1H_THIEF_01_RIGHT") || item->GetObjectName().StartWith("ITKE_") || item->GetObjectName().StartWith("LUTERO") || item->GetObjectName().StartWith("SNC_SPEC") || item->GetObjectName().HasWordI("ITWR_TALIASANRECOMENDEDLETTERS");
 	}
 
-	int getRandomLootUpperound(oCWorld* world) {
-		return world->m_strlevelName.HasWordI("NEWWORLD") ? EXTRA_LOOT_HORINIS_FACTOR : EXTRA_LOOT_OTHER_FACTOR;
-	}
-
 	std::vector<Loot> NPC_LOOT_TABLE;
 	std::vector<Loot> bossLoot;
 	std::vector<Loot> alchemistLoot;

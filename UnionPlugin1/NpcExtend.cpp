@@ -12,46 +12,35 @@ namespace GOTHIC_ENGINE {
 		npc->setNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX, TRUE);
 
 		oCWorld* world = dynamic_cast<oCWorld*>(ogame->GetWorld());
-		auto randomUpperBound = getRandomLootUpperound(world);
-		auto hpFactor = world->GetObjectName().HasWordI("NEWWORLD") ? EXTRA_LOOT_HP_FACTOR_HORINIS : EXTRA_LOOT_HP_FACTOR_OTHER;
+		auto lootGiven = false;
 
 		if (RX_IsMageTrader(npc)) {
-			return addRandomLootToNpc(npc, magicLoot);
+			lootGiven = addRandomLootToNpc(npc, magicLoot) || lootGiven;
 		}
-		else if (RX_IsAlchemistTrader(npc)) {
-			return addRandomLootToNpc(npc, alchemistLoot);
+		if (RX_IsAlchemistTrader(npc)) {
+			lootGiven = addRandomLootToNpc(npc, alchemistLoot) || lootGiven;
 		}
-		else if (RX_IsHunterTrader(npc)) {
-			return addRandomLootToNpc(npc, hunterLoot);
+		if (RX_IsHunterTrader(npc)) {
+			lootGiven = addRandomLootToNpc(npc, hunterLoot) || lootGiven;
 		}
-		else if (RX_IsSmithTrader(npc)) {
-			return addRandomLootToNpc(npc, smithLoot);
+		if (RX_IsSmithTrader(npc)) {
+			lootGiven = addRandomLootToNpc(npc, smithLoot) || lootGiven;
 		}
-		else if (RX_IsTrader(npc)) {
-			return addRandomLootToNpc(npc, tradersLoot);
+		if (RX_IsTrader(npc)) {
+			lootGiven = addRandomLootToNpc(npc, tradersLoot) || lootGiven;
 		}
-		else if (RX_IsBoss(npc)) {
-			auto lootAdded = addRandomLootToNpc(npc);
-			
-			lootAdded = addRandomLootToNpc(npc) || lootAdded;
+		if (RX_IsBoss(npc)) {
+			lootGiven = addRandomLootToNpc(npc) || lootGiven;
 
-			return addRandomLootToNpc(npc, bossLoot) || lootAdded;
+			lootGiven = addRandomLootToNpc(npc, bossLoot) || lootGiven;
 		}
-		else if (randomizer.Random(0, randomUpperBound) <= getExtraLootProbability(npc, world)) {
-			auto lootGiven = addRandomLootToNpc(npc, NPC_LOOT_TABLE);
-
-			if (npc->IsHuman()) {
-				lootGiven = addRandomLootToNpc(npc, humanLoot) || lootGiven;
-			}
-
-			if (npc->attribute[NPC_ATR_HITPOINTSMAX] >= hpFactor && randomizer.Random(0, randomUpperBound) <= getExtraLootProbability(npc, world)) {
-				lootGiven = addRandomLootToNpc(npc, NPC_LOOT_TABLE) || lootGiven;
-			}
-
-			return lootGiven;
-		} else if (npc->IsHuman()) {
-			return addRandomLootToNpc(npc, humanLoot);
+		if (npc->IsHuman()) {
+			lootGiven = addRandomLootToNpc(npc, humanLoot) || lootGiven;
 		}
+
+		lootGiven = addRandomLootToNpc(npc, NPC_LOOT_TABLE) || lootGiven;
+
+		return lootGiven;
 	}
 
 	void oCNpc::setNpcVar(int varIdx, int value = 1) {
@@ -119,10 +108,10 @@ namespace GOTHIC_ENGINE {
 			chest = zDYNAMIC_CAST<oCMobContainer>(pVob);
 			if (!chest)
 				continue;
-			if (chest->isRandomized())
+			if (chest->lootAdded())
 				continue;
 
-			chest->randomize();
+			chest->addLoot();
 		}
 	}
 }
