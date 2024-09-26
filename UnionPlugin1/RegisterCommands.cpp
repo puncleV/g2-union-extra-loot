@@ -39,6 +39,22 @@ namespace GOTHIC_ENGINE {
 		return false;
 	}
 
+	bool makeChampionHandler(const zSTRING& inpstr, zSTRING& msg) {
+		if (inpstr.HasWordI("MAKE_CHAMPION")) {
+			auto focusNpc = player->GetFocusNpc();
+
+			if (focusNpc) {
+				msg = "Made a champion from: " + focusNpc->GetObjectName() + ".";
+				makeChampion(focusNpc);
+			}
+
+			return true;
+		}
+
+		return false;
+		
+	}
+
 	int ConsoleEvalFunc(const zSTRING& inpstr, zSTRING& msg) {
 		if (innerEvalFunc && innerEvalFunc(inpstr, msg))
 			return true;
@@ -50,7 +66,7 @@ namespace GOTHIC_ENGINE {
 				return true;
 			}
 
-			return lootRandomizerHandler(inpstr, msg) || chestsRandomizerHandler(inpstr, msg);
+			return lootRandomizerHandler(inpstr, msg) || chestsRandomizerHandler(inpstr, msg) || makeChampionHandler(inpstr, msg);
 		}
 
 		return false;
@@ -73,5 +89,6 @@ namespace GOTHIC_ENGINE {
 		zcon->Register("punclevutils LOOT_NPCS", "Adds loot to NPCs");
 		zcon->Register("punclevutils ADD_LOOT_TO_PLAYER", "Toggle add loot to a player");
 		zcon->Register("punclevutils IGNORE_LOOT_CHECKS", "Toggle ignore loot checks");
+		zcon->Register("punclevutils MAKE_CHAMPION", "Makes a target npc a champion");
 	}
 }

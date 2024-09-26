@@ -29,4 +29,6 @@ namespace GOTHIC_ENGINE {
 	std::vector<Loot> smithLoot;
 	std::vector<Loot> hunterLoot;
 	std::vector<Loot> chestsLoot;
+	std::vector<Loot> championLoot;
+	
 }

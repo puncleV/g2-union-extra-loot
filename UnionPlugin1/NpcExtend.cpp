@@ -63,6 +63,9 @@ namespace GOTHIC_ENGINE {
 		if (!npc->IsDead() && npc != oCNpc::player) {
 			if (!npc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX) && SHOULD_ADD_LOOT_TO_NPC || SHOULD_IGNORE_CHECK_TO_ADD_LOOT) {
 				addLootToNPC(npc);
+				if (randomizer.Random(0, 1000) < CHAMPION_CHANCE) {
+					makeChampion(npc);
+				}
 			}
 		}
 	}

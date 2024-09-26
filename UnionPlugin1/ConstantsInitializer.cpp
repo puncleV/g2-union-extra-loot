@@ -12,6 +12,8 @@ namespace GOTHIC_ENGINE {
 		ENEMY_STATS_PER_MULTIPLIER = zoptions->ReadInt("PUNCLEVUTILS", "StrengthenEnemyStatsPerMultiplier", 25);
 		ENEMY_DEFENCE_PER_MULTIPLIER = zoptions->ReadInt("PUNCLEVUTILS", "StrengthenEnemyDefencePerMultiplier", 3);
 		ENEMY_HP_FACTOR = zoptions->ReadInt("PUNCLEVUTILS", "StrengthenEnemyBaseHP", 150);
+		CHAMPION_CHANCE = zoptions->ReadInt("PUNCLEVUTILS", "ChampionChance", 5);
+		CHAMPION_LOOT_CHANCE = zoptions->ReadInt("PUNCLEVUTILS", "ChampionLootChance", 50);
 
 		SHOULD_ADD_LOOT_TO_NPC = zoptions->ReadBool("PUNCLEVUTILS", "ShouldAddLootToNpc", FALSE);
 		SHOULD_ADD_LOOT_TO_CHESTS = zoptions->ReadBool("PUNCLEVUTILS", "ShouldAddLootToChests", FALSE);

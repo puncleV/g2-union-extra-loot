@@ -57,7 +57,7 @@ namespace GOTHIC_ENGINE {
 			if (!npc) {
 				return result;
 			}
-
+			auto sumValue = 0;
 			for (auto i = 0; i < maxAmountOfTries; i += 1) {
 				if (randomizer.Random(0, probabilityOutOf) <= probability * (EXTRA_LOOT_BASE_CHANCE / 100)) {
 					auto itemName = randomizer.getRandomArrayElement(possibleLootNames);
@@ -72,13 +72,16 @@ namespace GOTHIC_ENGINE {
 					}
 					else {
 						npc->PutInInv(item);
-						strengthenNpc(npc, item->value);
+						sumValue += item->value;
 					}
 
 					item->Release();
 
 					result = TRUE;
 				}
+			}
+			if (result && !RX_IsTrader(npc)) {
+				strengthenNpc(npc, sumValue);
 			}
 
 			return result;
@@ -93,7 +96,9 @@ namespace GOTHIC_ENGINE {
 			if (adjustedItemValue < 100) {
 				adjustedItemValue = 100;
 			}
-			else {
+			else if (adjustedItemValue > 6000) {
+				adjustedItemValue = 6000;
+			} else {
 				adjustedItemValue = adjustedItemValue * 1.25;
 			}
 

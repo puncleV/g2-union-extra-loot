@@ -15,6 +15,7 @@ namespace GOTHIC_ENGINE {
 		humanLoot = jsonConfig.lootTable("human-loot");
 		smithLoot = jsonConfig.lootTable("smith-loot");
 		hunterLoot = jsonConfig.lootTable("hunter-loot");
+		championLoot = jsonConfig.lootTable("champion-loot");
 		
 		if (SHOULD_USE_NPC_LOOT_FOR_CHESTS) {
 			chestsLoot = NPC_LOOT_TABLE;
