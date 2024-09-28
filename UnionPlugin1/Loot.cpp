@@ -93,17 +93,18 @@ namespace GOTHIC_ENGINE {
 			}
 			auto adjustedItemValue = itemValue;
 
-			if (adjustedItemValue < 100) {
-				adjustedItemValue = 100;
+			if (adjustedItemValue < MIN_STRENGHTEN_VALUE) {
+				adjustedItemValue = MIN_STRENGHTEN_VALUE;
 			}
-			else if (adjustedItemValue > 6000) {
-				adjustedItemValue = 6000;
+			else if (adjustedItemValue > MAX_STRENGHTEN_VALUE) {
+				adjustedItemValue = MAX_STRENGHTEN_VALUE;
 			} else {
 				adjustedItemValue = adjustedItemValue * 1.25;
 			}
 
 			auto addStrengthMultiplier = (int)(adjustedItemValue / EXTRA_LOOT_VALUE_STRENGTH_PER_LOOT_MULTIPLIER) + EXTRA_LOOT_BASE_STRENGTH_PER_LOOT_MULTIPLIER;
 			auto extaHpBasePercent = ENEMY_HP_FACTOR / npc->attribute[NPC_ATR_HITPOINTSMAX];
+
 			int additionalHp = randomizer.Random(50 * addStrengthMultiplier, npc->attribute[NPC_ATR_HITPOINTSMAX] * extaHpBasePercent * addStrengthMultiplier);
 
 			npc->attribute[NPC_ATR_HITPOINTSMAX] += additionalHp;
