@@ -2,12 +2,12 @@
 // Union SOURCE file
 
 namespace GOTHIC_ENGINE {
-	bool addRandomLootToNpc(oCNpc* npc, std::vector<Loot>& lootTable = NPC_LOOT_TABLE) {
-		auto addedLoot = false;
+	int addRandomLootToNpc(oCNpc* npc, std::vector<Loot>& lootTable = NPC_LOOT_TABLE) {
+		auto addedLoot = -1;
 		
 		for (size_t i = 0; i < lootTable.size(); ++i)
 		{
-			addedLoot = lootTable[i].tryAddToNpc(npc) || addedLoot;
+			addedLoot += lootTable[i].tryAddToNpc(npc);
 		}
 
 		return addedLoot;
@@ -57,20 +57,25 @@ namespace GOTHIC_ENGINE {
 		if (ignoredNpcForLoot(npc)) {
 			return false;
 		}
-
 		if (RX_IsTrader(npc) || RX_IsSummon(npc) || RX_IsBoss(npc)) {
 			return false;
 		}
 
+		npc->setNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX, 2);
+		auto addedValue = 0;
+
 		if (randomizer.Random(0, 100) < CHAMPION_LOOT_CHANCE) {
-			for (size_t i = 0; i < championLoot.size(); ++i)
-			{
-				championLoot[i].tryAddToNpc(npc);
-			}
+			addedValue += addRandomLootToNpc(npc, championLoot);
+		}
+		addedValue += addRandomLootToNpc(npc, NPC_LOOT_TABLE);
+
+		if (addedValue > 0) {
+			strengthenNpc(npc, addedValue * 1.25);
 		}
 
-		NPC_LOOT_TABLE[0].strengthenNpc(npc, 2000);
+		strengthenNpc(npc, 2000);
 		npc->aiscriptvars[AIV_BOSS] = 1;
+
 		return true;
 	}
 }

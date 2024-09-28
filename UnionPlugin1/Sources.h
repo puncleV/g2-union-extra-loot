@@ -5,6 +5,7 @@
 #pragma region Includes
 #include "Constants.cpp"
 #include "Randomiser.cpp"
+#include "helpers.cpp"
 #include "Loot.cpp"
 #include "ItemHelpers.cpp"
 #include "NpcHelper.cpp"

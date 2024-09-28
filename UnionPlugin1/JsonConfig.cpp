@@ -59,9 +59,9 @@ namespace GOTHIC_ENGINE {
 
 				int minAmount = jsonFile["loot-tables"][name][i].value("minAmount", 1); 
 				int maxAmount = jsonFile["loot-tables"][name][i].value("maxAmount", 1);
-				int maxAmountOfTries = jsonFile["loot-tables"][name][i].value("maxAmountOfTries", 1);
+				auto amountMeansPicks = jsonFile["loot-tables"][name][i].value("amountMeansPicks", false);
 
-				_lootTable.push_back(Loot(chance, chanceOutOf, lootNames, minAmount, maxAmount, maxAmountOfTries));
+				_lootTable.push_back(Loot(chance, chanceOutOf, lootNames, minAmount, maxAmount, amountMeansPicks));
 			}
 
 			return _lootTable;

@@ -12,7 +12,7 @@ namespace GOTHIC_ENGINE {
 		int probabilityOutOf;
 		int minAmount;
 		int maxAmount;
-		int maxAmountOfTries;
+		bool amountMeansPicks;
 
 		int getRandomItemAmount(oCItem* item) {
 			auto itemName = item->GetObjectName();
@@ -31,7 +31,7 @@ namespace GOTHIC_ENGINE {
 				return nullptr;
 			}
 
-			if (item->HasFlag(ITM_FLAG_MULTI)) {
+			if (item->HasFlag(ITM_FLAG_MULTI) && !amountMeansPicks) {
 				item->amount = getRandomItemAmount(item);
 			}
 			else {
@@ -43,121 +43,99 @@ namespace GOTHIC_ENGINE {
 	public:
 		std::vector <zSTRING> possibleLootNames;
 
-		Loot(int _chanceWeight, int _chanceUpperbound, std::vector <zSTRING> _possibleLootNames, int _minAmount = 1, int _maxAmount = 1, int _maxAmountOfTries = 1) {
+		Loot(int _chanceWeight, int _chanceUpperbound, std::vector <zSTRING> _possibleLootNames, int _minAmount = 1, int _maxAmount = 1, bool _amountMeansPicks = 1) {
 			possibleLootNames = _possibleLootNames;
 			probability = _chanceWeight;
 			probabilityOutOf = _chanceUpperbound;
 			minAmount = _minAmount;
 			maxAmount = _maxAmount;
-			maxAmountOfTries = _maxAmountOfTries;
+			amountMeansPicks = _amountMeansPicks;
 		};
 
-		bool tryAddToNpc(oCNpc* npc) {
-			auto result = FALSE;
+		int addItemToNpc(oCNpc* npc) {
+			auto itemName = randomizer.getRandomArrayElement(possibleLootNames);
+			auto item = getItemWithAmount(itemName);
+			auto value = -1;
+
+			if (item == nullptr) {
+				return value;
+			}
+
+			value = item->value ? item->value: 1;
+
+			if (SHOULD_ADD_LOOT_TO_PLAYER) {
+				player->PutInInv(item);
+			}
+			else {
+				npc->PutInInv(item);
+			}
+
+			item->Release();
+
+			return value;
+		}
+
+		int tryAddToNpc(oCNpc* npc) {
 			if (!npc) {
-				return result;
+				return 0;
 			}
 			auto sumValue = 0;
-			for (auto i = 0; i < maxAmountOfTries; i += 1) {
-				if (randomizer.Random(0, probabilityOutOf) <= probability * (EXTRA_LOOT_BASE_CHANCE / 100)) {
-					auto itemName = randomizer.getRandomArrayElement(possibleLootNames);
-					auto item = getItemWithAmount(itemName);
-
-					if (item == nullptr) {
-						continue;
+			if (randomizer.Random(0, probabilityOutOf) <= (probability * (EXTRA_LOOT_BASE_CHANCE / 100.))) {
+				if (amountMeansPicks) {
+					auto picks = randomizer.Random(1, maxAmount);
+					for (auto i = 0; i < picks; i += 1) {
+						sumValue += addItemToNpc(npc);
 					}
-
-					if (SHOULD_ADD_LOOT_TO_PLAYER) {
-						player->PutInInv(item);
-					}
-					else {
-						npc->PutInInv(item);
-						sumValue += item->value;
-					}
-
-					item->Release();
-
-					result = TRUE;
+				}
+				else {
+					sumValue += addItemToNpc(npc);
 				}
 			}
-			if (result && !RX_IsTrader(npc)) {
-				strengthenNpc(npc, sumValue);
-			}
 
-			return result;
+			return sumValue;
 		};
 
-		void strengthenNpc(oCNpc* npc, int itemValue = 1) {
-			if (npc == player || !SHOULD_STRENGHTEN_ENEMIES) {
-				return;
-			}
-			auto adjustedItemValue = itemValue;
-
-			if (adjustedItemValue < MIN_STRENGHTEN_VALUE) {
-				adjustedItemValue = MIN_STRENGHTEN_VALUE;
-			}
-			else if (adjustedItemValue > MAX_STRENGHTEN_VALUE) {
-				adjustedItemValue = MAX_STRENGHTEN_VALUE;
-			} else {
-				adjustedItemValue = adjustedItemValue * 1.25;
-			}
-
-			auto addStrengthMultiplier = (int)(adjustedItemValue / EXTRA_LOOT_VALUE_STRENGTH_PER_LOOT_MULTIPLIER) + EXTRA_LOOT_BASE_STRENGTH_PER_LOOT_MULTIPLIER;
-			auto extaHpBasePercent = ENEMY_HP_FACTOR / npc->attribute[NPC_ATR_HITPOINTSMAX];
-
-			int additionalHp = randomizer.Random(50 * addStrengthMultiplier, npc->attribute[NPC_ATR_HITPOINTSMAX] * extaHpBasePercent * addStrengthMultiplier);
-
-			npc->attribute[NPC_ATR_HITPOINTSMAX] += additionalHp;
-			npc->attribute[NPC_ATR_HITPOINTS] += additionalHp;
-			npc->attribute[NPC_ATR_STRENGTH] += ENEMY_STATS_PER_MULTIPLIER * addStrengthMultiplier;
-			npc->attribute[NPC_ATR_DEXTERITY] += ENEMY_STATS_PER_MULTIPLIER * addStrengthMultiplier;
-
-			if (npc->protection[oEDamageIndex_Blunt] != -1) {
-				npc->protection[oEDamageIndex_Blunt] += ENEMY_DEFENCE_PER_MULTIPLIER * addStrengthMultiplier;
-			}
-
-			if (npc->protection[oEDamageIndex_Edge] != -1) {
-				npc->protection[oEDamageIndex_Edge] += ENEMY_DEFENCE_PER_MULTIPLIER * addStrengthMultiplier;
-			}
+		bool addItemToChest(oCMobContainer* chest) {
+			auto itemName = randomizer.getRandomArrayElement(possibleLootNames);
+			auto item = getItemWithAmount(itemName);
 			
-			if (npc->protection[oEDamageIndex_Fire] != -1) {
-				npc->protection[oEDamageIndex_Fire] += ENEMY_DEFENCE_PER_MULTIPLIER * addStrengthMultiplier;
+			if (item == nullptr) {
+				return false;
 			}
 
-			if (npc->protection[oEDamageIndex_Point] != -1) {
-				npc->protection[oEDamageIndex_Point] += ENEMY_DEFENCE_PER_MULTIPLIER * addStrengthMultiplier;
+			if (SHOULD_ADD_LOOT_TO_PLAYER) {
+				player->PutInInv(item);
+			}
+			else {
+				chest->Insert(item);
 			}
 
-			if (npc->protection[oEDamageIndex_Magic] != -1) {
-				npc->protection[oEDamageIndex_Magic] += ENEMY_DEFENCE_PER_MULTIPLIER * addStrengthMultiplier;
-			}
+			item->Release();
+
+			return true;
 		}
 
 		bool tryAddToChest(oCMobContainer* chest) {
 			if (!chest) {
-				return FALSE;
+				return false;
 			}
-			
-			for (auto i = 0; i < maxAmountOfTries; i += 1) {
-				if (randomizer.Random(0, probabilityOutOf) <= probability) {
-					auto itemName = randomizer.getRandomArrayElement(possibleLootNames);
 
-					auto item = getItemWithAmount(itemName);
+			if (randomizer.Random(0, probabilityOutOf) <= probability) {
+				if (amountMeansPicks) {
+					auto addedSomething = false;
+					auto picks = randomizer.Random(1, maxAmount);
 
-					if (SHOULD_ADD_LOOT_TO_PLAYER) {
-						player->PutInInv(item);
+					for (auto i = 0; i < picks; i += 1) {
+						addedSomething = addItemToChest(chest) || addedSomething;
 					}
-					else {
-						chest->Insert(item);
-					}
-
-					item->Release();
-
-					return TRUE;
+					return addedSomething;
+				}
+				else {
+					return addItemToChest(chest);
 				}
 			}
 
-			return FALSE;
+			return false;
 		};
 	};
 }

@@ -52,19 +52,28 @@ namespace GOTHIC_ENGINE {
 		player->goThroughNpcsInRadius(3500);
 		player->randomizeChestsInRadius(1500);
 
+		auto focusNpc = player->GetFocusNpc();
 		if (IS_DEBUG) {
-			auto focusNpc = player->GetFocusNpc();
 
 			if (focusNpc) {
 				ogame->game_text->Printwin("Loot given: " + Z focusNpc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX));
 				ogame->game_text->Printwin("Debug mode: " + Z IS_DEBUG);
-				ogame->game_text->Printwin("Npc Name: " + focusNpc->GetObjectName());
+				ogame->game_text->Printwin("Npc Name: " + Z focusNpc->GetObjectName());
+				ogame->game_text->Printwin("Def Blunt: " + Z focusNpc->protection[oEDamageIndex_Blunt]);
+				ogame->game_text->Printwin("Def Edge: " + Z focusNpc->protection[oEDamageIndex_Edge]);
+				ogame->game_text->Printwin("Def Point: " + Z focusNpc->protection[oEDamageIndex_Point]);
 			}
 
 			auto focusVob = player->GetFocusVob(); 
 
 			if (focusVob) {
 				ogame->game_text->Printwin("Vob name: " + focusVob->GetObjectName());
+			}
+		}
+
+		if (focusNpc) {
+			if (focusNpc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX) == 2 && !focusNpc->name[0].HasWordI("Champ")) {
+				focusNpc->name[0] += Z " Champion";
 			}
 		}
 	}
@@ -88,22 +97,6 @@ namespace GOTHIC_ENGINE {
 	}
 
 	void LoadEnd() {
-		oCWorld* world = dynamic_cast<oCWorld*>(ogame->GetWorld());
-		auto npcsCount = 0;
-
-		if (world) {
-			auto list = world->voblist_npcs;
-			for (size_t i = 0; i < list->GetNumInList(); ++i)
-			{
-				oCNpc* npc = list->Get(i);
-
-				if (npc == oCNpc::player || !npc->IsHuman())
-					continue;
-
-				goThroughNpcHandlers(npc);
-			}
-		}
-		
 	}
 
 	void Game_LoadBegin_NewGame() {

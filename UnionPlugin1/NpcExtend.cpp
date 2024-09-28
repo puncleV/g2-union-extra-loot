@@ -2,43 +2,45 @@
 // Union SOURCE file
 
 namespace GOTHIC_ENGINE {
-	auto const ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX = 390;
-
-	bool addLootToNPC(oCNpc* npc) { 
+	bool addLootToNPC(oCNpc* npc) {
 		if (ignoredNpcForLoot(npc)) {
 			return FALSE;
 		}
-		
+
 		npc->setNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX, TRUE);
 
 		oCWorld* world = dynamic_cast<oCWorld*>(ogame->GetWorld());
-		auto lootGiven = false;
+		auto lootGiven = -1;
 
 		if (RX_IsMageTrader(npc)) {
-			lootGiven = addRandomLootToNpc(npc, magicLoot) || lootGiven;
+			lootGiven += addRandomLootToNpc(npc, magicLoot) ;
 		}
-		if (RX_IsAlchemistTrader(npc)) {
-			lootGiven = addRandomLootToNpc(npc, alchemistLoot) || lootGiven;
+		else if (RX_IsAlchemistTrader(npc)) {
+			lootGiven += addRandomLootToNpc(npc, alchemistLoot) ;
 		}
-		if (RX_IsHunterTrader(npc)) {
-			lootGiven = addRandomLootToNpc(npc, hunterLoot) || lootGiven;
+		else if (RX_IsHunterTrader(npc)) {
+			lootGiven += addRandomLootToNpc(npc, hunterLoot) ;
 		}
-		if (RX_IsSmithTrader(npc)) {
-			lootGiven = addRandomLootToNpc(npc, smithLoot) || lootGiven;
+		else if (RX_IsSmithTrader(npc)) {
+			lootGiven += addRandomLootToNpc(npc, smithLoot) ;
 		}
-		if (RX_IsTrader(npc)) {
-			lootGiven = addRandomLootToNpc(npc, tradersLoot) || lootGiven;
+		else if (RX_IsTrader(npc)) {
+			lootGiven += addRandomLootToNpc(npc, tradersLoot) ;
 		}
-		if (RX_IsBoss(npc)) {
-			lootGiven = addRandomLootToNpc(npc) || lootGiven;
+		else if (RX_IsBoss(npc)) {
+			lootGiven += addRandomLootToNpc(npc) ;
+			lootGiven += addRandomLootToNpc(npc, bossLoot) ;
+		}
+		else if (npc->IsHuman()) {
+			lootGiven += addRandomLootToNpc(npc, humanLoot) ;
+		}
+		else {
+			lootGiven += addRandomLootToNpc(npc, NPC_LOOT_TABLE) ;
+		}
 
-			lootGiven = addRandomLootToNpc(npc, bossLoot) || lootGiven;
+		if (!RX_IsTrader(npc) && lootGiven >= 0) {
+			strengthenNpc(npc, lootGiven);
 		}
-		if (npc->IsHuman()) {
-			lootGiven = addRandomLootToNpc(npc, humanLoot) || lootGiven;
-		}
-
-		lootGiven = addRandomLootToNpc(npc, NPC_LOOT_TABLE) || lootGiven;
 
 		return lootGiven;
 	}
@@ -62,9 +64,11 @@ namespace GOTHIC_ENGINE {
 
 		if (!npc->IsDead() && npc != oCNpc::player) {
 			if (!npc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX) && SHOULD_ADD_LOOT_TO_NPC || SHOULD_IGNORE_CHECK_TO_ADD_LOOT) {
-				addLootToNPC(npc);
 				if (randomizer.Random(0, 1000) < CHAMPION_CHANCE) {
 					makeChampion(npc);
+				}
+				else {
+					addLootToNPC(npc);
 				}
 			}
 		}
