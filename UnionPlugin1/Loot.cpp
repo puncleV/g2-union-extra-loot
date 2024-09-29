@@ -83,7 +83,7 @@ namespace GOTHIC_ENGINE {
 			if (randomizer.Random(0, probabilityOutOf) <= (probability * (EXTRA_LOOT_BASE_CHANCE / 100.))) {
 				if (amountMeansPicks) {
 					auto picks = randomizer.Random(1, maxAmount);
-					for (auto i = 0; i < picks; i += 1) {
+					for (auto i = minAmount - 1; i < picks; i += 1) {
 						sumValue += addItemToNpc(npc);
 					}
 				}
@@ -125,7 +125,7 @@ namespace GOTHIC_ENGINE {
 					auto addedSomething = false;
 					auto picks = randomizer.Random(1, maxAmount);
 
-					for (auto i = 0; i < picks; i += 1) {
+					for (auto i = minAmount - 1; i < picks; i += 1) {
 						addedSomething = addItemToChest(chest) || addedSomething;
 					}
 					return addedSomething;

@@ -66,14 +66,27 @@ namespace GOTHIC_ENGINE {
 
 		if (randomizer.Random(0, 100) < CHAMPION_LOOT_CHANCE) {
 			addedValue += addRandomLootToNpc(npc, championLoot);
+			npc->level += CHAMPION_EXTRA_LEVEL;
 		}
+
+		if (randomizer.Random(0, 100) < CHAMPION_LP_CHANCE) {
+			npc->setNpcVar(AIVRX_NPC_LP, CHAMPION_LP_INCREASE);
+
+			if (CHAMPION_STRENGHTEN_VALUE_PER_LP) {
+				strengthenNpc(npc, CHAMPION_STRENGHTEN_VALUE_PER_LP * CHAMPION_LP_INCREASE);
+			}
+		}
+
 		addedValue += addRandomLootToNpc(npc, NPC_LOOT_TABLE);
+
+		npc->attribute[NPC_ATR_HITPOINTSMAX] += 150;
+		npc->attribute[NPC_ATR_HITPOINTS] += 150;
 
 		if (addedValue > 0) {
 			strengthenNpc(npc, addedValue * 1.25);
 		}
 
-		strengthenNpc(npc, 2000);
+		strengthenNpc(npc, CHAMPION_STRENGTHEN_VALUE);
 		npc->aiscriptvars[AIV_BOSS] = 1;
 
 		return true;

@@ -20,7 +20,10 @@ namespace GOTHIC_ENGINE {
 		CHAMPION_CHANCE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionChance", 5);
 		CHAMPION_LOOT_CHANCE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionLootChance", 25);
 		CHAMPION_STRENGTHEN_VALUE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionStrengthenValue", 3000);
-
+		CHAMPION_EXTRA_LEVEL = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionExtraLevel", 5);
+		CHAMPION_LP_CHANCE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionLpChance", 35);
+		CHAMPION_LP_INCREASE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionLpIncrease", 1);
+		CHAMPION_STRENGHTEN_VALUE_PER_LP = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionStrentghenPerLpValue", 350);
 		MAX_STRENGHTEN_VALUE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "MaxStrengthenValue", 3000);
 		MIN_STRENGHTEN_VALUE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "MinStrengthenValue", 250);
 
