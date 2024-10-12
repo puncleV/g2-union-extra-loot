@@ -12,6 +12,7 @@ namespace GOTHIC_ENGINE {
 		int probabilityOutOf;
 		int minAmount;
 		int maxAmount;
+		int valueOverride;
 		bool amountMeansPicks;
 
 		int getRandomItemAmount(oCItem* item) {
@@ -43,13 +44,14 @@ namespace GOTHIC_ENGINE {
 	public:
 		std::vector <zSTRING> possibleLootNames;
 
-		Loot(int _chanceWeight, int _chanceUpperbound, std::vector <zSTRING> _possibleLootNames, int _minAmount = 1, int _maxAmount = 1, bool _amountMeansPicks = 1) {
+		Loot(int _chanceWeight, int _chanceUpperbound, std::vector <zSTRING> _possibleLootNames, int _minAmount = 1, int _maxAmount = 1, bool _amountMeansPicks = 1, int _valueOverride = -1) {
 			possibleLootNames = _possibleLootNames;
 			probability = _chanceWeight;
 			probabilityOutOf = _chanceUpperbound;
 			minAmount = _minAmount;
 			maxAmount = _maxAmount;
 			amountMeansPicks = _amountMeansPicks;
+			valueOverride = _valueOverride;
 		};
 
 		int addItemToNpc(oCNpc* npc) {
@@ -61,7 +63,12 @@ namespace GOTHIC_ENGINE {
 				return value;
 			}
 
-			value = item->value ? item->value: 1;
+			if (valueOverride >= 0) {
+				value = valueOverride;
+			}
+			else {
+				value = item->value ? item->value : 1;
+			}
 
 			if (SHOULD_ADD_LOOT_TO_PLAYER) {
 				player->PutInInv(item);

@@ -11,6 +11,7 @@ namespace GOTHIC_ENGINE {
 	auto JSON_FILE_NAME = "punclev-utils.json";
 
 	auto EXTRA_LOOT_BASE_CHANCE = 100;
+	auto TRADERS_LOOT_PER_CHAPTER = TRUE;
 
 	auto EXTRA_LOOT_CHEST_BASE_CHANCE = 450;
 	auto EXTRA_LOOT_CHEST_UPPERBOUND = 1000;
@@ -35,7 +36,10 @@ namespace GOTHIC_ENGINE {
 	auto CHAMPION_LP_CHANCE = 35;
 	auto CHAMPION_LP_INCREASE = 1;
 	auto CHAMPION_STRENGHTEN_VALUE_PER_LP = 350;
-
+	auto CHAMPION_MIN_STATS = 150;
+	auto CHAMPION_MAX_STATS = 1250;
+	auto CHAMPION_MIN_HP = 1000;
+	auto CHAMPION_MAX_HP = 30000;
 	auto SHOULD_ADD_LOOT_TO_PLAYER = FALSE;
 	auto SHOULD_IGNORE_CHECK_TO_ADD_LOOT = FALSE;
 	auto SHOULD_ADD_LOOT_TO_NPC = FALSE;
@@ -44,7 +48,7 @@ namespace GOTHIC_ENGINE {
 	auto SHOULD_STRENGHTEN_ENEMIES = TRUE;
 	auto IS_DEBUG = FALSE;
 
-	std::vector<zSTRING> alchemistsList = { "NONE_1192_FREGEAL", "VLK_498_IGNAZ", "BAU_980_SAGITTA", "VLK_409_ZURIS", "VLK_417_CONSTANTINO", "KDF_506_NEORAS", "NONE_100_XARDAS", "VLK_422_SALANDRIL", "WC_DRUID_TEACHER", "XBS_7501_CAMPER", "VLK_411_GAERTNER" };
+	std::vector<zSTRING> alchemistsList = { "NONE_1192_FREGEAL", "VLK_498_IGNAZ", "BAU_980_SAGITTA", "VLK_409_ZURIS", "VLK_417_CONSTANTINO", "KDF_506_NEORAS", "NONE_100_XARDAS", "VLK_422_SALANDRIL", "WC_DRUID_TEACHER", "XBS_7501_CAMPER", "VLK_411_GAERTNER", "DH_COMMONNPC_02"};
 	std::vector<zSTRING> magicTraderList = {
 		"VLK_6027_TALIASAN",
 		"GUR_8003_TYON",
@@ -113,7 +117,8 @@ namespace GOTHIC_ENGINE {
 		"AL_SMITH",
 		"AL_COMMON_SMITH",
 		"XBS_7513_DARRION",
-		"MIL_314_MORTIS"
+		"MIL_314_MORTIS",
+		"DH_COMMONSMITH"
 	};
 	std::vector<zSTRING> hunterList = {
 		"VLK_413_BOSPER",
@@ -182,5 +187,15 @@ namespace GOTHIC_ENGINE {
 		}
 
 		return RX_IsMageTrader(npc) || RX_IsAlchemistTrader(npc) || RX_IsSmithTrader(npc) || RX_IsHunterTrader(npc);
+	}
+
+	int getCurrentChapter() {
+		int retVal = 0;
+		zCPar_Symbol* ps = parser->GetSymbol("kapitel");
+		if (ps)
+			ps->GetValue(retVal, 0);
+		else
+			return -1;
+		return retVal;
 	}
 }

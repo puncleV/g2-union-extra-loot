@@ -5,7 +5,7 @@ namespace GOTHIC_ENGINE {
 	int addRandomLootToNpc(oCNpc* npc, std::vector<Loot>& lootTable = NPC_LOOT_TABLE) {
 		auto addedLoot = -1;
 		
-		for (size_t i = 0; i < lootTable.size(); ++i)
+		for (size_t i = 0; i < lootTable.size(); i++)
 		{
 			addedLoot += lootTable[i].tryAddToNpc(npc);
 		}
@@ -53,6 +53,31 @@ namespace GOTHIC_ENGINE {
 		return (npc && npc->aiscriptvars[AIV_SUMMON] == TRUE);
 	}
 
+	void minChampionStats(oCNpc* npc) {
+		if (npc->attribute[NPC_ATR_HITPOINTSMAX] < CHAMPION_MIN_HP) {
+			npc->attribute[NPC_ATR_HITPOINTSMAX] = CHAMPION_MIN_HP;
+			npc->attribute[NPC_ATR_HITPOINTS] = CHAMPION_MIN_HP;
+		}
+		if (npc->attribute[NPC_ATR_STRENGTH] < CHAMPION_MIN_STATS) {
+			npc->attribute[NPC_ATR_STRENGTH] = CHAMPION_MIN_STATS;
+		}
+		if (npc->attribute[NPC_ATR_DEXTERITY] < CHAMPION_MIN_STATS) {
+			npc->attribute[NPC_ATR_DEXTERITY] = CHAMPION_MIN_STATS;
+		}
+	}		
+
+	void maxChampionStats(oCNpc* npc) {
+		if (npc->attribute[NPC_ATR_HITPOINTSMAX] > CHAMPION_MAX_HP) {
+			npc->attribute[NPC_ATR_HITPOINTSMAX] = CHAMPION_MAX_HP;
+			npc->attribute[NPC_ATR_HITPOINTS] = CHAMPION_MAX_HP;
+		}
+		if (npc->attribute[NPC_ATR_STRENGTH] > CHAMPION_MAX_STATS) {
+			npc->attribute[NPC_ATR_STRENGTH] = CHAMPION_MAX_STATS;
+		}
+		if (npc->attribute[NPC_ATR_DEXTERITY] > CHAMPION_MAX_STATS) {
+			npc->attribute[NPC_ATR_DEXTERITY] = CHAMPION_MAX_STATS;
+		}
+	}
 	bool makeChampion(oCNpc* npc) {
 		if (ignoredNpcForLoot(npc)) {
 			return false;
@@ -61,9 +86,9 @@ namespace GOTHIC_ENGINE {
 			return false;
 		}
 
-		npc->setNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX, 2);
-		auto addedValue = 0;
+		npc->setNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX, 10);
 
+		auto addedValue = 0;
 		if (randomizer.Random(0, 100) < CHAMPION_LOOT_CHANCE) {
 			addedValue += addRandomLootToNpc(npc, championLoot);
 			npc->level += CHAMPION_EXTRA_LEVEL;
@@ -72,21 +97,14 @@ namespace GOTHIC_ENGINE {
 		if (randomizer.Random(0, 100) < CHAMPION_LP_CHANCE) {
 			npc->setNpcVar(AIVRX_NPC_LP, CHAMPION_LP_INCREASE);
 
-			if (CHAMPION_STRENGHTEN_VALUE_PER_LP) {
-				strengthenNpc(npc, CHAMPION_STRENGHTEN_VALUE_PER_LP * CHAMPION_LP_INCREASE);
-			}
+			addedValue += CHAMPION_STRENGHTEN_VALUE_PER_LP * CHAMPION_LP_INCREASE;
 		}
-
 		addedValue += addRandomLootToNpc(npc, NPC_LOOT_TABLE);
-
-		npc->attribute[NPC_ATR_HITPOINTSMAX] += 150;
-		npc->attribute[NPC_ATR_HITPOINTS] += 150;
-
-		if (addedValue > 0) {
-			strengthenNpc(npc, addedValue * 1.25);
-		}
-
-		strengthenNpc(npc, CHAMPION_STRENGTHEN_VALUE);
+		
+		minChampionStats(npc);
+		strengthenNpc(npc, CHAMPION_STRENGTHEN_VALUE + addedValue * 1.25);
+		maxChampionStats(npc);
+		
 		npc->aiscriptvars[AIV_BOSS] = 1;
 
 		return true;

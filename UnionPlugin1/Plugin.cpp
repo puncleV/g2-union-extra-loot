@@ -59,9 +59,6 @@ namespace GOTHIC_ENGINE {
 				ogame->game_text->Printwin("Loot given: " + Z focusNpc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX));
 				ogame->game_text->Printwin("Debug mode: " + Z IS_DEBUG);
 				ogame->game_text->Printwin("Npc Name: " + Z focusNpc->GetObjectName());
-				ogame->game_text->Printwin("Def Blunt: " + Z focusNpc->protection[oEDamageIndex_Blunt]);
-				ogame->game_text->Printwin("Def Edge: " + Z focusNpc->protection[oEDamageIndex_Edge]);
-				ogame->game_text->Printwin("Def Point: " + Z focusNpc->protection[oEDamageIndex_Point]);
 			}
 
 			auto focusVob = player->GetFocusVob(); 
@@ -72,7 +69,7 @@ namespace GOTHIC_ENGINE {
 		}
 
 		if (focusNpc) {
-			if (focusNpc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX) == 2 && !focusNpc->name[0].HasWordI("Champ")) {
+			if (focusNpc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX) == 10 && !focusNpc->name[0].HasWordI("Champ")) {
 				focusNpc->name[0] += Z " Champion";
 			}
 		}

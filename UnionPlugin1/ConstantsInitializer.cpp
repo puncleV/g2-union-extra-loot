@@ -24,9 +24,16 @@ namespace GOTHIC_ENGINE {
 		CHAMPION_LP_CHANCE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionLpChance", 35);
 		CHAMPION_LP_INCREASE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionLpIncrease", 1);
 		CHAMPION_STRENGHTEN_VALUE_PER_LP = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionStrentghenPerLpValue", 350);
+		
+		CHAMPION_MIN_STATS = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionMinStats", 175);
+		CHAMPION_MAX_STATS = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionMaxStats", 1250);
+		CHAMPION_MIN_HP = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionMinHp", 1000);
+		CHAMPION_MAX_HP = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionMaxHp", 35000);
+
 		MAX_STRENGHTEN_VALUE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "MaxStrengthenValue", 3000);
 		MIN_STRENGHTEN_VALUE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "MinStrengthenValue", 250);
 
+		TRADERS_LOOT_PER_CHAPTER = zoptions->ReadBool("PUNCLEV_ADDITIONAL_LOOT", "TradersLootPerChapter", TRUE);
 		SHOULD_ADD_LOOT_TO_NPC = zoptions->ReadBool("PUNCLEV_ADDITIONAL_LOOT", "ShouldAddLootToNpc", TRUE);
 		SHOULD_ADD_LOOT_TO_CHESTS = zoptions->ReadBool("PUNCLEV_ADDITIONAL_LOOT", "ShouldAddLootToChests", TRUE);
 		SHOULD_USE_NPC_LOOT_FOR_CHESTS = zoptions->ReadBool("PUNCLEV_ADDITIONAL_LOOT", "ShouldUseNpcLootForChests", FALSE);

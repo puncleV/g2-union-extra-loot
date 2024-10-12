@@ -7,7 +7,7 @@ namespace GOTHIC_ENGINE {
 			return FALSE;
 		}
 
-		npc->setNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX, TRUE);
+		npc->setNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX, getCurrentChapter());
 
 		oCWorld* world = dynamic_cast<oCWorld*>(ogame->GetWorld());
 		auto lootGiven = -1;
@@ -63,12 +63,16 @@ namespace GOTHIC_ENGINE {
 		}
 
 		if (!npc->IsDead() && npc != oCNpc::player) {
-			if (!npc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX) && SHOULD_ADD_LOOT_TO_NPC || SHOULD_IGNORE_CHECK_TO_ADD_LOOT) {
-				if (randomizer.Random(0, 1000) < CHAMPION_CHANCE) {
+			auto chapterLootWasGiven = npc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX);
+
+			if (chapterLootWasGiven < getCurrentChapter() && getCurrentChapter() >= 1 && SHOULD_ADD_LOOT_TO_NPC || SHOULD_IGNORE_CHECK_TO_ADD_LOOT) {
+				if (randomizer.Random(0, 1000) < CHAMPION_CHANCE && npc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX) == 0) {
 					makeChampion(npc);
 				}
 				else {
-					addLootToNPC(npc);
+					if (chapterLootWasGiven == 0 || chapterLootWasGiven < getCurrentChapter() && RX_IsTrader(npc) && TRADERS_LOOT_PER_CHAPTER) {
+						addLootToNPC(npc);
+					}
 				}
 			}
 		}
