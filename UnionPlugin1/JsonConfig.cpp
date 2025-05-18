@@ -37,35 +37,37 @@ namespace GOTHIC_ENGINE {
 			jsonFile = nlohmann::json::parse(buffer.ToChar());
 		}
 
-		std::vector<Loot> lootTable(const char* name) {
-			std::vector<Loot> _lootTable = {};
+		void lootTable() {
+			for (auto it = jsonFile.begin(); it != jsonFile.end(); ++it) {
+				std::vector<Loot> _lootTable = {};
+				std::string name = it.key();
 
-			if (!jsonFile["loot-tables"].is_object()) {
-				return _lootTable;
-			}
-
-			if (!jsonFile["loot-tables"][name].is_array()) {
-				return _lootTable;
-			}
-
-			for (auto i = 0; i < jsonFile["loot-tables"][name].size(); i += 1) {
-				int chance = jsonFile["loot-tables"][name][i]["chance"];
-				int chanceOutOf = jsonFile["loot-tables"][name][i].value("chanceOutOf", 1000);
-				std::vector <zSTRING> lootNames;
-
-				for (auto j = 0; j < jsonFile["loot-tables"][name][i]["itemNames"].size(); j += 1) {
-					lootNames.push_back(utf8_to_ansi(jsonFile["loot-tables"][name][i]["itemNames"][j].get<std::string>()).c_str());
+				if (!jsonFile[name].is_object()) {
+					return;
 				}
 
-				int minAmount = jsonFile["loot-tables"][name][i].value("minAmount", 1); 
-				int maxAmount = jsonFile["loot-tables"][name][i].value("maxAmount", 1);
-				auto amountMeansPicks = jsonFile["loot-tables"][name][i].value("amountMeansPicks", false);
-				int valueOverride = jsonFile["loot-tables"][name][i].value("valueOverride", -1);
+				if (!jsonFile[name]["loot"].is_array()) {
+					return;
+				}
 
-				_lootTable.push_back(Loot(chance, chanceOutOf, lootNames, minAmount, maxAmount, amountMeansPicks, valueOverride));
+				for (auto i = 0; i < jsonFile[name]["loot"].size(); i += 1) {
+					int chance = jsonFile[name]["loot"][i]["chance"];
+					int chanceOutOf = jsonFile[name]["loot"][i].value("chanceOutOf", 1000);
+					std::vector <zSTRING> lootNames;
+
+					for (auto j = 0; j < jsonFile[name]["loot"][i]["itemNames"].size(); j += 1) {
+						lootNames.push_back(utf8_to_ansi(jsonFile[name]["loot"][i]["itemNames"][j].get<std::string>()).c_str());
+					}
+
+					int minAmount = jsonFile[name]["loot"][i].value("minAmount", 1);
+					int maxAmount = jsonFile[name]["loot"][i].value("maxAmount", 1);
+					auto amountMeansPicks = jsonFile[name]["loot"][i].value("amountMeansPicks", false);
+					int valueOverride = jsonFile[name]["loot"][i].value("valueOverride", -1);
+
+					_lootTable.push_back(Loot(chance, chanceOutOf, lootNames, minAmount, maxAmount, amountMeansPicks, valueOverride));
+				}
+				lootTables.push_back(_lootTable);
 			}
-
-			return _lootTable;
 		}
 	};
 

@@ -7,7 +7,7 @@ namespace GOTHIC_ENGINE {
 
 	class Loot {
 	private:
-		std::set <zSTRING> npcIgnoreList;
+		std::set <zSTRING> npcs;
 		int probability;
 		int probabilityOutOf;
 		int minAmount;
@@ -44,7 +44,7 @@ namespace GOTHIC_ENGINE {
 	public:
 		std::vector <zSTRING> possibleLootNames;
 
-		Loot(int _chanceWeight, int _chanceUpperbound, std::vector <zSTRING> _possibleLootNames, int _minAmount = 1, int _maxAmount = 1, bool _amountMeansPicks = 1, int _valueOverride = -1) {
+		Loot(int _chanceWeight, int _chanceUpperbound, std::vector <zSTRING> _possibleLootNames, int _minAmount = 1, int _maxAmount = 1, bool _amountMeansPicks = 1, int _valueOverride = -1, std::set<zSTRING> _npcs = {}) {
 			possibleLootNames = _possibleLootNames;
 			probability = _chanceWeight;
 			probabilityOutOf = _chanceUpperbound;
@@ -52,6 +52,7 @@ namespace GOTHIC_ENGINE {
 			maxAmount = _maxAmount;
 			amountMeansPicks = _amountMeansPicks;
 			valueOverride = _valueOverride;
+			npcs = _npcs;
 		};
 
 		int addItemToNpc(oCNpc* npc) const {
@@ -86,6 +87,11 @@ namespace GOTHIC_ENGINE {
 			if (!npc) {
 				return 0;
 			}
+			
+			if (npcs.count(npc->GetObjectName())) {
+				return 0;
+			}
+
 			auto sumValue = 0;
 			if (randomizer.Random(0, probabilityOutOf) <= (probability * (EXTRA_LOOT_BASE_CHANCE / 100.))) {
 				if (amountMeansPicks) {

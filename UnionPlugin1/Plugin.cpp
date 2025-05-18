@@ -7,15 +7,7 @@ namespace GOTHIC_ENGINE {
 	}
 
 	void fillLootTables(){
-		lootTables.push_back(jsonConfig.lootTable("alchemist-loot"));
-		lootTables.push_back(jsonConfig.lootTable("magic-loot"));
-		lootTables.push_back(jsonConfig.lootTable("traders-loot"));
-		lootTables.push_back(jsonConfig.lootTable("base-table"));
-		lootTables.push_back(jsonConfig.lootTable("human-loot"));
-		lootTables.push_back(jsonConfig.lootTable("smith-loot"));
-		lootTables.push_back(jsonConfig.lootTable("hunter-loot"));
-		lootTables.push_back(jsonConfig.lootTable("champion-loot"));
-		lootTables.push_back(jsonConfig.lootTable("boss-loot"));
+		jsonConfig.lootTable();
 	}
 
 	string GetEngineVersionName(TEngineVersion version) {
