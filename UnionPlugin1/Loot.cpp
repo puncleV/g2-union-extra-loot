@@ -87,8 +87,15 @@ namespace GOTHIC_ENGINE {
 			if (!npc) {
 				return 0;
 			}
+			auto nameMatch = false;
+			for (auto name : npcs) {
+				if (npc->GetObjectName().HasWordI(name)) {
+					nameMatch = true;
+					break;
+				}
+			}
 			
-			if (npcs.count(npc->GetObjectName())) {
+			if (!nameMatch) {
 				return 0;
 			}
 

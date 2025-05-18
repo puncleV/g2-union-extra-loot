@@ -23,15 +23,13 @@ namespace GOTHIC_ENGINE {
             
             if (SHOULD_ADD_LOOT_TO_CHESTS) {
                 if (randomizer.Random(0, EXTRA_LOOT_CHEST_UPPERBOUND) <= EXTRA_LOOT_CHEST_BASE_CHANCE) {
-                    for (const auto& lootTable : lootTables) {
-                        // todo check if chests loot
+                    for (const auto& lootTable : chestsLootTables) {
                         addRandomLootToChest(this, lootTable);
                     }
                 }
 
                 if (randomizer.Random(0, EXTRA_LOOT_CHEST_UPPERBOUND) <= CHESTS_BOSS_DROP_CHANCE) {
-                    for (const auto& lootTable : lootTables) {
-                        // todo check if boss loot
+                    for (const auto& lootTable : bossLootTables) {
                         addRandomLootToChest(this, lootTable);
                     }
                 }

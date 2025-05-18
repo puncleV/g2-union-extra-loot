@@ -75,9 +75,8 @@ namespace GOTHIC_ENGINE {
 		npc->setNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX, 10);
 
 		auto addedValue = 0;
-		if (randomizer.Random(0, 100) < CHAMPION_LOOT_CHANCE) {
-			for (const auto& lootTable : lootTables) {
-			    // todo check if champ loot
+		if (randomizer.Random(0, 100) <= CHAMPION_LOOT_CHANCE) {
+			for (const auto& lootTable : championLootTables) {
 			    addedValue += addRandomLootToNpc(npc, lootTable);
 			}
 			npc->level += CHAMPION_EXTRA_LEVEL;
@@ -87,10 +86,6 @@ namespace GOTHIC_ENGINE {
 			npc->setNpcVar(AIVRX_NPC_LP, CHAMPION_LP_INCREASE);
 
 			addedValue += CHAMPION_STRENGHTEN_VALUE_PER_LP * CHAMPION_LP_INCREASE;
-		}
-
-		for (const auto& lootTable : lootTables) {
-		    addedValue += addRandomLootToNpc(npc, lootTable);
 		}
 
 		minChampionStats(npc);

@@ -11,11 +11,13 @@ namespace GOTHIC_ENGINE {
 
 		oCWorld* world = dynamic_cast<oCWorld*>(ogame->GetWorld());
 		auto lootGiven = -1;
+		auto loot = lootTables;
+		
+		if (RX_IsBoss(npc)) {
+			loot = bossLootTables;
+		}
 
-		for (const auto& lootTable : lootTables) {
-		    // for (const auto& loot :lootTable ) {
-		    //     // Use loot here
-		    // }
+		for (const auto& lootTable : loot) {
 		    lootGiven += addRandomLootToNpc(npc, lootTable);
 		}
 

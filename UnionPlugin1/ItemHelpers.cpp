@@ -12,4 +12,7 @@ namespace GOTHIC_ENGINE {
 	}
 
 	std::vector<std::vector<Loot>> lootTables;
+	std::vector<std::vector<Loot>> bossLootTables;
+	std::vector<std::vector<Loot>> championLootTables;
+	std::vector<std::vector<Loot>> chestsLootTables;
 }
