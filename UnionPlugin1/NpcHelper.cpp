@@ -2,7 +2,7 @@
 // Union SOURCE file
 
 namespace GOTHIC_ENGINE {
-	int addRandomLootToNpc(oCNpc* npc, std::vector<Loot>& lootTable = NPC_LOOT_TABLE) {
+	int addRandomLootToNpc(oCNpc* npc, const std::vector<Loot>& lootTable) {
 		auto addedLoot = -1;
 		
 		for (size_t i = 0; i < lootTable.size(); i++)
@@ -78,6 +78,7 @@ namespace GOTHIC_ENGINE {
 			npc->attribute[NPC_ATR_DEXTERITY] = CHAMPION_MAX_STATS;
 		}
 	}
+
 	bool makeChampion(oCNpc* npc) {
 		if (ignoredNpcForLoot(npc)) {
 			return false;
@@ -90,7 +91,10 @@ namespace GOTHIC_ENGINE {
 
 		auto addedValue = 0;
 		if (randomizer.Random(0, 100) < CHAMPION_LOOT_CHANCE) {
-			addedValue += addRandomLootToNpc(npc, championLoot);
+			for (const auto& lootTable : lootTables) {
+			    // todo check if champ loot
+			    addedValue += addRandomLootToNpc(npc, lootTable);
+			}
 			npc->level += CHAMPION_EXTRA_LEVEL;
 		}
 
@@ -99,8 +103,11 @@ namespace GOTHIC_ENGINE {
 
 			addedValue += CHAMPION_STRENGHTEN_VALUE_PER_LP * CHAMPION_LP_INCREASE;
 		}
-		addedValue += addRandomLootToNpc(npc, NPC_LOOT_TABLE);
-		
+
+		for (const auto& lootTable : lootTables) {
+		    addedValue += addRandomLootToNpc(npc, lootTable);
+		}
+
 		minChampionStats(npc);
 		strengthenNpc(npc, CHAMPION_STRENGTHEN_VALUE + addedValue * 1.25);
 		maxChampionStats(npc);

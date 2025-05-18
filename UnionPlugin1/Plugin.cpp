@@ -7,23 +7,15 @@ namespace GOTHIC_ENGINE {
 	}
 
 	void fillLootTables(){
-		bossLoot = jsonConfig.lootTable("boss-loot");
-		alchemistLoot = jsonConfig.lootTable("alchemist-loot");
-		magicLoot = jsonConfig.lootTable("magic-loot");
-		tradersLoot = jsonConfig.lootTable("traders-loot");
-		NPC_LOOT_TABLE = jsonConfig.lootTable("base-table");
-		humanLoot = jsonConfig.lootTable("human-loot");
-		smithLoot = jsonConfig.lootTable("smith-loot");
-		hunterLoot = jsonConfig.lootTable("hunter-loot");
-		championLoot = jsonConfig.lootTable("champion-loot");
-		
-		if (SHOULD_USE_NPC_LOOT_FOR_CHESTS) {
-			chestsLoot = NPC_LOOT_TABLE;
-		}
-		else {
-			chestsLoot = jsonConfig.lootTable("chest-loot");
-		}
-
+		lootTables.push_back(jsonConfig.lootTable("alchemist-loot"));
+		lootTables.push_back(jsonConfig.lootTable("magic-loot"));
+		lootTables.push_back(jsonConfig.lootTable("traders-loot"));
+		lootTables.push_back(jsonConfig.lootTable("base-table"));
+		lootTables.push_back(jsonConfig.lootTable("human-loot"));
+		lootTables.push_back(jsonConfig.lootTable("smith-loot"));
+		lootTables.push_back(jsonConfig.lootTable("hunter-loot"));
+		lootTables.push_back(jsonConfig.lootTable("champion-loot"));
+		lootTables.push_back(jsonConfig.lootTable("boss-loot"));
 	}
 
 	string GetEngineVersionName(TEngineVersion version) {

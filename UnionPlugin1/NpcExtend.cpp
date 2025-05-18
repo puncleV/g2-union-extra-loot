@@ -12,30 +12,11 @@ namespace GOTHIC_ENGINE {
 		oCWorld* world = dynamic_cast<oCWorld*>(ogame->GetWorld());
 		auto lootGiven = -1;
 
-		if (RX_IsMageTrader(npc)) {
-			lootGiven += addRandomLootToNpc(npc, magicLoot) ;
-		}
-		else if (RX_IsAlchemistTrader(npc)) {
-			lootGiven += addRandomLootToNpc(npc, alchemistLoot) ;
-		}
-		else if (RX_IsHunterTrader(npc)) {
-			lootGiven += addRandomLootToNpc(npc, hunterLoot) ;
-		}
-		else if (RX_IsSmithTrader(npc)) {
-			lootGiven += addRandomLootToNpc(npc, smithLoot) ;
-		}
-		else if (RX_IsTrader(npc)) {
-			lootGiven += addRandomLootToNpc(npc, tradersLoot) ;
-		}
-		else if (RX_IsBoss(npc)) {
-			lootGiven += addRandomLootToNpc(npc) ;
-			lootGiven += addRandomLootToNpc(npc, bossLoot) ;
-		}
-		else if (npc->IsHuman()) {
-			lootGiven += addRandomLootToNpc(npc, humanLoot) ;
-		}
-		else {
-			lootGiven += addRandomLootToNpc(npc, NPC_LOOT_TABLE) ;
+		for (const auto& lootTable : lootTables) {
+		    // for (const auto& loot :lootTable ) {
+		    //     // Use loot here
+		    // }
+		    lootGiven += addRandomLootToNpc(npc, lootTable);
 		}
 
 		if (!RX_IsTrader(npc) && lootGiven >= 0) {

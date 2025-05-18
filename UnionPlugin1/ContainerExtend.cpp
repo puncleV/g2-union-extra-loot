@@ -9,7 +9,7 @@ namespace GOTHIC_ENGINE {
         return (this->hitp & LOOT_ADDED_HITP_FLAG) == LOOT_ADDED_HITP_FLAG;
     }
 
-    void addRandomLootToChest(oCMobContainer* chest, std::vector<Loot> lootTable = chestsLoot) {
+    void addRandomLootToChest(oCMobContainer* chest, const std::vector<Loot> lootTable) {
         for (size_t i = 0; i < lootTable.size(); ++i)
         {
             auto loot = lootTable[i];
@@ -23,11 +23,17 @@ namespace GOTHIC_ENGINE {
             
             if (SHOULD_ADD_LOOT_TO_CHESTS) {
                 if (randomizer.Random(0, EXTRA_LOOT_CHEST_UPPERBOUND) <= EXTRA_LOOT_CHEST_BASE_CHANCE) {
-                    addRandomLootToChest(this);
+                    for (const auto& lootTable : lootTables) {
+                        // todo check if chests loot
+                        addRandomLootToChest(this, lootTable);
+                    }
                 }
 
                 if (randomizer.Random(0, EXTRA_LOOT_CHEST_UPPERBOUND) <= CHESTS_BOSS_DROP_CHANCE) {
-                    addRandomLootToChest(this, bossLoot);
+                    for (const auto& lootTable : lootTables) {
+                        // todo check if boss loot
+                        addRandomLootToChest(this, lootTable);
+                    }
                 }
 
                 this->hitp |= LOOT_ADDED_HITP_FLAG;

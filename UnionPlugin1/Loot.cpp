@@ -15,7 +15,7 @@ namespace GOTHIC_ENGINE {
 		int valueOverride;
 		bool amountMeansPicks;
 
-		int getRandomItemAmount(oCItem* item) {
+		int getRandomItemAmount(oCItem* item) const {
 			auto itemName = item->GetObjectName();
 
 			if (minAmount == maxAmount) {
@@ -25,7 +25,7 @@ namespace GOTHIC_ENGINE {
 			return randomizer.Random(minAmount, maxAmount);
 		}
 
-		oCItem* getItemWithAmount(zSTRING name) {
+		oCItem* getItemWithAmount(zSTRING name) const {
 			oCItem* item = static_cast<oCItem*>(ogame->GetGameWorld()->CreateVob_novt(zVOB_TYPE_ITEM, name));
 
 			if (!item) {
@@ -54,7 +54,7 @@ namespace GOTHIC_ENGINE {
 			valueOverride = _valueOverride;
 		};
 
-		int addItemToNpc(oCNpc* npc) {
+		int addItemToNpc(oCNpc* npc) const {
 			auto itemName = randomizer.getRandomArrayElement(possibleLootNames);
 			auto item = getItemWithAmount(itemName);
 			auto value = -1;
@@ -82,7 +82,7 @@ namespace GOTHIC_ENGINE {
 			return value;
 		}
 
-		int tryAddToNpc(oCNpc* npc) {
+		int tryAddToNpc(oCNpc* npc) const {
 			if (!npc) {
 				return 0;
 			}
