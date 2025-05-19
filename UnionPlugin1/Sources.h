@@ -7,6 +7,7 @@
 #include "Randomiser.cpp"
 #include "helpers.cpp"
 #include "Loot.cpp"
+#include "LootTable.cpp"
 #include "ItemHelpers.cpp"
 #include "NpcHelper.cpp"
 #include "NpcExtend.cpp"
