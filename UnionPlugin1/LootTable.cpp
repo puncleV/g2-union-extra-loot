@@ -50,6 +50,8 @@ namespace GOTHIC_ENGINE {
 				return FALSE;
 			}
 
+			if (champion)
+				ogame->game_text->Printwin("Champion trying");
 			auto chapterLootWasGiven = npc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX);
 
 			if (!perChapter && chapterLootWasGiven != 0) {
@@ -74,9 +76,13 @@ namespace GOTHIC_ENGINE {
 				return FALSE;
 			}
 
+
+
 			oCWorld* world = dynamic_cast<oCWorld*>(ogame->GetWorld());
 
 			auto lootGiven = addRandomLootToNpc(npc, loots);
+			if (champion)
+				ogame->game_text->Printwin("Champion adding: " + Z lootGiven);
 
 			return shouldStrengthen ? lootGiven : 0;
 		}

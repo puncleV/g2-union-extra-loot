@@ -4,9 +4,7 @@
 namespace GOTHIC_ENGINE {
 	void updateConstantsWithOptions() {
 		EXTRA_LOOT_BASE_CHANCE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ExtraLootChance", 100);
-		EXTRA_LOOT_CHEST_BASE_CHANCE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChestsExtraLootChance", 450);
-		EXTRA_LOOT_CHEST_UPPERBOUND = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChestsExtraLootUpperbound", 1000);
-		CHESTS_BOSS_DROP_CHANCE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChestsBossDropChance", 10);
+		EXTRA_LOOT_CHEST_BASE_CHANCE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChestsExtraLootChance", 100);
 		EXTRA_LOOT_VALUE_STRENGTH_PER_LOOT_MULTIPLIER = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ValueBasedStrengthMultiplier", 250);
 		
 		ENEMY_STATS_PER_MULTIPLIER = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "StrengthenEnemyStatsPerMultiplier", 25);
@@ -18,7 +16,6 @@ namespace GOTHIC_ENGINE {
 		ENEMY_DEFENCE_GROW_LIMIT_PERCENT = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "StrengthenLimitDefenceGrowPercent", 30);
 
 		CHAMPION_CHANCE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionChance", 5);
-		CHAMPION_LOOT_CHANCE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionLootChance", 25);
 		CHAMPION_STRENGTHEN_VALUE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionStrengthenValue", 3000);
 		CHAMPION_EXTRA_LEVEL = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionExtraLevel", 5);
 		CHAMPION_LP_CHANCE = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "ChampionLpChance", 35);

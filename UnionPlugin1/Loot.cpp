@@ -128,7 +128,7 @@ namespace GOTHIC_ENGINE {
 				return false;
 			}
 
-			if (randomizer.Random(0, probabilityOutOf) <= probability) {
+			if (randomizer.Random(0, probabilityOutOf) <= (probability * (EXTRA_LOOT_CHEST_BASE_CHANCE / 100.))) {
 				if (amountMeansPicks) {
 					auto addedSomething = false;
 					auto picks = randomizer.Random(1, maxAmount);

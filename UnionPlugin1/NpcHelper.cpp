@@ -35,16 +35,10 @@ namespace GOTHIC_ENGINE {
 		if (npc->isSummon() || npc->isBoss()) {
 			return false;
 		}
+		auto addedValue = 150;
+		npc->level += CHAMPION_EXTRA_LEVEL;
 
 		npc->setNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX, CHAMPION_VALUE);
-
-		auto addedValue = 0;
-		if (randomizer.Random(0, 100) <= CHAMPION_LOOT_CHANCE) {
-			for (auto& lootTable : lootTableList) {
-			    addedValue += lootTable.addToNpc(npc);
-			}
-			npc->level += CHAMPION_EXTRA_LEVEL;
-		}
 
 		if (randomizer.Random(0, 100) < CHAMPION_LP_CHANCE) {
 			npc->setNpcVar(AIVRX_NPC_LP, CHAMPION_LP_INCREASE);

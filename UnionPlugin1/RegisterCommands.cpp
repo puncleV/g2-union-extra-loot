@@ -45,8 +45,8 @@ namespace GOTHIC_ENGINE {
 
 			if (focusNpc) {
 				msg = "Made a champion from: " + focusNpc->GetObjectName() + ".";
-				makeChampion(focusNpc);
 				addLootToNPC(focusNpc, true);
+				makeChampion(focusNpc);
 			}
 
 			return true;
