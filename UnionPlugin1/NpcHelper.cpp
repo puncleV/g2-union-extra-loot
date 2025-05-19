@@ -68,11 +68,11 @@ namespace GOTHIC_ENGINE {
 		if (ignoredNpcForLoot(npc)) {
 			return false;
 		}
-		if (RX_IsTrader(npc) || RX_IsSummon(npc) || RX_IsBoss(npc)) {
+		if (npc->isSummon() || npc->isBoss()) {
 			return false;
 		}
 
-		npc->setNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX, 10);
+		npc->setNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX, CHAMPION_VALUE);
 
 		auto addedValue = 0;
 		if (randomizer.Random(0, 100) <= CHAMPION_LOOT_CHANCE) {

@@ -2,7 +2,7 @@
 // Union SOURCE file
 
 namespace GOTHIC_ENGINE {
-	bool addLootToNPC(oCNpc* npc) {
+	bool addLootToNPC(oCNpc* npc, bool perChapterLoot = false) {
 		if (ignoredNpcForLoot(npc)) {
 			return FALSE;
 		}
@@ -13,16 +13,16 @@ namespace GOTHIC_ENGINE {
 		auto lootGiven = -1;
 		auto loot = lootTables;
 		
-		if (RX_IsBoss(npc)) {
+		if (npc->isBoss()) {
 			loot = bossLootTables;
+		} else if (npc->isChampion()) {
+			loot = championLootTables;
+		} else if (perChapterLoot) {
+			loot = perChapterLootTables;
 		}
 
 		for (const auto& lootTable : loot) {
 		    lootGiven += addRandomLootToNpc(npc, lootTable);
-		}
-
-		if (!RX_IsTrader(npc) && lootGiven >= 0) {
-			strengthenNpc(npc, lootGiven);
 		}
 
 		return lootGiven;
@@ -40,22 +40,37 @@ namespace GOTHIC_ENGINE {
 		return value;
 	}
 
+	bool oCNpc::isChampion() {
+		return this->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX) == CHAMPION_VALUE;
+	}
+
+	bool oCNpc::isBoss() {
+		return(this->aiscriptvars[AIV_BOSS] == TRUE);
+	}
+
+	bool oCNpc::isSummon() {
+		return (this->aiscriptvars[AIV_SUMMON] == TRUE);
+	}
+
 	void goThroughNpcHandlers(oCNpc* npc) {
 		if (!npc) {
 			return;
 		}
 
-		if (!npc->IsDead() && npc != oCNpc::player) {
+		if (npc != oCNpc::player) {
 			auto chapterLootWasGiven = npc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX);
+			
+			if (randomizer.Random(0, 1000) < CHAMPION_CHANCE && chapterLootWasGiven == 0) {
+				makeChampion(npc);
+				addLootToNPC(npc);
+			}
 
 			if (chapterLootWasGiven < getCurrentChapter() && getCurrentChapter() >= 1 && SHOULD_ADD_LOOT_TO_NPC || SHOULD_IGNORE_CHECK_TO_ADD_LOOT) {
-				if (randomizer.Random(0, 1000) < CHAMPION_CHANCE && npc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX) == 0) {
-					makeChampion(npc);
+				if (chapterLootWasGiven == 0) {
+					addLootToNPC(npc);
 				}
-				else {
-					if (chapterLootWasGiven == 0 || chapterLootWasGiven < getCurrentChapter() && RX_IsTrader(npc) && TRADERS_LOOT_PER_CHAPTER) {
-						addLootToNPC(npc);
-					}
+				else if (chapterLootWasGiven < getCurrentChapter() && TRADERS_LOOT_PER_CHAPTER) {
+					addLootToNPC(npc, true);
 				}
 			}
 		}
