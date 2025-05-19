@@ -258,6 +258,9 @@
     <ClCompile Include="ZenGin\Gothic_II_Addon\Statics_G2A.cpp">
       <Filter>Engine SDK\4. Gothic II NoTR\Overloads</Filter>
     </ClCompile>
+    <ClCompile Include="Randomiser.cpp">
+      <Filter>Plugin\Workspace\Plugin</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ZenGin\zGothicAPI.h">
@@ -2782,6 +2785,33 @@
       <Filter>Plugin\Workspace\Plugin</Filter>
     </ClInclude>
     <ClInclude Include="LootTable.cpp">
+      <Filter>Plugin\Workspace\Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemHelpers.cpp">
+      <Filter>Plugin\Workspace\Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="AddRandomChestsLoot.cpp">
+      <Filter>Plugin\Workspace\Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="NpcHelper.cpp">
+      <Filter>Plugin\Workspace\Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="NpcExtend.cpp">
+      <Filter>Plugin\Workspace\Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="AddRandomNpcLoot.cpp">
+      <Filter>Plugin\Workspace\Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.cpp">
+      <Filter>Plugin\Workspace\Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantsInitializer.cpp">
+      <Filter>Plugin\Workspace\Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="ContainerExtend.cpp">
+      <Filter>Plugin\Workspace\Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonConfig.cpp">
       <Filter>Plugin\Workspace\Plugin</Filter>
     </ClInclude>
   </ItemGroup>
