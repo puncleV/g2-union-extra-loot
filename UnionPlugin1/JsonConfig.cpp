@@ -54,14 +54,10 @@ namespace GOTHIC_ENGINE {
 					npcNames.insert(utf8_to_ansi(jsonFile[name]["npcs"][j].get<std::string>()).c_str());
 				}
 
-				auto championsLoot = jsonFile[name].value("champion", false);
-				auto bossessLoot = jsonFile[name].value("boss", false);
-				auto chestsLoot = jsonFile[name].value("chest", false);
-
 				for (auto i = 0; i < jsonFile[name]["loot"].size(); i += 1) {
 					int chance = jsonFile[name]["loot"][i]["chance"];
 					int chanceOutOf = jsonFile[name]["loot"][i].value("chanceOutOf", 1000);
-					
+
 					std::vector <zSTRING> lootNames;
 					for (auto j = 0; j < jsonFile[name]["loot"][i]["itemNames"].size(); j += 1) {
 						lootNames.push_back(utf8_to_ansi(jsonFile[name]["loot"][i]["itemNames"][j].get<std::string>()).c_str());
@@ -74,14 +70,26 @@ namespace GOTHIC_ENGINE {
 
 					_lootTable.push_back(Loot(chance, chanceOutOf, lootNames, minAmount, maxAmount, amountMeansPicks, valueOverride, npcNames));
 				}
-				
+
+				auto championsLoot = jsonFile[name].value("champion", false);
+				auto bossessLoot = jsonFile[name].value("boss", false);
+				auto chestsLoot = jsonFile[name].value("chest", false);
+				auto perChapter = jsonFile[name].value("oncePerChapter", false);
+
 				if (bossessLoot) {
 					bossLootTables.push_back(_lootTable);
-				} else if (championsLoot) {
+				}
+				else if (championsLoot) {
 					championLootTables.push_back(_lootTable);
-				} else if (chestsLoot) {
+				}
+				else if (chestsLoot) {
 					chestsLootTables.push_back(_lootTable);
-				} else {
+				}
+				else if (perChapter) {
+					perChapterLootTables.push_back(_lootTable);
+				}
+				else
+				{
 					lootTables.push_back(_lootTable);
 				}
 			}
