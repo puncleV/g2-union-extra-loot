@@ -1,0 +1,2991 @@
+{
+    "weak-animals": {
+        "npcs": [
+            "RABBIT",
+            "GOAT",
+            "SHEEP",
+            "HAMMEL",
+            "MEATBUG",
+            "HORSE",
+            "CRAB",
+            "RIESENNATTER",
+            "SCHILDKROETE"
+        ],
+        "loot": [
+            {
+                "chance": 25,
+                "chanceOutOf": 100,
+                "valueOverride": 5,
+                "maxAmount": 5,
+                "itemNames": [
+                    "ITKE_LOCKPICK",
+                    "ITMI_BOTTLE_EMPTY"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 100,
+                "itemNames": [
+                    "ITMI_DIAMOD",
+                    "ITMI_EMERALD",
+                    "ITMI_RUBY",
+                    "ITMI_SAPPHIRE",
+                    "ITMI_OPAL",
+                    "ITMI_TOPAZ"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 100,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITMI_ENCHANTSTONE_FIRE",
+                    "ITMI_ENCHANTSTONE_MAGIC",
+                    "ITMI_ENCHANTSTONE_BLUNT",
+                    "ITMI_ENCHANTSTONE_EDGE",
+                    "ITMI_ENCHANTSTONE_POINT"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 100,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITSE_ERZFISCH",
+                    "ITSE_GOLDFISCH",
+                    "ITSE_RINGFISCH",
+                    "ITSE_LOCKPICKFISCH"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 100,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITSL_GOLDPOCKET_NONE",
+                    "ITSL_GOLDPOCKET_LOW"
+                ]
+            },
+            {
+                "chance": 10,
+                "chanceOutOf": 100,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_MANA_01",
+                    "ITPO_HEALTH_01"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 100,
+                "maxAmount": 5,
+                "itemNames": [
+                    "ITMI_SNC_SPEC_ITEM"
+                ]
+            }
+        ]
+    },
+    "animals": {
+        "npcs": [
+            "WOLF",
+            "WARG",
+            "SNAPPER",
+            "WARAN",
+            "OSTER",
+            "BLATTCRAWLER",
+            "ALLIGATOR",
+            "MST_DEFAULT_BLOODHOUND",
+            "GIANT_DESERTRAT",
+            "RAT",
+            "KEILER",
+            "ORCBITER",
+            "CANYONRAZOR",
+            "PUMA",
+            "SWARM",
+            "DRONE",
+            "BLOODFLY",
+            "GIANT_BUG",
+            "GIANTBUG",
+            "LURKER",
+            "CRAWLER",
+            "SPIDER",
+            "SCAVENGER",
+            "MURITAN"
+        ],
+        "loot": [
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITMI_DIAMOD",
+                    "ITMI_EMERALD",
+                    "ITMI_RUBY",
+                    "ITMI_SAPPHIRE",
+                    "ITMI_OPAL",
+                    "ITMI_TOPAZ"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 500,
+                "maxAmount": 3,
+                "valueOverride": 200,
+                "itemNames": [
+                    "ITMI_ENCHANTSTONE_FIRE",
+                    "ITMI_ENCHANTSTONE_MAGIC",
+                    "ITMI_ENCHANTSTONE_BLUNT",
+                    "ITMI_ENCHANTSTONE_EDGE",
+                    "ITMI_ENCHANTSTONE_POINT"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 500,
+                "maxAmount": 2,
+                "valueOverride": 200,
+                "itemNames": [
+                    "ITSE_ERZFISCH",
+                    "ITSE_GOLDFISCH",
+                    "ITSE_RINGFISCH",
+                    "ITSE_LOCKPICKFISCH"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 500,
+                "maxAmount": 1,
+                "valueOverride": 200,
+                "itemNames": [
+                    "ITSL_GOLDPOCKET_MEDIUM",
+                    "ITSL_GOLDPOCKET_LOW"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 500,
+                "maxAmount": 3,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPO_MANA_01",
+                    "ITPO_HEALTH_01"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 500,
+                "maxAmount": 5,
+                "itemNames": [
+                    "ITMI_SNC_SPEC_ITEM"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 1000,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_MANA_02",
+                    "ITPO_HEALTH_02"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 1000,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_SPEED_02"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 1000,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITMI_SILVERRING",
+                    "ITMI_RINGGOLD"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1500,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITRI_DEX_02",
+                    "ITRI_HP_02",
+                    "ITRI_STR_02",
+                    "ITRI_DEX_STRG_01"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 500,
+                "maxAmount": 10,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPL_MANA_HERB_01",
+                    "ITPL_HEALTH_HERB_01",
+                    "ITPL_MUSHROOM_01",
+                    "ITPL_MUSHROOM_02",
+                    "ITPL_BLUEPLANT"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 500,
+                "maxAmount": 2,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITFO_CORAGONSBEER",
+                    "ITFO_SMELLYFISH",
+                    "ITPO_HEALTH_LIKER",
+                    "ITFO_SCHILDKROETESOUP_SBORKA"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "maxAmount": 5,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITFO_HONEY",
+                    "ITFO_WINEBERRYS"
+                ]
+            }
+        ]
+    },
+    "stronganimals": {
+        "npcs": [
+            "SHADOWBEAST",
+            "NIGHTHUNTER",
+            "SWAMPSHARK",
+            "DESERTSHARK",
+            "SHARK",
+            "TROLL",
+            "OGRE",
+            "DRAKE",
+            "BLACKWOLF",
+            "SHADOWWOLF",
+            "DRAGONSNAPPER",
+            "OREBUG",
+            "SHADOWWOLF"
+        ],
+        "loot": [
+            {
+                "chance": 5,
+                "chanceOutOf": 500,
+                "maxAmount": 5,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITFO_CORAGONSBEER",
+                    "ITFO_SMELLYFISH",
+                    "ITPO_HEALTH_LIKER",
+                    "ITFO_SCHILDKROETESOUP_SBORKA"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 500,
+                "maxAmount": 10,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPL_MANA_HERB_02",
+                    "ITPL_HEALTH_HERB_02",
+                    "ITPL_MUSHROOM_01",
+                    "ITPL_MUSHROOM_02"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 500,
+                "maxAmount": 5,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITFO_HONEY",
+                    "ITFO_WINEBERRYS"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1500,
+                "itemNames": [
+                    "ITRI_STEEL_DIAM",
+                    "ITRI_STEEL_RUBY",
+                    "ITRI_STEEL_EMER",
+                    "ITRI_STEEL_SAPP",
+                    "ITRI_STEEL_OPAL"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1500,
+                "maxAmount": 3,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPL_MANA_HERB_03",
+                    "ITPL_HEALTH_HERB_03"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1500,
+                "itemNames": [
+                    "ITPL_PERM_HERB"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1500,
+                "itemNames": [
+                    "ITRI_NEW_OREMASTER",
+                    "ITRI_NEW_MANAREGEN",
+                    "ITRI_HP_PARLAN"
+                ]
+            }
+        ]
+    },
+    "undead": {
+        "npcs": [
+            "ZOMBIE",
+            "SKELETON",
+            "GOMEZWORKERSOUL"
+        ],
+        "loot": [
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITRI_STEEL_DIAM",
+                    "ITRI_STEEL_RUBY",
+                    "ITRI_STEEL_EMER",
+                    "ITRI_STEEL_SAPP",
+                    "ITRI_STEEL_OPAL",
+                    "ITRI_GOLD_DIAM",
+                    "ITRI_GOLD_RUBY",
+                    "ITRI_GOLD_EMER",
+                    "ITRI_GOLD_SAPP",
+                    "ITRI_GOLD_OPAL"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITRI_STEEL_DIAM",
+                    "ITRI_STEEL_RUBY",
+                    "ITRI_STEEL_EMER",
+                    "ITRI_STEEL_SAPP",
+                    "ITRI_STEEL_OPAL",
+                    "ITRI_GOLD_DIAM",
+                    "ITRI_GOLD_RUBY",
+                    "ITRI_GOLD_EMER",
+                    "ITRI_GOLD_SAPP",
+                    "ITRI_GOLD_OPAL"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITMI_SILVERRING",
+                    "ITMI_RINGGOLD",
+                    "ITMI_RAVENGOLDRING",
+                    "ITMI_SILVERNECKLACE"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITSE_GOLDPOCKET25",
+                    "ITSE_GOLDPOCKET50"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "maxAmount": 10,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITAT_BUGMANDIBLES",
+                    "ITAT_CLAW",
+                    "ITAT_OREBUGCLAW",
+                    "ITAT_LURKERCLAW",
+                    "ITAT_TEETH",
+                    "ITAT_CRAWLERMANDIBLES",
+                    "ITAT_SPIDERMANDIBLES",
+                    "ITAT_WING",
+                    "ITAT_STING",
+                    "ITAT_LURKERSKIN",
+                    "ITAT_WARGFUR",
+                    "ITAT_ORCDOGFUR",
+                    "ITAT_ADDON_KEILERFUR"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITWR_MANASTONEPLATE1_ADDON",
+                    "ITWR_HITPOINTSTONEPLATE1_ADDON",
+                    "ITWR_STAMINAPOINTSTONEPLATE"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITWR_INTSTONEPLATE_ADDON",
+                    "ITWR_STRSTONEPLATE1_ADDON",
+                    "ITWR_DEXSTONEPLATE1_ADDON"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITRI_NEW_OREMASTER",
+                    "ITRI_NEW_MANAREGEN",
+                    "ITRI_HP_PARLAN"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITRU_BELIARSRAGE",
+                    "ITRU_ICEEXPLOISION",
+                    "ITRU_SUMMONGUARDIAN",
+                    "ITRU_SUMGOL",
+                    "ITRU_SUMFIREGOL",
+                    "ITRU_ACID",
+                    "ITRU_SUMSWPGOL",
+                    "ITRU_CHARGEFIREBALL",
+                    "ITRU_LIGHTNINGFLASH",
+                    "ITRU_LIGHTNINGSPHERE",
+                    "ITRU_ELECTROWAVE",
+                    "ITRU_SUMICEGOL",
+                    "ITRU_DEATHBALL"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITRU_AGRO",
+                    "ITRU_DOT_SECOND",
+                    "ITRU_DARK_INVIS",
+                    "ITRU_DARKSLEEP",
+                    "ITRU_MASSAGRO",
+                    "ITRU_MASSDOT",
+                    "ITRU_DARKBALL",
+                    "ITRU_BIGDARKBALL",
+                    "ITRU_DARKSPEAR",
+                    "ITRU_DARKWAVE",
+                    "ITRU_TORTURE"
+                ]
+            },
+            {
+                "chance": 10,
+                "chanceOutOf": 1000,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITRU_DOT_FIRST",
+                    "ITRU_DARKCONTROL",
+                    "ITRU_INSTANTFIREBALL",
+                    "ITRU_STONEFIRST",
+                    "ITRU_ICELANCE",
+                    "ITRU_SUMSHOAL",
+                    "ITRU_WINDFIST",
+                    "ITRU_FIRESTORM",
+                    "ITRU_ICECUBE",
+                    "ITRU_THUNDERBALL",
+                    "ITRU_MAGSPHERE",
+                    "ITRU_CHARM",
+                    "ITRU_SUMSKEL",
+                    "ITRU_FIREBOLT",
+                    "ITRU_ZAP",
+                    "ITRU_ICEBOLT",
+                    "ITRU_SLEEP",
+                    "ITRU_BERZERK",
+                    "ITRU_DEATHBOLT",
+                    "ITRU_SUMGOBSKEL",
+                    "ITRU_SUMWOLF"
+                ]
+            },
+            {
+                "chance": 10,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITWR_ADDON_RUNEMAKING_KDW_CIRC1",
+                    "ITWR_ADDON_RUNEMAKING_KDW_CIRC2",
+                    "ITWR_ADDON_RUNEMAKING_KDW_CIRC3",
+                    "ITWR_ADDON_RUNEMAKING_KDW_CIRC4",
+                    "ITWR_ADDON_RUNEMAKING_KDW_CIRC5",
+                    "ITWR_ADDON_RUNEMAKING_KDF_CIRC1",
+                    "ITWR_ADDON_RUNEMAKING_KDF_CIRC2",
+                    "ITWR_ADDON_RUNEMAKING_KDF_CIRC3",
+                    "ITWR_ADDON_RUNEMAKING_KDF_CIRC4",
+                    "ITWR_ADDON_RUNEMAKING_KDF_CIRC5",
+                    "ITWR_ADDON_RUNEMAKING_GUR_CIRC1",
+                    "ITWR_ADDON_RUNEMAKING_GUR_CIRC2",
+                    "ITWR_ADDON_RUNEMAKING_GUR_CIRC3",
+                    "ITWR_ADDON_RUNEMAKING_GUR_CIRC4",
+                    "ITWR_ADDON_RUNEMAKING_GUR_CIRC5",
+                    "ITWR_ADDON_RUNEMAKING_DMT_CIRC1",
+                    "ITWR_ADDON_RUNEMAKING_DMT_CIRC2",
+                    "ITWR_ADDON_RUNEMAKING_DMT_CIRC3",
+                    "ITWR_ADDON_RUNEMAKING_DMT_CIRC4",
+                    "ITWR_ADDON_RUNEMAKING_DMT_CIRC5",
+                    "ITWR_ADDON_RUNEMAKING_PRM"
+                ]
+            },
+            {
+                "chance": 10,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITWR_ORCLANGUAGE",
+                    "ITWR_ALCHEMY_01",
+                    "ITWR_BOWBETTERSHOT",
+                    "ITWR_BLOODFLY_01",
+                    "ITWR_GOLDMAKE",
+                    "ITWR_JAGD_UND_BEUTE",
+                    "ITWR_CBOW_T1",
+                    "ITWR_CBOW_T2",
+                    "ITWR_EINHANDBUCH",
+                    "LEHREN_DER_GOETTER1",
+                    "LEHREN_DER_GOETTER2",
+                    "LEHREN_DER_GOETTER3",
+                    "DAS_MAGISCHE_ERZ",
+                    "GOETTERGABE",
+                    "GEHEIMNISSE_DER_ZAUBEREI",
+                    "MACHTVOLLE_KUNST",
+                    "WAHRE_MACHT",
+                    "MYRTANAS_LYRIK",
+                    "REZEPTUREN",
+                    "REZEPTUREN2",
+                    "ITWR_SKELETONTALE",
+                    "ITWR_GOLEMBOOK1",
+                    "ITWR_GOLEMBOOK2",
+                    "ITWR_SILENTDEATH",
+                    "ITWR_PIERCINGSTEEL",
+                    "ITWR_SCORPIONSTING",
+                    "ITWR_SCREAMINTHENIGHT"
+                ]
+            },
+            {
+                "chance": 20,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITBE_ADDON_MIL_01",
+                    "ITBE_ADDON_SLD_01",
+                    "ITBE_ADDON_NOV_01",
+                    "ITBE_ADDON_SEK_01",
+                    "ITBE_ADDON_THIEF_01",
+                    "ITBE_ADDON_THIEF_02",
+                    "ITBE_ADDON_STR_10",
+                    "ITBE_ADDON_DEX_10",
+                    "ITAM_DEX_01",
+                    "ITAM_STRG_01",
+                    "ITRI_MANA_02",
+                    "ITBE_ADDON_SEK_01",
+                    "ITBE_ADDON_PROT_EDGE",
+                    "ITBE_ADDON_PROT_POINT",
+                    "ITBE_ADDON_PROT_MAGIC",
+                    "ITBE_ADDON_PROT_FIRE",
+                    "ITBE_ADDON_PROT_EDGPOI",
+                    "ITBE_ADDON_PROT_TOTAL",
+                    "ITBE_ADDON_CUSTOM_01",
+                    "ITBE_ADDON_CUSTOM_02",
+                    "ITBE_ADDON_CUSTOM_03",
+                    "ITBE_ADDON_CUSTOM_04"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 500,
+                "maxAmount": 5,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITMI_SULFUR",
+                    "ITMI_QUARTZ",
+                    "ITMI_PITCH",
+                    "ITMI_ROCKCRYSTAL",
+                    "ITMI_AQUAMARINE",
+                    "ITMI_COAL",
+                    "ITAT_CLAW",
+                    "ITAT_OREBUGCLAW",
+                    "ITAT_LURKERCLAW",
+                    "ITAT_TEETH",
+                    "ITAT_CRAWLERMANDIBLES",
+                    "ITAT_SPIDERMANDIBLES",
+                    "ITAT_WING",
+                    "ITAT_STING",
+                    "ITAT_GOBLINBONE",
+                    "ITAT_SKELETONBONE"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 500,
+                "amountMeansPicks": true,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITSC_RESSURECT",
+                    "ITSC_UNLOCK"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 500,
+                "amountMeansPicks": true,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITSC_TRFWOLF",
+                    "ITSC_TRFSCAVENGER",
+                    "ITSC_SLEEP",
+                    "ITSC_TRFLURKER",
+                    "ITSC_TRFSNAPPER",
+                    "ITSC_SUMGOBSKEL"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 500,
+                "amountMeansPicks": true,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITSC_FIREBOLT",
+                    "ITSC_ICEBOLT",
+                    "ITSC_LIGHT",
+                    "ITSC_ZAP",
+                    "ITSC_DEATHBOLT",
+                    "ITSC_SUMWOLF",
+                    "ITSC_SUMGOBSKEL"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 5000,
+                "itemNames": [
+                    "ITPO_ELIXIRSHADOWLITE"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 5000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_NP_MANAREG3",
+                    "ITPO_NP_MANAREG2",
+                    "ITPO_NP_STAMINA",
+                    "ITPO_HEALTH_03",
+                    "ITPO_MANA_03"
+                ]
+            }
+        ]
+    },
+    "strong-undead": {
+        "npcs": [
+            "ZHNEZ",
+            "PSI_ZOMBIE",
+            "PAL_ZOMBIE",
+            "MAYAZOMBIE",
+            "MUMMY",
+            "REAPER",
+            "ANCIENT_WARRIOR",
+            "DEMON",
+            "SKELETON_WARRIOR",
+            "MST_",
+            "SKELETON_KNIGHT",
+            "SKELETON_LORD",
+            "WATERRITUALSK",
+            "ARCHMAGE",
+            "RAVEN_SKEL",
+            "SKELETON_SH",
+            "SKELETON_MAG",
+            "SKELETONMAG",
+            "GHOST",
+            "DEMONIAC",
+            "_DARK"
+        ],
+        "loot": [
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITRI_NEW_OREMASTER",
+                    "ITRI_NEW_MANAREGEN",
+                    "ITRI_HP_PARLAN"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITRI_STEEL_DIAM",
+                    "ITRI_STEEL_RUBY",
+                    "ITRI_STEEL_EMER",
+                    "ITRI_STEEL_SAPP",
+                    "ITRI_STEEL_OPAL",
+                    "ITRI_GOLD_DIAM",
+                    "ITRI_GOLD_RUBY",
+                    "ITRI_GOLD_EMER",
+                    "ITRI_GOLD_SAPP",
+                    "ITRI_GOLD_OPAL",
+                    "ITRI_ORE_DIAM",
+                    "ITRI_ORE_RUBY",
+                    "ITRI_ORE_EMER",
+                    "ITRI_ORE_SAPP",
+                    "ITRI_ORE_OPAL"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITRI_ORE_DIAM",
+                    "ITRI_ORE_RUBY",
+                    "ITRI_ORE_EMER",
+                    "ITRI_ORE_SAPP",
+                    "ITRI_ORE_OPAL"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITRI_ORE_DIAM",
+                    "ITRI_ORE_RUBY",
+                    "ITRI_ORE_EMER",
+                    "ITRI_ORE_SAPP",
+                    "ITRI_ORE_OPAL"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 1000,
+                "maxAmount": 2,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPO_MANA_03",
+                    "ITPO_SPEED_03",
+                    "ITPO_HEALTH_03"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "maxAmount": 2,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITMI_POTIONPERMBLANK",
+                    "ITPO_INTELLECT"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITRU_BELIARSRAGE",
+                    "ITRU_ICEEXPLOISION",
+                    "ITRU_SUMMONGUARDIAN",
+                    "ITRU_SUMGOL",
+                    "ITRU_SUMFIREGOL",
+                    "ITRU_ACID",
+                    "ITRU_SUMSWPGOL",
+                    "ITRU_CHARGEFIREBALL",
+                    "ITRU_LIGHTNINGFLASH",
+                    "ITRU_LIGHTNINGSPHERE",
+                    "ITRU_ELECTROWAVE",
+                    "ITRU_SUMICEGOL",
+                    "ITRU_DEATHBALL"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITRU_AGRO",
+                    "ITRU_DOT_SECOND",
+                    "ITRU_DARK_INVIS",
+                    "ITRU_DARKSLEEP",
+                    "ITRU_MASSAGRO",
+                    "ITRU_MASSDOT",
+                    "ITRU_DARKBALL",
+                    "ITRU_BIGDARKBALL",
+                    "ITRU_DARKSPEAR",
+                    "ITRU_DARKWAVE",
+                    "ITRU_TORTURE"
+                ]
+            },
+            {
+                "chance": 10,
+                "chanceOutOf": 1000,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITRU_DOT_FIRST",
+                    "ITRU_DARKCONTROL",
+                    "ITRU_INSTANTFIREBALL",
+                    "ITRU_STONEFIRST",
+                    "ITRU_ICELANCE",
+                    "ITRU_SUMSHOAL",
+                    "ITRU_WINDFIST",
+                    "ITRU_FIRESTORM",
+                    "ITRU_ICECUBE",
+                    "ITRU_THUNDERBALL",
+                    "ITRU_MAGSPHERE",
+                    "ITRU_CHARM",
+                    "ITRU_SUMSKEL",
+                    "ITRU_FIREBOLT",
+                    "ITRU_ZAP",
+                    "ITRU_ICEBOLT",
+                    "ITRU_SLEEP",
+                    "ITRU_BERZERK",
+                    "ITRU_DEATHBOLT",
+                    "ITRU_SUMGOBSKEL",
+                    "ITRU_SUMWOLF"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 500,
+                "amountMeansPicks": true,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITSC_CHARGEFIREBALL",
+                    "ITSC_SHRINK",
+                    "ITSC_HARMUNDEAD",
+                    "ITSC_THUNDERSTORM",
+                    "ITSC_WHIRLWIND",
+                    "ITSC_ARMYOFDARKNESS",
+                    "ITSC_SKULL",
+                    "ITSC_TRFDRAGONSNAPPER"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_RAREPOTION_01",
+                    "ITPO_RAREPOTION_02",
+                    "ITPO_RAREPOTION_03",
+                    "ITPO_RAREPOTION_04",
+                    "ITPO_RAREPOTION_05",
+                    "ITPO_RAREPOTION_06",
+                    "ITPO_RAREPOTION_07",
+                    "ITPO_SPEED_03"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 2000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_NP_MANAREG3",
+                    "ITPO_NP_MANAREG2",
+                    "ITPO_NP_STAMINA",
+                    "ITPO_HEALTH_03",
+                    "ITPO_MANA_03"
+                ]
+            }
+        ]
+    },
+    "humanoids": {
+        "npcs": [
+            "ORK",
+            "ORC",
+            "GOBBO_",
+            "GOBLIN"
+        ],
+        "loot": [
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "maxAmount": 2,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITFO_CORAGONSBEER",
+                    "ITFO_SMELLYFISH",
+                    "ITPO_HEALTH_LIKER",
+                    "ITFO_SCHILDKROETESOUP_SBORKA"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "maxAmount": 5,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITFO_HONEY",
+                    "ITFO_WINEBERRYS"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "maxAmount": 5,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITFO_BREAD",
+                    "ITFO_MILK",
+                    "ITFO_CHEESE"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "minAmount": 10,
+                "maxAmount": 45,
+                "itemNames": [
+                    "ITRW_ADDON_MAGICARROW",
+                    "ITRW_MYHUNTARROW",
+                    "ITRW_POISONARROW",
+                    "ITRW_HOLYARROW",
+                    "ITRW_ADDON_MAGICARROW",
+                    "ITRW_ADDON_FIREARROW",
+                    "ITRW_EXPLOSIVEARROW"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "minAmount": 10,
+                "maxAmount": 45,
+                "itemNames": [
+                    "ITRW_ADDON_MAGICBOLT",
+                    "ITRW_HOLYBOLT",
+                    "ITRW_PIERCINGBOLT",
+                    "ITRW_SHARPBOLT",
+                    "ITRW_CRUSHINGBOLT",
+                    "ITRW_EXPLOSIVEBOLT"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 5,
+                "itemNames": [
+                    "ITFO_CAKE_MUSHROOM",
+                    "ITFO_CAKE_FISH",
+                    "ITFO_CAKE_APPLE",
+                    "ITFO_CAKE_MEAT",
+                    "ITFO_CAKE_HONEY",
+                    "ITFO_EALBALZAM",
+                    "ITFO_EALBALZAMTWO"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 500,
+                "maxAmount": 5,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITMI_SULFUR",
+                    "ITMI_QUARTZ",
+                    "ITMI_PITCH",
+                    "ITMI_ROCKCRYSTAL",
+                    "ITMI_AQUAMARINE",
+                    "ITMI_COAL",
+                    "ITAT_CLAW",
+                    "ITAT_OREBUGCLAW",
+                    "ITAT_LURKERCLAW",
+                    "ITAT_TEETH",
+                    "ITAT_CRAWLERMANDIBLES",
+                    "ITAT_SPIDERMANDIBLES",
+                    "ITAT_WING",
+                    "ITAT_STING",
+                    "ITAT_GOBLINBONE",
+                    "ITAT_SKELETONBONE"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITFO_CORAGONSBEER",
+                    "ITFO_POTTAGE_MUSHROOM_BLACK",
+                    "ITFO_SCHILDKROETESOUP_SBORKA",
+                    "ITFO_SMELLYFISH",
+                    "ITPO_HEALTH_LIKER",
+                    "ITFO_COMPOTE_00",
+                    "ITFO_COMPOTE_01"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 4,
+                "itemNames": [
+                    "ITFO_BEER",
+                    "ITFO_APPLE",
+                    "ITFO_BREAD",
+                    "ITFO_BOOZE",
+                    "ITFO_WATER",
+                    "ITFO_WINE",
+                    "ITFO_ADDON_RUM",
+                    "ITFO_ADDON_SHELLFLESH"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITPO_PERM_DEF",
+                    "ITPO_PERM_STAMINA",
+                    "ITPO_FIREDEFENCE",
+                    "ITPO_MAGDEFENCE"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITPO_ELIXIRSHADOWLITE"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_NP_MANAREG2",
+                    "ITPO_NP_STAMINA",
+                    "ITPO_HEALTH_03",
+                    "ITPO_MANA_03"
+                ]
+            }
+        ]
+    },
+    "strong-humanoids": {
+        "npcs": [
+            "_ELITE",
+            "RITUALSHAMAN",
+            "_SHAMAN",
+            "_WARRIOR",
+            "ORCWARRIOR",
+            "BIGFIGHTER",
+            "ELITEBIGFIGHTER",
+            "DRACONIAN",
+            "CHKFLG",
+            "ORKELITE_CASTLE",
+            "UNDEADORCWARRIOR",
+            "ORCSHAMAN_"
+        ],
+        "loot": [
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_RAREPOTION_01",
+                    "ITPO_RAREPOTION_02",
+                    "ITPO_RAREPOTION_03",
+                    "ITPO_RAREPOTION_04",
+                    "ITPO_RAREPOTION_05",
+                    "ITPO_RAREPOTION_06",
+                    "ITPO_RAREPOTION_07",
+                    "ITPO_SPEED_03"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_NP_MANAREG3",
+                    "ITPO_NP_MANAREG2",
+                    "ITPO_NP_STAMINA",
+                    "ITPO_HEALTH_03",
+                    "ITPO_MANA_03"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "maxAmount": 3,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPL_SUPER_HERB",
+                    "ITPL_DEX_HERB_01",
+                    "ITPL_STRENGTH_HERB_01"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "maxAmount": 5,
+                "amountMeansPicks": true,
+                "valueOverride": 350,
+                "itemNames": [
+                    "ITFO_CAKE_MUSHROOM",
+                    "ITFO_CAKE_FISH",
+                    "ITFO_CAKE_APPLE",
+                    "ITFO_CAKE_MEAT",
+                    "ITFO_CAKE_HONEY",
+                    "ITFO_EALBALZAM",
+                    "ITFO_EALBALZAMTWO"
+                ]
+            }
+        ]
+    },
+    "magical-beasts": {
+        "npcs": [
+            "GOLEM",
+            "STONEGUARDIAN",
+            "HARPIE"
+        ],
+        "loot": [
+            {
+                "chance": 1,
+                "chanceOutOf": 100,
+                "valueOverride": 555,
+                "itemNames": [
+                    "ITWR_STAMINAPOINTSTONEPLATE",
+                    "ITWR_HITPOINTSTONEPLATE1_ADDON",
+                    "ITWR_MANASTONEPLATE1_ADDON",
+                    "ITWR_INTSTONEPLATE_ADDON"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 100,
+                "valueOverride": 555,
+                "itemNames": [
+                    "ITWR_ONEHSTONEPLATE1_ADDON",
+                    "ITWR_TWOHSTONEPLATE1_ADDON",
+                    "ITWR_BOWSTONEPLATE1_ADDON",
+                    "ITWR_CRSBOWSTONEPLATE1_ADDON"
+                ]
+            }
+        ]
+    },
+    "humans": {
+        "npcs": [
+            "RITTER",
+            "ASS_",
+            "SLAVEOBSSEK",
+            "DMT_",
+            "BAU",
+            "VLK",
+            "BDT",
+            "DJG",
+            "HUN",
+            "KDW",
+            "MIL_",
+            "NOV_",
+            "PAL_",
+            "PIR_",
+            "SLD_",
+            "STRF",
+            "XBS",
+            "XOR",
+            "GUR",
+            "TPL",
+            "SEK",
+            "DH_C",
+            "AL_P",
+            "AL_B",
+            "AL_S",
+            "KAT_"
+        ],
+        "loot": [
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_NP_MANAREG2",
+                    "ITPO_NP_STAMINA",
+                    "ITPO_HEALTH_03",
+                    "ITPO_MANA_03"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITRU_BELIARSRAGE",
+                    "ITRU_ICEEXPLOISION",
+                    "ITRU_SUMMONGUARDIAN",
+                    "ITRU_SUMGOL",
+                    "ITRU_SUMFIREGOL",
+                    "ITRU_ACID",
+                    "ITRU_SUMSWPGOL",
+                    "ITRU_CHARGEFIREBALL",
+                    "ITRU_LIGHTNINGFLASH",
+                    "ITRU_LIGHTNINGSPHERE",
+                    "ITRU_ELECTROWAVE",
+                    "ITRU_SUMICEGOL",
+                    "ITRU_DEATHBALL"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITRU_AGRO",
+                    "ITRU_DOT_SECOND",
+                    "ITRU_DARK_INVIS",
+                    "ITRU_DARKSLEEP",
+                    "ITRU_MASSAGRO",
+                    "ITRU_MASSDOT",
+                    "ITRU_DARKBALL",
+                    "ITRU_BIGDARKBALL",
+                    "ITRU_DARKSPEAR",
+                    "ITRU_DARKWAVE",
+                    "ITRU_TORTURE"
+                ]
+            },
+            {
+                "chance": 10,
+                "chanceOutOf": 1000,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITRU_DOT_FIRST",
+                    "ITRU_DARKCONTROL",
+                    "ITRU_INSTANTFIREBALL",
+                    "ITRU_STONEFIRST",
+                    "ITRU_ICELANCE",
+                    "ITRU_SUMSHOAL",
+                    "ITRU_WINDFIST",
+                    "ITRU_FIRESTORM",
+                    "ITRU_ICECUBE",
+                    "ITRU_THUNDERBALL",
+                    "ITRU_MAGSPHERE",
+                    "ITRU_CHARM",
+                    "ITRU_SUMSKEL",
+                    "ITRU_FIREBOLT",
+                    "ITRU_ZAP",
+                    "ITRU_ICEBOLT",
+                    "ITRU_SLEEP",
+                    "ITRU_BERZERK",
+                    "ITRU_DEATHBOLT",
+                    "ITRU_SUMGOBSKEL",
+                    "ITRU_SUMWOLF"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITSC_CHARGEFIREBALL",
+                    "ITSC_SHRINK",
+                    "ITSC_HARMUNDEAD",
+                    "ITSC_THUNDERSTORM",
+                    "ITSC_WHIRLWIND",
+                    "ITSC_ARMYOFDARKNESS",
+                    "ITSC_SKULL",
+                    "ITSC_TRFDRAGONSNAPPER",
+                    "ITSC_RESSURECT",
+                    "ITSC_UNLOCK",
+                    "ITSC_ICECUBE",
+                    "ITSC_FIREBOLT",
+                    "ITSC_ICEBOLT",
+                    "ITSC_LIGHT",
+                    "ITSC_ZAP",
+                    "ITSC_DEATHBOLT",
+                    "ITSC_SUMWOLF",
+                    "ITSC_SUMGOBSKEL"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "maxAmount": 2,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITFO_CORAGONSBEER",
+                    "ITFO_SMELLYFISH",
+                    "ITPO_HEALTH_LIKER",
+                    "ITFO_SCHILDKROETESOUP_SBORKA"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "maxAmount": 5,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITFO_HONEY",
+                    "ITFO_WINEBERRYS"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "maxAmount": 5,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITFO_BREAD",
+                    "ITFO_MILK",
+                    "ITFO_CHEESE"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITFO_CORAGONSBEER",
+                    "ITFO_POTTAGE_MUSHROOM_BLACK",
+                    "ITFO_SCHILDKROETESOUP_SBORKA",
+                    "ITFO_SMELLYFISH",
+                    "ITPO_HEALTH_LIKER",
+                    "ITFO_COMPOTE_00",
+                    "ITFO_COMPOTE_01"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 4,
+                "itemNames": [
+                    "ITFO_BEER",
+                    "ITFO_APPLE",
+                    "ITFO_BREAD",
+                    "ITFO_BOOZE",
+                    "ITFO_WATER",
+                    "ITFO_WINE",
+                    "ITFO_ADDON_RUM",
+                    "ITFO_ADDON_SHELLFLESH"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 5,
+                "itemNames": [
+                    "ITFO_CAKE_MUSHROOM",
+                    "ITFO_CAKE_FISH",
+                    "ITFO_CAKE_APPLE",
+                    "ITFO_CAKE_MEAT",
+                    "ITFO_CAKE_HONEY",
+                    "ITFO_EALBALZAM",
+                    "ITFO_EALBALZAMTWO"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 1000,
+                "maxAmount": 5,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITMI_SULFUR",
+                    "ITMI_QUARTZ",
+                    "ITMI_PITCH",
+                    "ITMI_ROCKCRYSTAL",
+                    "ITMI_AQUAMARINE",
+                    "ITMI_COAL",
+                    "ITAT_CLAW",
+                    "ITAT_OREBUGCLAW",
+                    "ITAT_LURKERCLAW",
+                    "ITAT_TEETH",
+                    "ITAT_CRAWLERMANDIBLES",
+                    "ITAT_SPIDERMANDIBLES",
+                    "ITAT_WING",
+                    "ITAT_STING",
+                    "ITAT_GOBLINBONE",
+                    "ITAT_SKELETONBONE"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITWR_ADDON_RUNEMAKING_KDW_CIRC1",
+                    "ITWR_ADDON_RUNEMAKING_KDW_CIRC2",
+                    "ITWR_ADDON_RUNEMAKING_KDW_CIRC3",
+                    "ITWR_ADDON_RUNEMAKING_KDW_CIRC4",
+                    "ITWR_ADDON_RUNEMAKING_KDW_CIRC5",
+                    "ITWR_ADDON_RUNEMAKING_KDF_CIRC1",
+                    "ITWR_ADDON_RUNEMAKING_KDF_CIRC2",
+                    "ITWR_ADDON_RUNEMAKING_KDF_CIRC3",
+                    "ITWR_ADDON_RUNEMAKING_KDF_CIRC4",
+                    "ITWR_ADDON_RUNEMAKING_KDF_CIRC5",
+                    "ITWR_ADDON_RUNEMAKING_GUR_CIRC1",
+                    "ITWR_ADDON_RUNEMAKING_GUR_CIRC2",
+                    "ITWR_ADDON_RUNEMAKING_GUR_CIRC3",
+                    "ITWR_ADDON_RUNEMAKING_GUR_CIRC4",
+                    "ITWR_ADDON_RUNEMAKING_GUR_CIRC5",
+                    "ITWR_ADDON_RUNEMAKING_DMT_CIRC1",
+                    "ITWR_ADDON_RUNEMAKING_DMT_CIRC2",
+                    "ITWR_ADDON_RUNEMAKING_DMT_CIRC3",
+                    "ITWR_ADDON_RUNEMAKING_DMT_CIRC4",
+                    "ITWR_ADDON_RUNEMAKING_DMT_CIRC5",
+                    "ITWR_ADDON_RUNEMAKING_PRM"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITWR_ORCLANGUAGE",
+                    "ITWR_ALCHEMY_01",
+                    "ITWR_BOWBETTERSHOT",
+                    "ITWR_BLOODFLY_01",
+                    "ITWR_GOLDMAKE",
+                    "ITWR_JAGD_UND_BEUTE",
+                    "ITWR_CBOW_T1",
+                    "ITWR_CBOW_T2",
+                    "ITWR_EINHANDBUCH",
+                    "LEHREN_DER_GOETTER1",
+                    "LEHREN_DER_GOETTER2",
+                    "LEHREN_DER_GOETTER3",
+                    "DAS_MAGISCHE_ERZ",
+                    "GOETTERGABE",
+                    "GEHEIMNISSE_DER_ZAUBEREI",
+                    "MACHTVOLLE_KUNST",
+                    "WAHRE_MACHT",
+                    "MYRTANAS_LYRIK",
+                    "REZEPTUREN",
+                    "REZEPTUREN2",
+                    "ITWR_SKELETONTALE",
+                    "ITWR_GOLEMBOOK1",
+                    "ITWR_GOLEMBOOK2",
+                    "ITWR_SILENTDEATH",
+                    "ITWR_PIERCINGSTEEL",
+                    "ITWR_SCORPIONSTING",
+                    "ITWR_SCREAMINTHENIGHT"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITBE_ADDON_MIL_01",
+                    "ITBE_ADDON_SLD_01",
+                    "ITBE_ADDON_NOV_01",
+                    "ITBE_ADDON_SEK_01",
+                    "ITBE_ADDON_THIEF_01",
+                    "ITBE_ADDON_THIEF_02",
+                    "ITBE_ADDON_STR_10",
+                    "ITBE_ADDON_DEX_10",
+                    "ITAM_DEX_01",
+                    "ITAM_STRG_01",
+                    "ITRI_MANA_02",
+                    "ITBE_ADDON_SEK_01",
+                    "ITBE_ADDON_PROT_EDGE",
+                    "ITBE_ADDON_PROT_POINT",
+                    "ITBE_ADDON_PROT_MAGIC",
+                    "ITBE_ADDON_PROT_FIRE",
+                    "ITBE_ADDON_PROT_EDGPOI",
+                    "ITBE_ADDON_PROT_TOTAL",
+                    "ITBE_ADDON_CUSTOM_01",
+                    "ITBE_ADDON_CUSTOM_02",
+                    "ITBE_ADDON_CUSTOM_03",
+                    "ITBE_ADDON_CUSTOM_04"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 100,
+                "maxAmount": 15,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPL_BEET",
+                    "ITPL_MANA_HERB_01",
+                    "ITPL_HEALTH_HERB_01",
+                    "ITPL_MUSHROOM_01",
+                    "ITPL_BLUEPLANT",
+                    "ITPL_FORESTBERRY",
+                    "ITPL_PLANEBERRY",
+                    "ITMI_SNUGGET"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITWR_STONEPLATECOMMON_ADDON"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 500,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "valueOverride": 550,
+                "itemNames": [
+                    "ITAT_WARANFIRETONGUE",
+                    "ITAT_DEMONHEART",
+                    "ITAT_BLACKSNAPPERLIVER"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 500,
+                "amountMeansPicks": true,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITAT_WARGFUR",
+                    "ITAT_ORCDOGFUR",
+                    "ITAT_ADDON_KEILERFUR",
+                    "ITAT_DRGSNAPPERHORN",
+                    "ITAT_CRAWLERPLATE",
+                    "ITAT_SHADOWFUR",
+                    "ITAT_SHARKSKIN",
+                    "ITAT_TROLLFUR",
+                    "ITAT_TROLLBLACKFUR",
+                    "ITAT_CAVEBLACKFURTROLL"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "maxAmount": 3,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "itpl_perm_herb"
+                ]
+            }
+        ]
+    },
+    "all": {
+        "loot": [
+            {
+                "chance": 2,
+                "chanceOutOf": 1000,
+                "valueOverride": 666,
+                "itemNames": [
+                    "ITMI_LOOTBOX"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 10000,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITWR_STONEPLATECOMMON_ADDON"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITMI_ENCHANTSTONE_FIRE",
+                    "ITMI_ENCHANTSTONE_MAGIC",
+                    "ITMI_ENCHANTSTONE_BLUNT",
+                    "ITMI_ENCHANTSTONE_EDGE",
+                    "ITMI_ENCHANTSTONE_POINT"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "minAmount": 10,
+                "maxAmount": 45,
+                "itemNames": [
+                    "ITRW_ADDON_MAGICARROW",
+                    "ITRW_MYHUNTARROW",
+                    "ITRW_POISONARROW",
+                    "ITRW_HOLYARROW",
+                    "ITRW_ADDON_MAGICARROW",
+                    "ITRW_ADDON_FIREARROW",
+                    "ITRW_EXPLOSIVEARROW"
+                ]
+            },
+            {
+                "chance": 1,
+                "chanceOutOf": 1000,
+                "minAmount": 10,
+                "maxAmount": 45,
+                "itemNames": [
+                    "ITRW_ADDON_MAGICBOLT",
+                    "ITRW_HOLYBOLT",
+                    "ITRW_PIERCINGBOLT",
+                    "ITRW_SHARPBOLT",
+                    "ITRW_CRUSHINGBOLT",
+                    "ITRW_EXPLOSIVEBOLT"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 5000,
+                "maxAmount": 5,
+                "itemNames": [
+                    "ITMI_SNC_SPEC_ITEM"
+                ]
+            }
+        ]
+    },
+    "traders": {
+        "oncePerChapter": true,
+        "npcs": [
+            "VLK_458_RUPERT",
+            "BDT_1091_ADDON_LUCIA",
+            "PIR_1351_ADDON_SAMUEL",
+            "PIR_50087",
+            "BDT_1086_ADDON_SCATTY",
+            "VLK_407_HAKON",
+            "VLK_431_KARDIF",
+            "VLK_412_HARAD",
+            "VLK_410_BALTRAM",
+            "VLK_408_JORA",
+            "VLK_420_CORAGON",
+            "BAU_970_ORLAN",
+            "BAU_911_ELENA",
+            "BAU_936_ROSI",
+            "VLK_476_FENIA",
+            "BDT_1097_ADDON_FISK",
+            "BDT_10022_ADDON_MIGUEL",
+            "VLK_416_MATTEO",
+            "VLK_4301_ADDON_FARIM",
+            "VLK_468_CANTHAR",
+            "VLK_469_HALVOR",
+            "VLK_484_LEHMAR",
+            "VLK_4303_ADDON_EROL",
+            "VLK_404_LUTERO",
+            "VLK_6134_VALERAN",
+            "VLK_6110_NIGEL",
+            "SLD_823_KHALED",
+            "VLK_462_THORBEN",
+            "VLK_437_BRAHIM",
+            "VLK_470_SARAH",
+            "VLK_424_ALWIN",
+            "VLK_492_RENGARU",
+            "NOV_11114_HOLGER",
+            "MIL_350_ADDON_MARTIN",
+            "PIR_1357_ADDON_GARETT",
+            "PIR_50087",
+            "AL_NPC_TAVERN",
+            "AL_NPC_HERMIT",
+            "AL_INNKEEPR",
+            "ORC_8549_TRADEORC",
+            "VLK_4108_ENGOR",
+            "PAL_260_TANDOR",
+            "PAL_267_SENGRATH",
+            "XBS_7508_GORNABAR",
+            "DJG_710_KJORN",
+            "SLD_803_CIPHER"
+        ],
+        "loot": [
+            {
+                "chance": 10000,
+                "chanceOutOf": 10000,
+                "amountMeansPicks": true,
+                "maxAmount": 15,
+                "itemNames": [
+                    "ITFO_MILK",
+                    "ITFO_MEAT",
+                    "ITFO_APPLE",
+                    "ITFO_BREAD",
+                    "ITPL_MUSHROOM_02",
+                    "ITPL_MUSHROOM_01",
+                    "ITFO_BEER",
+                    "ITFO_WINE"
+                ]
+            },
+            {
+                "chance": 100,
+                "chanceOutOf": 1000,
+                "maxAmount": 25,
+                "itemNames": [
+                    "ITFO_BOOZE"
+                ]
+            },
+            {
+                "chance": 10,
+                "chanceOutOf": 100,
+                "amountMeansPicks": true,
+                "maxAmount": 10,
+                "itemNames": [
+                    "ITFO_HONEY"
+                ]
+            },
+            {
+                "chance": 10,
+                "chanceOutOf": 100,
+                "amountMeansPicks": true,
+                "maxAmount": 10,
+                "itemNames": [
+                    "ITFO_WINEBERRYS"
+                ]
+            },
+            {
+                "chance": 200,
+                "chanceOutOf": 5000,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPO_NP_STATS_TRADERS"
+                ]
+            },
+            {
+                "chance": 100,
+                "chanceOutOf": 5000,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPO_MEGADRINK_TRADERS"
+                ]
+            },
+            {
+                "chance": 100,
+                "chanceOutOf": 5000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITFO_SPECWINE_HP"
+                ]
+            }
+        ]
+    },
+    "trader_alchemist": {
+        "oncePerChapter": true,
+        "npcs": [
+            "NONE_1192_FREGEAL",
+            "VLK_498_IGNAZ",
+            "BAU_980_SAGITTA",
+            "VLK_409_ZURIS",
+            "VLK_417_CONSTANTINO",
+            "KDF_506_NEORAS",
+            "NONE_100_XARDAS",
+            "VLK_422_SALANDRIL",
+            "WC_DRUID_TEACHER",
+            "XBS_7501_CAMPER",
+            "VLK_411_GAERTNER",
+            "DH_COMMONNPC_02"
+        ],
+        "loot": [
+            {
+                "chance": 10000,
+                "chanceOutOf": 10000,
+                "amountMeansPicks": true,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITPO_FIREDEFENCE_TRADERS",
+                    "ITPO_MAGDEFENCE_TRADERS",
+                    "ITPO_AMUNSU_TRADERS",
+                    "ITPO_INTELLECT_TRADERS",
+                    "ITPO_NP_STATS_TRADERS",
+                    "ITPL_PERM_HERB"
+                ]
+            },
+            {
+                "chance": 10000,
+                "chanceOutOf": 10000,
+                "maxAmount": 5,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPO_RAREPOTION_01_TRADERS",
+                    "ITPO_RAREPOTION_02_TRADERS",
+                    "ITPO_RAREPOTION_03_TRADERS",
+                    "ITPO_RAREPOTION_04_TRADERS",
+                    "ITPO_RAREPOTION_05_TRADERS",
+                    "ITPO_RAREPOTION_06_TRADERS",
+                    "ITPO_RAREPOTION_07_TRADERS"
+                ]
+            },
+            {
+                "chance": 12,
+                "chanceOutOf": 100,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_MEGADRINK_TRADERS"
+                ]
+            },
+            {
+                "chance": 30,
+                "chanceOutOf": 100,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITPO_PERM_STAMINA"
+                ]
+            }
+        ]
+    },
+    "trader_mages": {
+        "oncePerChapter": true,
+        "npcs": [
+            "VLK_6027_TALIASAN",
+            "GUR_8003_TYON",
+            "KDW_1401_ADDON_CRONOS_NW",
+            "KDF_509_ISGAROTH",
+            "KDF_508_GORAX",
+            "KDF_506_NEORAS",
+            "NONE_100_XARDAS",
+            "KDW_14010_ADDON_CRONOS_ADW",
+            "WC_DRUID_TEACHER",
+            "DMT_DARKTEACHER"
+        ],
+        "loot": [
+            {
+                "chance": 10000,
+                "chanceOutOf": 10000,
+                "amountMeansPicks": true,
+                "maxAmount": 6,
+                "itemNames": [
+                    "ITSC_CHARGEFIREBALL",
+                    "ITSC_SHRINK",
+                    "ITSC_HARMUNDEAD",
+                    "ITSC_THUNDERSTORM",
+                    "ITSC_WHIRLWIND",
+                    "ITSC_ARMYOFDARKNESS",
+                    "ITSC_SKULL",
+                    "ITSC_TRFDRAGONSNAPPER"
+                ]
+            },
+            {
+                "chance": 20,
+                "chanceOutOf": 100,
+                "itemNames": [
+                    "ITPO_MEGADRINK_TRADERS"
+                ]
+            },
+            {
+                "chance": 40,
+                "chanceOutOf": 100,
+                "amountMeansPicks": true,
+                "maxAmount": 6,
+                "itemNames": [
+                    "ITPO_MANA_03",
+                    "ITPO_NP_MANAREG2",
+                    "ITPO_NP_MANAREG3"
+                ]
+            },
+            {
+                "chance": 40,
+                "chanceOutOf": 100,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_PERM_MANA",
+                    "ITPO_AMUNSU_TRADERS",
+                    "ITPO_INTELLECT_TRADERS"
+                ]
+            }
+        ]
+    },
+    "trader_smiths": {
+        "oncePerChapter": true,
+        "npcs": [
+            "SLD_809_BENNET",
+            "BAU_908_HODGES",
+            "VLK_457_BRIAN",
+            "BDT_1099_ADDON_HUNO",
+            "AL_SMITH",
+            "AL_COMMON_SMITH",
+            "XBS_7513_DARRION",
+            "MIL_314_MORTIS",
+            "DH_COMMONSMITH"
+        ],
+        "loot": [
+            {
+                "chance": 10000,
+                "chanceOutOf": 10000,
+                "amountMeansPicks": true,
+                "maxAmount": 15,
+                "itemNames": [
+                    "ITMISWORDRAW",
+                    "ITMI_IRONSTUCK",
+                    "ITMI_SNUGGET"
+                ]
+            },
+            {
+                "chance": 5000,
+                "chanceOutOf": 10000,
+                "amountMeansPicks": true,
+                "maxAmount": 15,
+                "itemNames": [
+                    "ITMISWORDRAW",
+                    "ITMI_IRONSTUCK",
+                    "ITMI_SNUGGET"
+                ]
+            },
+            {
+                "chance": 500,
+                "chanceOutOf": 10000,
+                "amountMeansPicks": true,
+                "maxAmount": 15,
+                "itemNames": [
+                    "ITMISWORDRAW",
+                    "ITMI_IRONSTUCK",
+                    "ITMI_SNUGGET"
+                ]
+            },
+            {
+                "chance": 10000,
+                "chanceOutOf": 10000,
+                "maxAmount": 10,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITMI_SULFUR",
+                    "ITMI_QUARTZ",
+                    "ITMI_PITCH",
+                    "ITMI_ROCKCRYSTAL",
+                    "ITMI_COAL"
+                ]
+            }
+        ]
+    },
+    "trader_hunter": {
+        "oncePerChapter": true,
+        "npcs": [
+            "VLK_413_BOSPER",
+            "HUN_745_RAFFA",
+            "HUN_"
+        ],
+        "loot": [
+            {
+                "chance": 10000,
+                "chanceOutOf": 10000,
+                "maxAmount": 10,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITMI_ROCKCRYSTAL",
+                    "ITAT_CLAW",
+                    "ITAT_OREBUGCLAW",
+                    "ITAT_LURKERCLAW",
+                    "ITAT_TEETH",
+                    "ITAT_CRAWLERMANDIBLES",
+                    "ITAT_SPIDERMANDIBLES",
+                    "ITAT_WING",
+                    "ITAT_STING",
+                    "ITAT_GOBLINBONE"
+                ]
+            },
+            {
+                "chance": 10000,
+                "chanceOutOf": 10000,
+                "amountMeansPicks": true,
+                "maxAmount": 5,
+                "itemNames": [
+                    "ITAT_WARGFUR",
+                    "ITAT_ORCDOGFUR",
+                    "ITAT_ADDON_KEILERFUR",
+                    "ITAT_DRGSNAPPERHORN",
+                    "ITAT_CRAWLERPLATE",
+                    "ITAT_SHADOWFUR",
+                    "ITAT_SHARKSKIN",
+                    "ITAT_TROLLFUR",
+                    "ITAT_TROLLBLACKFUR",
+                    "ITAT_CAVEBLACKFURTROLL"
+                ]
+            },
+            {
+                "chance": 10000,
+                "chanceOutOf": 10000,
+                "amountMeansPicks": true,
+                "maxAmount": 5,
+                "itemNames": [
+                    "ITAT_WARGFUR",
+                    "ITAT_ORCDOGFUR",
+                    "ITAT_ADDON_KEILERFUR",
+                    "ITAT_DRGSNAPPERHORN",
+                    "ITAT_CRAWLERPLATE",
+                    "ITAT_SHADOWFUR",
+                    "ITAT_SHARKSKIN",
+                    "ITAT_TROLLFUR",
+                    "ITAT_TROLLBLACKFUR",
+                    "ITAT_CAVEBLACKFURTROLL"
+                ]
+            },
+            {
+                "chance": 10000,
+                "chanceOutOf": 10000,
+                "maxAmount": 150,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITRW_ADDON_MAGICARROW",
+                    "ITRW_MYHUNTARROW",
+                    "ITRW_POISONARROW",
+                    "ITRW_HOLYARROW",
+                    "ITRW_ADDON_MAGICARROW",
+                    "ITRW_ADDON_FIREARROW",
+                    "ITRW_EXPLOSIVEARROW"
+                ]
+            },
+            {
+                "chance": 10000,
+                "chanceOutOf": 10000,
+                "maxAmount": 150,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITRW_ADDON_MAGICBOLT",
+                    "ITRW_HOLYBOLT",
+                    "ITRW_PIERCINGBOLT",
+                    "ITRW_SHARPBOLT",
+                    "ITRW_CRUSHINGBOLT",
+                    "ITRW_EXPLOSIVEBOLT"
+                ]
+            }
+        ]
+    },
+    "champions": {
+        "champion": true,
+        "loot": [
+            {
+                "chance": 350,
+                "chanceOutOf": 1450,
+                "valueOverride": 250,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITMI_LOOTBOX"
+                ]
+            },
+            {
+                "chance": 250,
+                "chanceOutOf": 1450,
+                "amountMeansPicks": true,
+                "maxAmount": 4,
+                "itemNames": [
+                    "ITFO_CAKE_MUSHROOM",
+                    "ITFO_CAKE_FISH",
+                    "ITFO_CAKE_APPLE",
+                    "ITFO_CAKE_MEAT",
+                    "ITFO_CAKE_HONEY",
+                    "ITFO_EALBALZAM",
+                    "ITFO_EALBALZAMTWO"
+                ]
+            },
+            {
+                "chance": 550,
+                "chanceOutOf": 1450,
+                "amountMeansPicks": true,
+                "maxAmount": 10,
+                "itemNames": [
+                    "ITFO_CORAGONSBEER",
+                    "ITFO_POTTAGE_MUSHROOM_BLACK",
+                    "ITFO_SCHILDKROETESOUP_SBORKA",
+                    "ITFO_SMELLYFISH",
+                    "ITPO_HEALTH_LIKER",
+                    "ITFO_COMPOTE_00",
+                    "ITFO_COMPOTE_01"
+                ]
+            },
+            {
+                "chance": 300,
+                "chanceOutOf": 1450,
+                "amountMeansPicks": true,
+                "maxAmount": 10,
+                "itemNames": [
+                    "ITFO_APPLE",
+                    "ITFO_BREAD",
+                    "ITFO_BOOZE",
+                    "ITFO_WATER",
+                    "ITFO_WINE"
+                ]
+            },
+            {
+                "chance": 10,
+                "chanceOutOf": 1450,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_PERM_DEF",
+                    "ITPO_PERM_STAMINA",
+                    "ITPO_FIREDEFENCE",
+                    "ITPO_MAGDEFENCE",
+                    "ITPO_NP_STATS",
+                    "ITPO_PERM_STR_START",
+                    "ITPO_PERM_DEX_START",
+                    "ITPO_AMUNSU",
+                    "ITPO_ANCIENTPOTION"
+                ]
+            },
+            {
+                "chance": 400,
+                "chanceOutOf": 1450,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_RAREPOTION_01",
+                    "ITPO_RAREPOTION_02",
+                    "ITPO_RAREPOTION_03",
+                    "ITPO_RAREPOTION_04",
+                    "ITPO_RAREPOTION_05",
+                    "ITPO_RAREPOTION_06",
+                    "ITPO_RAREPOTION_07",
+                    "ITPO_SPEED_03"
+                ]
+            },
+            {
+                "chance": 150,
+                "chanceOutOf": 1450,
+                "amountMeansPicks": true,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITPO_NP_MANAREG3",
+                    "ITPO_NP_MANAREG2",
+                    "ITPO_NP_STAMINA",
+                    "ITPO_NP_STAMINA2",
+                    "ITPO_HEALTH_03",
+                    "ITPO_HEALTH_02",
+                    "ITPO_MANA_03",
+                    "ITPO_MANA_02",
+                    "ITPO_HITPOTION"
+                ]
+            },
+            {
+                "chance": 75,
+                "chanceOutOf": 1450,
+                "maxAmount": 2,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITMI_POTIONPERMBLANK",
+                    "ITPL_PERM_HERB"
+                ]
+            },
+            {
+                "chance": 100,
+                "chanceOutOf": 1450,
+                "maxAmount": 3,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPL_SUPER_HERB",
+                    "ITPL_DEX_HERB_01",
+                    "ITPL_STRENGTH_HERB_01"
+                ]
+            },
+            {
+                "chance": 25,
+                "chanceOutOf": 1450,
+                "itemNames": [
+                    "ITRU_BELIARSRAGE",
+                    "ITRU_ICEEXPLOISION",
+                    "ITRU_SUMMONGUARDIAN",
+                    "ITRU_SUMGOL",
+                    "ITRU_SUMFIREGOL",
+                    "ITRU_ACID",
+                    "ITRU_SUMSWPGOL",
+                    "ITRU_CHARGEFIREBALL",
+                    "ITRU_LIGHTNINGFLASH",
+                    "ITRU_LIGHTNINGSPHERE",
+                    "ITRU_ELECTROWAVE",
+                    "ITRU_SUMICEGOL",
+                    "ITRU_DEATHBALL",
+                    "ITSC_SUMSKELSPEAR"
+                ]
+            },
+            {
+                "chance": 45,
+                "chanceOutOf": 1450,
+                "itemNames": [
+                    "ITRU_INSTANTFIREBALL",
+                    "ITRU_STONEFIRST",
+                    "ITRU_ICELANCE",
+                    "ITRU_SUMSHOAL",
+                    "ITRU_WINDFIST",
+                    "ITRU_FIRESTORM",
+                    "ITRU_ICECUBE",
+                    "ITRU_THUNDERBALL",
+                    "ITRU_MAGSPHERE",
+                    "ITRU_CHARM",
+                    "ITRU_SUMSKEL",
+                    "ITRU_FIREBOLT",
+                    "ITRU_ZAP",
+                    "ITRU_ICEBOLT",
+                    "ITRU_SLEEP",
+                    "ITRU_BERZERK",
+                    "ITRU_DEATHBOLT",
+                    "ITRU_SUMGOBSKEL",
+                    "ITRU_SUMWOLF",
+                    "ITSC_SUMSKELARCHER",
+                    "ITSC_SUMSKEL"
+                ]
+            },
+            {
+                "chance": 65,
+                "chanceOutOf": 1450,
+                "amountMeansPicks": true,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITSC_RESSURECT",
+                    "ITSC_UNLOCK",
+                    "ITSC_ICECUBE"
+                ]
+            },
+            {
+                "chance": 200,
+                "chanceOutOf": 1450,
+                "amountMeansPicks": true,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITSC_TRFWOLF",
+                    "ITSC_TRFSCAVENGER",
+                    "ITSC_SLEEP",
+                    "ITSC_TRFLURKER",
+                    "ITSC_TRFSNAPPER",
+                    "ITSC_SUMGOBSKEL"
+                ]
+            },
+            {
+                "chance": 200,
+                "chanceOutOf": 1450,
+                "amountMeansPicks": true,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITSC_FIREBOLT",
+                    "ITSC_ICEBOLT",
+                    "ITSC_LIGHT",
+                    "ITSC_ZAP",
+                    "ITSC_DEATHBOLT",
+                    "ITSC_SUMWOLF",
+                    "ITSC_SUMGOBSKEL"
+                ]
+            },
+            {
+                "chance": 125,
+                "chanceOutOf": 1450,
+                "amountMeansPicks": true,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITSC_CHARGEFIREBALL",
+                    "ITSC_SHRINK",
+                    "ITSC_HARMUNDEAD",
+                    "ITSC_THUNDERSTORM",
+                    "ITSC_WHIRLWIND",
+                    "ITSC_ARMYOFDARKNESS",
+                    "ITSC_SKULL",
+                    "ITSC_TRFDRAGONSNAPPER"
+                ]
+            },
+            {
+                "chance": 25,
+                "chanceOutOf": 1450,
+                "itemNames": [
+                    "ITRI_ORE_DIAM",
+                    "ITRI_ORE_EMER",
+                    "ITRI_ORE_SAPP",
+                    "ITRI_ORE_OPAL",
+                    "ITRI_ORE_RUBY",
+                    "ITAM_STEEL_THIEFFINGERS",
+                    "ITAM_ADDON_FRANCO"
+                ]
+            },
+            {
+                "chance": 10,
+                "chanceOutOf": 1450,
+                "itemNames": [
+                    "ITAM_DIAMOND",
+                    "ITAM_RUBY",
+                    "ITAM_EMERALD",
+                    "ITAM_SAPPHIRE",
+                    "ITAM_OPAL"
+                ]
+            },
+            {
+                "chance": 40,
+                "chanceOutOf": 1450,
+                "itemNames": [
+                    "ITRI_GOLD_DIAM",
+                    "ITRI_GOLD_EMER",
+                    "ITRI_GOLD_SAPP",
+                    "ITRI_GOLD_OPAL",
+                    "ITRI_GOLD_RUBY"
+                ]
+            },
+            {
+                "chance": 40,
+                "chanceOutOf": 1450,
+                "itemNames": [
+                    "ITAM_PROT_EDGE_01",
+                    "ITAM_PROT_POINT_01",
+                    "ITAM_PROT_MAGE_01",
+                    "ITAM_PROT_TOTAL_01",
+                    "ITAM_HP_MANA_01"
+                ]
+            },
+            {
+                "chance": 50,
+                "chanceOutOf": 1450,
+                "itemNames": [
+                    "ITRI_STEEL_DIAM",
+                    "ITRI_STEEL_EMER",
+                    "ITRI_STEEL_SAPP",
+                    "ITRI_STEEL_OPAL",
+                    "ITRI_STEEL_RUBY",
+                    "ITRI_NEW_OREMASTER",
+                    "ITRI_NEW_MANAREGEN",
+                    "ITRI_HP_PARLAN"
+                ]
+            },
+            {
+                "chance": 135,
+                "chanceOutOf": 1450,
+                "maxAmount": 5,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITMI_NUGGET",
+                    "ITMI_DARKPEARL"
+                ]
+            },
+            {
+                "chance": 135,
+                "chanceOutOf": 1450,
+                "maxAmount": 3,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITMI_DIAMOD",
+                    "ITMI_EMERALD",
+                    "ITMI_RUBY",
+                    "ITMI_SAPPHIRE",
+                    "ITMI_OPAL"
+                ]
+            }
+        ]
+    },
+    "bosses": {
+        "boss": true,
+        "loot": [
+            {
+                "chance": 1000,
+                "chanceOutOf": 1000,
+                "valueOverride": 250,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITMI_LOOTBOX"
+                ]
+            },
+            {
+                "chance": 200,
+                "chanceOutOf": 1000,
+                "itemNames": [
+                    "ITPO_ELIXIRSHADOWLITE"
+                ]
+            },
+            {
+                "chance": 250,
+                "chanceOutOf": 1000,
+                "maxAmount": 2,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPO_PERM_DEF",
+                    "ITPO_PERM_STAMINA",
+                    "ITPO_FIREDEFENCE",
+                    "ITPO_MAGDEFENCE",
+                    "ITPO_NP_STATS",
+                    "ITPO_PERM_STR_START",
+                    "ITPO_PERM_DEX_START",
+                    "ITPO_AMUNSU",
+                    "ITPO_ANCIENTPOTION"
+                ]
+            },
+            {
+                "chance": 50,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_PERM_DEF",
+                    "ITPO_PERM_STAMINA",
+                    "ITPO_FIREDEFENCE",
+                    "ITPO_MAGDEFENCE",
+                    "ITPO_NP_STATS",
+                    "ITPO_PERM_STR_START",
+                    "ITPO_PERM_DEX_START",
+                    "ITPO_AMUNSU",
+                    "ITPO_ANCIENTPOTION"
+                ]
+            },
+            {
+                "chance": 2000,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITPO_HEALTH_03",
+                    "ITPO_HEALTH_02",
+                    "ITPO_MANA_03",
+                    "ITPO_MANA_02"
+                ]
+            },
+            {
+                "chance": 1000,
+                "chanceOutOf": 10000,
+                "maxAmount": 2,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPO_NP_MANAREG3",
+                    "ITPO_NP_STAMINA2",
+                    "ITPO_RAREPOTION_07"
+                ]
+            },
+            {
+                "chance": 3450,
+                "chanceOutOf": 10000,
+                "amountMeansPicks": true,
+                "maxAmount": 4,
+                "itemNames": [
+                    "ITPO_RAREPOTION_01",
+                    "ITPO_RAREPOTION_02",
+                    "ITPO_RAREPOTION_03",
+                    "ITPO_RAREPOTION_04",
+                    "ITPO_RAREPOTION_05",
+                    "ITPO_RAREPOTION_06",
+                    "ITPO_RAREPOTION_07"
+                ]
+            },
+            {
+                "chance": 1750,
+                "chanceOutOf": 10000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_FIREDEFENCE",
+                    "ITPO_MAGDEFENCE",
+                    "ITPO_AMUNSU",
+                    "ITPO_MAGDEFENCE",
+                    "ITPO_INTELLECT"
+                ]
+            },
+            {
+                "chance": 1750,
+                "chanceOutOf": 10000,
+                "maxAmount": 4,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITMI_PLAZMA",
+                    "ITAT_STONEGOLEMHEART",
+                    "ITAT_FIREGOLEMHEART",
+                    "ITAT_ICEGOLEMHEART",
+                    "ITAT_SWAMPGOLEMHEART",
+                    "ITAT_TROLLBLACKFUR",
+                    "ITAT_DEMONHEART"
+                ]
+            }
+        ]
+    },
+    "chests": {
+        "chest": true,
+        "loot": [
+            {
+                "chance": 50,
+                "chanceOutOf": 1000,
+                "maxAmount": 3,
+                "itemNames": [
+                    "ITMI_LOOTBOX"
+                ]
+            },
+            {
+                "chance": 250,
+                "chanceOutOf": 1250,
+                "maxAmount": 5,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITMI_SULFUR",
+                    "ITMI_QUARTZ",
+                    "ITMI_PITCH",
+                    "ITMI_ROCKCRYSTAL",
+                    "ITMI_AQUAMARINE",
+                    "ITMI_COAL",
+                    "ITAT_CLAW",
+                    "ITAT_OREBUGCLAW",
+                    "ITAT_LURKERCLAW",
+                    "ITAT_TEETH",
+                    "ITAT_CRAWLERMANDIBLES",
+                    "ITAT_SPIDERMANDIBLES",
+                    "ITAT_WING",
+                    "ITAT_STING",
+                    "ITAT_GOBLINBONE",
+                    "ITAT_SKELETONBONE"
+                ]
+            },
+            {
+                "chance": 45,
+                "chanceOutOf": 1250,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITFO_CAKE_MUSHROOM",
+                    "ITFO_CAKE_FISH",
+                    "ITFO_CAKE_APPLE",
+                    "ITFO_CAKE_MEAT",
+                    "ITFO_CAKE_HONEY",
+                    "ITFO_EALBALZAM",
+                    "ITFO_EALBALZAMTWO"
+                ]
+            },{
+                "chance": 175,
+                "chanceOutOf": 1250,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITFO_CORAGONSBEER",
+                    "ITFO_POTTAGE_MUSHROOM_BLACK",
+                    "ITFO_SCHILDKROETESOUP_SBORKA",
+                    "ITFO_SMELLYFISH",
+                    "ITPO_HEALTH_LIKER",
+                    "ITFO_COMPOTE_00",
+                    "ITFO_COMPOTE_01"
+                ]
+            },
+            {
+                "chance": 350,
+                "chanceOutOf": 1250,
+                "amountMeansPicks": true,
+                "maxAmount": 4,
+                "itemNames": [
+                    "ITFO_BEER",
+                    "ITFO_APPLE",
+                    "ITFO_BREAD",
+                    "ITFO_BOOZE",
+                    "ITFO_WATER",
+                    "ITFO_WINE",
+                    "ITFO_ADDON_RUM",
+                    "ITFO_ADDON_SHELLFLESH"
+                ]
+            },
+            {
+                "chance": 35,
+                "chanceOutOf": 1750,
+                "itemNames": [
+                    "ITPO_PERM_DEF",
+                    "ITPO_PERM_STAMINA",
+                    "ITPO_FIREDEFENCE",
+                    "ITPO_MAGDEFENCE"
+                ]
+            },
+            {
+                "chance": 35,
+                "chanceOutOf": 1750,
+                "itemNames": [
+                    "ITPO_PERM_STR_START",
+                    "ITPO_PERM_DEX_START",
+                    "ITPO_AMUNSU",
+                    "ITPO_ANCIENTPOTION"
+                ]
+            },
+            {
+                "chance": 15,
+                "chanceOutOf": 1250,
+                "itemNames": [
+                    "ITPO_ELIXIRSHADOWLITE"
+                ]
+            },
+            {
+                "chance": 25,
+                "chanceOutOf": 1250,
+                "itemNames": [
+                    "ITPO_NP_STATS"
+                ]
+            },
+            {
+                "chance": 20,
+                "chanceOutOf": 1350,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_RAREPOTION_01",
+                    "ITPO_RAREPOTION_02",
+                    "ITPO_RAREPOTION_03",
+                    "ITPO_RAREPOTION_04",
+                    "ITPO_RAREPOTION_05",
+                    "ITPO_RAREPOTION_06",
+                    "ITPO_RAREPOTION_07",
+                    "ITPO_SPEED_03"
+                ]
+            },
+            {
+                "chance": 115,
+                "chanceOutOf": 1550,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITPO_NP_MANAREG3",
+                    "ITPO_NP_MANAREG2",
+                    "ITPO_NP_STAMINA",
+                    "ITPO_HEALTH_03",
+                    "ITPO_MANA_03"
+                ]
+            },
+            {
+                "chance": 65,
+                "chanceOutOf": 1250,
+                "maxAmount": 2,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPO_NP_MANAREG3",
+                    "ITPO_NP_STAMINA2",
+                    "ITPO_HITPOTION"
+                ]
+            },
+            {
+                "chance": 70,
+                "chanceOutOf": 1250,
+                "itemNames": [
+                    "ITPO_NP_MANAREG2",
+                    "ITPO_NP_STAMINA"
+                ]
+            },
+            {
+                "chance": 35,
+                "chanceOutOf": 1450,
+                "maxAmount": 2,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITMI_POTIONPERMBLANK",
+                    "ITPL_PERM_HERB"
+                ]
+            },
+            {
+                "chance": 55,
+                "chanceOutOf": 1450,
+                "maxAmount": 3,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPL_SUPER_HERB",
+                    "ITPL_DEX_HERB_01",
+                    "ITPL_STRENGTH_HERB_01"
+                ]
+            },
+            {
+                "chance": 25,
+                "chanceOutOf": 1250,
+                "itemNames": [
+                    "ITRU_BELIARSRAGE",
+                    "ITRU_ICEEXPLOISION",
+                    "ITRU_SUMMONGUARDIAN",
+                    "ITRU_SUMGOL",
+                    "ITRU_SUMFIREGOL",
+                    "ITRU_ACID",
+                    "ITRU_SUMSWPGOL",
+                    "ITRU_CHARGEFIREBALL",
+                    "ITRU_LIGHTNINGFLASH",
+                    "ITRU_LIGHTNINGSPHERE",
+                    "ITRU_ELECTROWAVE",
+                    "ITRU_SUMICEGOL",
+                    "ITRU_DEATHBALL"
+                ]
+            },
+            {
+                "chance": 25,
+                "chanceOutOf": 1250,
+                "itemNames": [
+                    "ITRU_AGRO",
+                    "ITRU_DOT_SECOND",
+                    "ITRU_DARK_INVIS",
+                    "ITRU_DARKSLEEP",
+                    "ITRU_MASSAGRO",
+                    "ITRU_MASSDOT",
+                    "ITRU_DARKBALL",
+                    "ITRU_BIGDARKBALL",
+                    "ITRU_DARKSPEAR",
+                    "ITRU_DARKWAVE",
+                    "ITRU_TORTURE"
+                ]
+            },
+            {
+                "chance": 35,
+                "chanceOutOf": 1250,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITRU_DOT_FIRST",
+                    "ITRU_DARKCONTROL",
+                    "ITRU_INSTANTFIREBALL",
+                    "ITRU_STONEFIRST",
+                    "ITRU_ICELANCE",
+                    "ITRU_SUMSHOAL",
+                    "ITRU_WINDFIST",
+                    "ITRU_FIRESTORM",
+                    "ITRU_ICECUBE",
+                    "ITRU_THUNDERBALL",
+                    "ITRU_MAGSPHERE",
+                    "ITRU_CHARM",
+                    "ITRU_SUMSKEL",
+                    "ITRU_FIREBOLT",
+                    "ITRU_ZAP",
+                    "ITRU_ICEBOLT",
+                    "ITRU_SLEEP",
+                    "ITRU_BERZERK",
+                    "ITRU_DEATHBOLT",
+                    "ITRU_SUMGOBSKEL",
+                    "ITRU_SUMWOLF"
+                ]
+            },
+            {
+                "chance": 65,
+                "chanceOutOf": 1250,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITSC_RESSURECT",
+                    "ITSC_UNLOCK",
+                    "ITSC_ICECUBE"
+                ]
+            },
+            {
+                "chance": 200,
+                "chanceOutOf": 1250,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITSC_TRFWOLF",
+                    "ITSC_TRFSCAVENGER",
+                    "ITSC_SLEEP",
+                    "ITSC_TRFLURKER",
+                    "ITSC_TRFSNAPPER",
+                    "ITSC_SUMGOBSKEL"
+                ]
+            },
+            {
+                "chance": 200,
+                "chanceOutOf": 1250,
+                "maxAmount": 2,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITSC_FIREBOLT",
+                    "ITSC_ICEBOLT",
+                    "ITSC_LIGHT",
+                    "ITSC_ZAP",
+                    "ITSC_DEATHBOLT",
+                    "ITSC_SUMWOLF",
+                    "ITSC_SUMGOBSKEL"
+                ]
+            },
+            {
+                "chance": 125,
+                "chanceOutOf": 1250,
+                "maxAmount": 2,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITSC_CHARGEFIREBALL",
+                    "ITSC_SHRINK",
+                    "ITSC_HARMUNDEAD",
+                    "ITSC_THUNDERSTORM",
+                    "ITSC_WHIRLWIND",
+                    "ITSC_ARMYOFDARKNESS",
+                    "ITSC_SKULL",
+                    "ITSC_TRFDRAGONSNAPPER"
+                ]
+            },
+            {
+                "chance": 15,
+                "chanceOutOf": 1650,
+                "itemNames": [
+                    "ITRI_ORE_DIAM",
+                    "ITRI_ORE_EMER",
+                    "ITRI_ORE_SAPP",
+                    "ITRI_ORE_OPAL",
+                    "ITRI_ORE_RUBY"
+                ]
+            },
+            {
+                "chance": 20,
+                "chanceOutOf": 1650,
+                "itemNames": [
+                    "ITAM_DIAMOND",
+                    "ITAM_RUBY",
+                    "ITAM_EMERALD",
+                    "ITAM_SAPPHIRE",
+                    "ITAM_OPAL",
+                    "ITAM_STEEL_THIEFFINGERS",
+                    "ITAM_ADDON_FRANCO"
+                ]
+            },
+            {
+                "chance": 20,
+                "chanceOutOf": 1650,
+                "itemNames": [
+                    "ITRI_GOLD_DIAM",
+                    "ITRI_GOLD_EMER",
+                    "ITRI_GOLD_SAPP",
+                    "ITRI_GOLD_OPAL",
+                    "ITRI_GOLD_RUBY"
+                ]
+            },
+            {
+                "chance": 20,
+                "chanceOutOf": 1650,
+                "itemNames": [
+                    "ITAM_PROT_EDGE_01",
+                    "ITAM_PROT_POINT_01",
+                    "ITAM_PROT_MAGE_01",
+                    "ITAM_PROT_TOTAL_01",
+                    "ITAM_HP_MANA_01"
+                ]
+            },
+            {
+                "chance": 25,
+                "chanceOutOf": 1650,
+                "itemNames": [
+                    "ITRI_STEEL_DIAM",
+                    "ITRI_STEEL_EMER",
+                    "ITRI_STEEL_SAPP",
+                    "ITRI_STEEL_OPAL",
+                    "ITRI_STEEL_RUBY",
+                    "ITRI_NEW_OREMASTER",
+                    "ITRI_NEW_MANAREGEN",
+                    "ITRI_HP_PARLAN"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITWR_ADDON_RUNEMAKING_KDW_CIRC1",
+                    "ITWR_ADDON_RUNEMAKING_KDW_CIRC2",
+                    "ITWR_ADDON_RUNEMAKING_KDW_CIRC3",
+                    "ITWR_ADDON_RUNEMAKING_KDW_CIRC4",
+                    "ITWR_ADDON_RUNEMAKING_KDW_CIRC5",
+                    "ITWR_ADDON_RUNEMAKING_KDF_CIRC1",
+                    "ITWR_ADDON_RUNEMAKING_KDF_CIRC2",
+                    "ITWR_ADDON_RUNEMAKING_KDF_CIRC3",
+                    "ITWR_ADDON_RUNEMAKING_KDF_CIRC4",
+                    "ITWR_ADDON_RUNEMAKING_KDF_CIRC5",
+                    "ITWR_ADDON_RUNEMAKING_GUR_CIRC1",
+                    "ITWR_ADDON_RUNEMAKING_GUR_CIRC2",
+                    "ITWR_ADDON_RUNEMAKING_GUR_CIRC3",
+                    "ITWR_ADDON_RUNEMAKING_GUR_CIRC4",
+                    "ITWR_ADDON_RUNEMAKING_GUR_CIRC5",
+                    "ITWR_ADDON_RUNEMAKING_DMT_CIRC1",
+                    "ITWR_ADDON_RUNEMAKING_DMT_CIRC2",
+                    "ITWR_ADDON_RUNEMAKING_DMT_CIRC3",
+                    "ITWR_ADDON_RUNEMAKING_DMT_CIRC4",
+                    "ITWR_ADDON_RUNEMAKING_DMT_CIRC5",
+                    "ITWR_ADDON_RUNEMAKING_PRM"
+                ]
+            },
+            {
+                "chance": 5,
+                "chanceOutOf": 1000,
+                "amountMeansPicks": true,
+                "maxAmount": 2,
+                "itemNames": [
+                    "ITWR_ORCLANGUAGE",
+                    "ITWR_ALCHEMY_01",
+                    "ITWR_BOWBETTERSHOT",
+                    "ITWR_BLOODFLY_01",
+                    "ITWR_GOLDMAKE",
+                    "ITWR_JAGD_UND_BEUTE",
+                    "ITWR_CBOW_T1",
+                    "ITWR_CBOW_T2",
+                    "ITWR_EINHANDBUCH",
+                    "LEHREN_DER_GOETTER1",
+                    "LEHREN_DER_GOETTER2",
+                    "LEHREN_DER_GOETTER3",
+                    "DAS_MAGISCHE_ERZ",
+                    "GOETTERGABE",
+                    "GEHEIMNISSE_DER_ZAUBEREI",
+                    "MACHTVOLLE_KUNST",
+                    "WAHRE_MACHT",
+                    "MYRTANAS_LYRIK",
+                    "REZEPTUREN",
+                    "REZEPTUREN2",
+                    "ITWR_SKELETONTALE",
+                    "ITWR_GOLEMBOOK1",
+                    "ITWR_GOLEMBOOK2",
+                    "ITWR_SILENTDEATH",
+                    "ITWR_PIERCINGSTEEL",
+                    "ITWR_SCORPIONSTING",
+                    "ITWR_SCREAMINTHENIGHT"
+                ]
+            },
+            {
+                "chance": 20,
+                "chanceOutOf": 1450,
+                "itemNames": [
+                    "ITBE_ADDON_MIL_01",
+                    "ITBE_ADDON_SLD_01",
+                    "ITBE_ADDON_NOV_01",
+                    "ITBE_ADDON_SEK_01",
+                    "ITBE_ADDON_THIEF_01",
+                    "ITBE_ADDON_THIEF_02",
+                    "ITBE_ADDON_STR_10",
+                    "ITBE_ADDON_DEX_10",
+                    "ITAM_DEX_01",
+                    "ITAM_STRG_01",
+                    "ITRI_MANA_02",
+                    "ITBE_ADDON_SEK_01",
+                    "ITBE_ADDON_PROT_EDGE",
+                    "ITBE_ADDON_PROT_POINT",
+                    "ITBE_ADDON_PROT_MAGIC",
+                    "ITBE_ADDON_PROT_FIRE",
+                    "ITBE_ADDON_PROT_EDGPOI",
+                    "ITBE_ADDON_PROT_TOTAL",
+                    "ITBE_ADDON_CUSTOM_01",
+                    "ITBE_ADDON_CUSTOM_02",
+                    "ITBE_ADDON_CUSTOM_03",
+                    "ITBE_ADDON_CUSTOM_04"
+                ]
+            },
+            {
+                "chance": 150,
+                "chanceOutOf": 1250,
+                "amountMeansPicks": true,
+                "maxAmount": 5,
+                "itemNames": [
+                    "ITPO_SPEED_02",
+                    "ITPO_HEALTH_02",
+                    "ITPO_MANA_02",
+                    "ITFO_BREAD",
+                    "ITPL_BEET",
+                    "ITPL_MUSHROOM_02"
+                ]
+            },
+            {
+                "chance": 275,
+                "chanceOutOf": 1250,
+                "maxAmount": 5,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPO_HEALTH_01",
+                    "ITPO_MANA_01",
+                    "ITPL_BEET",
+                    "ITPL_MUSHROOM_02"
+                ]
+            },
+            {
+                "chance": 300,
+                "chanceOutOf": 1250,
+                "maxAmount": 15,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITPL_BEET",
+                    "ITPL_MANA_HERB_01",
+                    "ITPL_HEALTH_HERB_01",
+                    "ITPL_MUSHROOM_01",
+                    "ITPL_BLUEPLANT",
+                    "ITPL_FORESTBERRY",
+                    "ITPL_PLANEBERRY",
+                    "ITMI_SNUGGET"
+                ]
+            },
+            {
+                "chance": 85,
+                "chanceOutOf": 1250,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITWR_STONEPLATECOMMON_ADDON"
+                ]
+            },
+            {
+                "chance": 90,
+                "chanceOutOf": 1250,
+                "amountMeansPicks": true,
+                "itemNames": [
+                    "ITMI_ENCHANTSTONE_FIRE",
+                    "ITMI_ENCHANTSTONE_MAGIC",
+                    "ITMI_ENCHANTSTONE_BLUNT",
+                    "ITMI_ENCHANTSTONE_EDGE",
+                    "ITMI_ENCHANTSTONE_POINT"
+                ]
+            }
+           
+        ]
+    }
+}
