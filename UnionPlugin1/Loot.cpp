@@ -127,12 +127,8 @@ namespace GOTHIC_ENGINE {
 			if (!chest) {
 				return false;
 			}
-			ogame->game_text->Printwin("Chest Loot Found");
-
 
 			if (randomizer.Random(0, probabilityOutOf) <= probability) {
-				ogame->game_text->Printwin("Chest Loot Added");
-
 				if (amountMeansPicks) {
 					auto addedSomething = false;
 					auto picks = randomizer.Random(1, maxAmount);
