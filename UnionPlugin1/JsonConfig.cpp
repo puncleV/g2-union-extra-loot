@@ -75,10 +75,8 @@ namespace GOTHIC_ENGINE {
 				auto bossessLoot = jsonFile[name].value("boss", false);
 				auto chestsLoot = jsonFile[name].value("chest", false);
 				auto perChapter = jsonFile[name].value("oncePerChapter", false);
-				auto all = jsonFile[name].value("all", false);
-				auto shouldStrengthen = jsonFile[name].value("shouldStrengthen", false);
 
-				lootTableList.push_back(LootTable(npcNames, _lootTable, bossessLoot, championsLoot, perChapter, all, shouldStrengthen));
+				lootTableList.push_back(LootTable(npcNames, _lootTable, bossessLoot, championsLoot, perChapter, chestsLoot));
 			}
 		}
 	};

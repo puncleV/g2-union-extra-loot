@@ -15,19 +15,11 @@ namespace GOTHIC_ENGINE {
             {
                 oCMobContainer* chest = dynamic_cast<oCMobContainer*> (arrMob[i]);
 
-                 if (randomizer.Random(0, EXTRA_LOOT_CHEST_UPPERBOUND) <= EXTRA_LOOT_CHEST_BASE_CHANCE) {
-                    for (const auto& lootTable : chestsLootTables) {
-                        addRandomLootToChest(chest, lootTable);
-                        itemsCounter += 1;
-                    }
+                for (auto& lootTable : lootTableList) {
+                    lootTable.addRandomLootToChest(chest);
                 }
 
-                if (randomizer.Random(0, EXTRA_LOOT_CHEST_UPPERBOUND) <= CHESTS_BOSS_DROP_CHANCE) {
-                    for (const auto& lootTable : bossLootTables) {
-                        addRandomLootToChest(chest, lootTable);
-                        itemsCounter += 1;
-                    }
-                }
+                chest->hitp |= LOOT_ADDED_HITP_FLAG;
             }
         }
 

@@ -2,27 +2,18 @@
 // Union SOURCE file
 
 namespace GOTHIC_ENGINE {
-	bool addLootToNPC(oCNpc* npc, bool perChapterLoot = false) {
-		if (ignoredNpcForLoot(npc)) {
-			return FALSE;
+	bool addLootToNPC(oCNpc* npc, bool isChampion) {
+		auto lootGiven = false;
+		auto addedValue = 0;
+
+		for (auto& lootTable : lootTableList) {
+			addedValue += lootTable.addToNpc(npc, isChampion);
 		}
 
-		npc->setNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX, getCurrentChapter());
-
-		oCWorld* world = dynamic_cast<oCWorld*>(ogame->GetWorld());
-		auto lootGiven = -1;
-		auto loot = lootTables;
-		
-		if (npc->isBoss()) {
-			loot = bossLootTables;
-		} else if (npc->isChampion()) {
-			loot = championLootTables;
-		} else if (perChapterLoot) {
-			loot = perChapterLootTables;
-		}
-
-		for (const auto& lootTable : loot) {
-		    lootGiven += addRandomLootToNpc(npc, lootTable);
+		if (addedValue > 0) {
+			lootGiven = true;
+			// todo maybe dont make champions too strong
+			strengthenNpc(npc, addedValue);
 		}
 
 		return lootGiven;
@@ -59,19 +50,18 @@ namespace GOTHIC_ENGINE {
 
 		if (npc != oCNpc::player) {
 			auto chapterLootWasGiven = npc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX);
+			auto isChampion = false;
 			
-			if (randomizer.Random(0, 1000) < CHAMPION_CHANCE && chapterLootWasGiven == 0) {
-				makeChampion(npc);
-				addLootToNPC(npc);
+			if (chapterLootWasGiven == 0 && randomizer.Random(0, 1000) < CHAMPION_CHANCE) {
+				isChampion = true;
 			}
 
-			if (chapterLootWasGiven < getCurrentChapter() && getCurrentChapter() >= 1 && SHOULD_ADD_LOOT_TO_NPC || SHOULD_IGNORE_CHECK_TO_ADD_LOOT) {
-				if (chapterLootWasGiven == 0) {
-					addLootToNPC(npc);
-				}
-				else if (chapterLootWasGiven < getCurrentChapter() && TRADERS_LOOT_PER_CHAPTER) {
-					addLootToNPC(npc, true);
-				}
+			addLootToNPC(npc, isChampion);
+
+			if (isChampion) {
+				makeChampion(npc);
+			} else if (chapterLootWasGiven != getCurrentChapter() && chapterLootWasGiven != CHAMPION_VALUE) {
+				npc->setNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX, getCurrentChapter());
 			}
 		}
 	}

@@ -63,4 +63,20 @@ namespace GOTHIC_ENGINE {
 			return -1;
 		return retVal;
 	}
+
+	bool ignoredNpcForLoot(oCNpc* npc) {
+		auto npcName = npc->GetObjectName();
+
+		if (npc->aiscriptvars[AIV_IS_SUMMON_NPC] == 13771 || npc->aiscriptvars[AIV_PARTYMEMBER]) {
+			return TRUE;
+		}
+
+		for (auto i = 0; i < ignoreLootNpcList.size(); i += 1) {
+			if (npcName.HasWordI(ignoreLootNpcList[i])) {
+				return TRUE;
+			}
+		}
+
+		return FALSE;
+	}
 }

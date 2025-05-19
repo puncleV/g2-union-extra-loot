@@ -6,7 +6,7 @@ namespace GOTHIC_ENGINE {
 	void Game_Entry() {
 	}
 
-	void fillLootTables(){
+	void fillLootTables() {
 		jsonConfig.lootTable();
 	}
 
@@ -45,7 +45,7 @@ namespace GOTHIC_ENGINE {
 				ogame->game_text->Printwin("Npc Name: " + Z focusNpc->GetObjectName());
 			}
 
-			auto focusVob = player->GetFocusVob(); 
+			auto focusVob = player->GetFocusVob();
 
 			if (focusVob) {
 				ogame->game_text->Printwin("Vob name: " + focusVob->GetObjectName());
@@ -53,7 +53,7 @@ namespace GOTHIC_ENGINE {
 		}
 
 		if (focusNpc) {
-			if (focusNpc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX) == 10 && !focusNpc->name[0].HasWordI("Champ")) {
+			if (focusNpc->isChampion() && !focusNpc->name[0].HasWordI("Champ")) {
 				focusNpc->name[0] += Z " Champion";
 			}
 		}

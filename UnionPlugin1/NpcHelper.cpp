@@ -2,42 +2,6 @@
 // Union SOURCE file
 
 namespace GOTHIC_ENGINE {
-	int addRandomLootToNpc(oCNpc* npc, const std::vector<Loot>& lootTable) {
-		auto addedLoot = -1;
-		
-		for (size_t i = 0; i < lootTable.size(); i++)
-		{
-			addedLoot += lootTable[i].tryAddToNpc(npc);
-		}
-
-		return addedLoot;
-	}
-
-	bool ignoredNpcForLoot(oCNpc* npc) {
-		auto npcName = npc->GetObjectName();
-
-		if (npc->aiscriptvars[AIV_IS_SUMMON_NPC] == 13771 || npc->aiscriptvars[AIV_PARTYMEMBER]) {
-			return TRUE;
-		}
-
-		for (auto i = 0; i < ignoreLootNpcList.size(); i += 1) {
-			if (npcName.HasWordI(ignoreLootNpcList[i])) {
-				return TRUE;
-			}
-		}
-
-		return FALSE;
-	}
-
-
-	bool RX_IsBoss(oCNpc* npc) {
-		return (npc && npc->aiscriptvars[AIV_BOSS] == TRUE);
-	}
-
-	bool RX_IsSummon(oCNpc* npc) {
-		return (npc && npc->aiscriptvars[AIV_SUMMON] == TRUE);
-	}
-
 	void minChampionStats(oCNpc* npc) {
 		if (npc->attribute[NPC_ATR_HITPOINTSMAX] < CHAMPION_MIN_HP) {
 			npc->attribute[NPC_ATR_HITPOINTSMAX] = CHAMPION_MIN_HP;
@@ -76,8 +40,8 @@ namespace GOTHIC_ENGINE {
 
 		auto addedValue = 0;
 		if (randomizer.Random(0, 100) <= CHAMPION_LOOT_CHANCE) {
-			for (const auto& lootTable : championLootTables) {
-			    addedValue += addRandomLootToNpc(npc, lootTable);
+			for (auto& lootTable : lootTableList) {
+			    addedValue += lootTable.addToNpc(npc);
 			}
 			npc->level += CHAMPION_EXTRA_LEVEL;
 		}

@@ -44,7 +44,7 @@ namespace GOTHIC_ENGINE {
 	public:
 		std::vector <zSTRING> possibleLootNames;
 
-		Loot(int _chanceWeight, int _chanceUpperbound, std::vector <zSTRING> _possibleLootNames, int _minAmount = 1, int _maxAmount = 1, bool _amountMeansPicks = 1, int _valueOverride = -1, std::set<zSTRING> _npcs = {}) {
+		Loot(int _chanceWeight, int _chanceUpperbound, std::vector <zSTRING> _possibleLootNames, int _minAmount = 1, int _maxAmount = 1, bool _amountMeansPicks = 1, int _valueOverride = -1) {
 			possibleLootNames = _possibleLootNames;
 			probability = _chanceWeight;
 			probabilityOutOf = _chanceUpperbound;
@@ -52,7 +52,6 @@ namespace GOTHIC_ENGINE {
 			maxAmount = _maxAmount;
 			amountMeansPicks = _amountMeansPicks;
 			valueOverride = _valueOverride;
-			npcs = _npcs;
 		};
 
 		int addItemToNpc(oCNpc* npc) const {
@@ -85,17 +84,6 @@ namespace GOTHIC_ENGINE {
 
 		int tryAddToNpc(oCNpc* npc) const {
 			if (!npc) {
-				return 0;
-			}
-			auto nameMatch = false;
-			for (auto name : npcs) {
-				if (npc->GetObjectName().HasWordI(name)) {
-					nameMatch = true;
-					break;
-				}
-			}
-			
-			if (!nameMatch) {
 				return 0;
 			}
 
@@ -139,8 +127,12 @@ namespace GOTHIC_ENGINE {
 			if (!chest) {
 				return false;
 			}
+			ogame->game_text->Printwin("Chest Loot Found");
+
 
 			if (randomizer.Random(0, probabilityOutOf) <= probability) {
+				ogame->game_text->Printwin("Chest Loot Added");
+
 				if (amountMeansPicks) {
 					auto addedSomething = false;
 					auto picks = randomizer.Random(1, maxAmount);

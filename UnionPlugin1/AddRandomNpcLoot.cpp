@@ -9,8 +9,8 @@ namespace GOTHIC_ENGINE {
 			for (size_t i = 0; i < list->GetNumInList(); ++i)
 			{
 				oCNpc* npc = list->Get(i);
-				for (const auto& lootTable : lootTables) {
-				    npcsCount += addLootToNPC(npc) ? 1 : 0;
+				for (auto& lootTable : lootTableList) {
+				    npcsCount += lootTable.addToNpc(npc) ? 1 : 0;
 				}
 			}
 		}

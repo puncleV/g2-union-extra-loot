@@ -9,14 +9,14 @@ namespace GOTHIC_ENGINE {
 		std::vector<zSTRING> npcs;
 		std::vector<Loot> loots;
 	public:
-		LootTable(std::vector <zSTRING> _npcs, std::vector<Loot> _loots, bool _boss, bool _champion, bool _perChapter, bool _givenToEveryone, bool _shouldStrengthen) {
+		//npcNames, _lootTable, bossessLoot, championsLoot, perChapter, chestsLoot
+		LootTable(std::vector <zSTRING> _npcs, std::vector<Loot> _loots, bool _boss, bool _champion, bool _perChapter, bool _chest) {
 			npcs = _npcs;
 			loots = _loots;
 			boss = _boss;
 			champion = _champion;
 			perChapter = _perChapter;
-			givenToEveryone = _givenToEveryone;
-			shouldStrengthen = _shouldStrengthen;
+			chest = _chest;
 		};
 
 		bool boss;
@@ -24,5 +24,72 @@ namespace GOTHIC_ENGINE {
 		bool perChapter;
 		bool givenToEveryone;
 		bool shouldStrengthen;
+		bool chest;
+
+		int addRandomLootToNpc(oCNpc* npc, const std::vector<Loot>& lootTable) {
+			auto addedLoot = -1;
+
+			for (size_t i = 0; i < lootTable.size(); i++)
+			{
+				addedLoot += lootTable[i].tryAddToNpc(npc);
+			}
+
+			return addedLoot;
+		}
+
+		bool addToNpc(oCNpc* npc, bool isChampion = false) {
+			if (ignoredNpcForLoot(npc) || chest) {
+				return FALSE;
+			}
+
+			if (boss && !npc->isBoss()) {
+				return FALSE;
+			}
+
+			if (champion && !isChampion) {
+				return FALSE;
+			}
+
+			auto chapterLootWasGiven = npc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX);
+
+			if (!perChapter && chapterLootWasGiven != 0) {
+				return FALSE;
+			}
+
+			if (perChapter && chapterLootWasGiven == getCurrentChapter()) {
+				return FALSE;
+			}
+
+			auto nameMatch = true;
+
+			for (auto name : npcs) {
+				nameMatch = npc->GetObjectName().HasWordI(name);
+
+				if (nameMatch) {
+					break;
+				}
+			}
+
+			if (!nameMatch) {
+				return FALSE;
+			}
+
+			oCWorld* world = dynamic_cast<oCWorld*>(ogame->GetWorld());
+
+			auto lootGiven = addRandomLootToNpc(npc, loots);
+
+			return shouldStrengthen ? lootGiven : 0;
+		}
+
+		void addRandomLootToChest(oCMobContainer* chestForLoot) {
+			if (!chest) {
+				return;
+			}
+
+			for (auto loot : loots)
+			{
+				loot.tryAddToChest(chestForLoot);
+			}
+		}
 	};
 }
