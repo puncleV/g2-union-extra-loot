@@ -16,8 +16,6 @@ namespace GOTHIC_ENGINE {
 		bool amountMeansPicks;
 
 		int getRandomItemAmount(oCItem* item) const {
-			auto itemName = item->GetObjectName();
-
 			if (minAmount == maxAmount) {
 				return minAmount;
 			}
@@ -54,7 +52,7 @@ namespace GOTHIC_ENGINE {
 			valueOverride = _valueOverride;
 		};
 
-		int addItemToNpc(oCNpc* npc) const {
+		int addItemToNpc(oCNpc* npc, bool steal = false) const {
 			auto itemName = randomizer.getRandomArrayElement(possibleLootNames);
 			auto item = getItemWithAmount(itemName);
 			auto value = -1;
@@ -77,12 +75,21 @@ namespace GOTHIC_ENGINE {
 				npc->PutInInv(item);
 			}
 
+			if (steal) {
+				zCPar_Symbol* sym = parser->GetSymbol("PV_STEAL_ITEM_NAME");
+
+				if (sym) {
+					sym->SetValue(Z item->GetName(0), 0);
+				}
+				parser->CallFunc(parser->GetIndex("PRINT_STOLEN_ITEM"));
+			}
+
 			item->Release();
 
 			return value;
 		}
 
-		int tryAddToNpc(oCNpc* npc) const {
+		int tryAddToNpc(oCNpc* npc, bool steal = false) const {
 			if (!npc) {
 				return 0;
 			}
@@ -92,11 +99,11 @@ namespace GOTHIC_ENGINE {
 				if (amountMeansPicks) {
 					auto picks = randomizer.Random(1, maxAmount);
 					for (auto i = minAmount - 1; i < picks; i += 1) {
-						sumValue += addItemToNpc(npc);
+						sumValue += addItemToNpc(npc, steal);
 					}
 				}
 				else {
-					sumValue += addItemToNpc(npc);
+					sumValue += addItemToNpc(npc, steal);
 				}
 			}
 

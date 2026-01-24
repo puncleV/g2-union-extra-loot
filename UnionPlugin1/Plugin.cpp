@@ -117,6 +117,7 @@ namespace GOTHIC_ENGINE {
 	}
 
 	void Game_DefineExternals() {
+		RegisterExternals_punclev();
 	}
 
 	void Game_ApplyOptions() {

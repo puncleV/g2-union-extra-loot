@@ -49,8 +49,9 @@ namespace GOTHIC_ENGINE {
 		minChampionStats(npc);
 		strengthenNpc(npc, CHAMPION_STRENGTHEN_VALUE + addedValue * 1.25);
 		maxChampionStats(npc);
-		
-		npc->aiscriptvars[AIV_BOSS] = 1;
+		if (BOSSIFY_CHAMPIONS) {
+			npc->aiscriptvars[AIV_BOSS] = 1;
+		}
 
 		return true;
 	}
