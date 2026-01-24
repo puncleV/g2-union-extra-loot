@@ -34,6 +34,7 @@ namespace GOTHIC_ENGINE {
 		SHOULD_ADD_LOOT_TO_NPC = zoptions->ReadBool("PUNCLEV_ADDITIONAL_LOOT", "ShouldAddLootToNpc", TRUE);
 		SHOULD_ADD_LOOT_TO_CHESTS = zoptions->ReadBool("PUNCLEV_ADDITIONAL_LOOT", "ShouldAddLootToChests", TRUE);
 		SHOULD_USE_NPC_LOOT_FOR_CHESTS = zoptions->ReadBool("PUNCLEV_ADDITIONAL_LOOT", "ShouldUseNpcLootForChests", FALSE);
+		BOSSIFY_CHAMPIONS = zoptions->ReadBool("PUNCLEV_ADDITIONAL_LOOT", "BossifyChampions", FALSE);
 		IS_DEBUG = zoptions->ReadBool("PUNCLEV_ADDITIONAL_LOOT", "Debug", FALSE);
 		JSON_FILE_NAME = zoptions->ReadString("PUNCLEV_ADDITIONAL_LOOT", "JsonFileName", "punclev-utils.json");
 	}
