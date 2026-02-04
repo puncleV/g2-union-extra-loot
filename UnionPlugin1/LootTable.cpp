@@ -92,6 +92,20 @@ namespace GOTHIC_ENGINE {
 				return;
 			}
 
+			auto nameMatch = true;
+
+			for (auto name : npcs) {
+				nameMatch = chestForLoot->GetObjectName().HasWordI(name);
+
+				if (nameMatch) {
+					break;
+				}
+			}
+
+			if (!nameMatch) {
+				return;
+			}
+
 			for (auto loot : loots)
 			{
 				loot.tryAddToChest(chestForLoot);
