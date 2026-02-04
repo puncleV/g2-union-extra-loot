@@ -7,8 +7,13 @@ namespace GOTHIC_ENGINE {
 		auto addedValue = 0;
 
 		for (auto& lootTable : lootTableList) {
+			if(lootTable.steal) {
+				continue;
+			}
 			addedValue += lootTable.addToNpc(npc, isChampion);
 		}
+
+		addedValue = max(addedValue, 0);
 
 		if (addedValue > 0) {
 			lootGiven = true;
@@ -17,6 +22,25 @@ namespace GOTHIC_ENGINE {
 		}
 
 		return lootGiven;
+	}
+
+	int addStealLoot() {
+		auto lootGiven = false;
+		auto addedValue = 0;
+
+
+		for (auto& lootTable : lootTableList) {
+			if (!lootTable.steal) {
+				continue;
+			}
+			addedValue += lootTable.addToNpc(player, 0, 1);
+		}
+
+		return 0;
+	}
+
+	void RegisterExternals_punclev() {
+		parser->DefineExternal("punclev_loot_steal", addStealLoot, zPAR_TYPE_STRING, 0);
 	}
 
 	void oCNpc::setNpcVar(int varIdx, int value = 1) {
@@ -52,6 +76,10 @@ namespace GOTHIC_ENGINE {
 			auto chapterLootWasGiven = npc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX);
 			auto isChampion = false;
 			
+			if (chapterLootWasGiven == CHAMPION_VALUE || chapterLootWasGiven >= getCurrentChapter()) {
+				return;
+			}
+
 			if (chapterLootWasGiven == 0 && randomizer.Random(0, 1000) < CHAMPION_CHANCE) {
 				isChampion = true;
 			}
