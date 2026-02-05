@@ -43,20 +43,12 @@ namespace GOTHIC_ENGINE {
 		parser->DefineExternal("punclev_loot_steal", addStealLoot, zPAR_TYPE_STRING, 0);
 	}
 
-	void oCNpc::setNpcVar(int varIdx, int value = 1) {
-		parser->SetInstance("NPCVARINST", this);
-		parser->CallFunc(parser->GetIndex("SetNpcVar"), varIdx, value);
-	}
-
-	int oCNpc::getNpcVar(int varIdx) {
-		parser->SetInstance("NPCVARINST", this);
-		auto value = *(int*)parser->CallFunc(parser->GetIndex("GetNpcVar"), varIdx);
-
-		return value;
+	int oCNpc::getNpcId() {
+		return this->aiscriptvars[AIVAR_FOR_NPC_ID];
 	}
 
 	bool oCNpc::isChampion() {
-		return this->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX) == CHAMPION_VALUE;
+		return npcVariables.getVariable(this->getNpcId(), NpcVariables::CHAPTER_LOOT_GIVEN_AT) == NpcVariables::CHAMPION;
 	}
 
 	bool oCNpc::isBoss() {
@@ -73,15 +65,16 @@ namespace GOTHIC_ENGINE {
 		}
 
 		if (npc != oCNpc::player) {
-			assignIdToNpc(npc);
-			auto chapterLootWasGiven = npc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX);
+			int npcId = assignIdToNpc(npc);;
+			auto chapterLootWasGiven = npcVariables.getVariable(npcId, NpcVariables::CHAPTER_LOOT_GIVEN_AT);
 			auto isChampion = false;
 			
-			if (chapterLootWasGiven == CHAMPION_VALUE || chapterLootWasGiven >= getCurrentChapter()) {
+			
+			if (chapterLootWasGiven == NpcVariables::CHAMPION || chapterLootWasGiven >= getCurrentChapter()) {
 				return;
 			}
 
-			if (chapterLootWasGiven == 0 && randomizer.Random(0, 1000) < CHAMPION_CHANCE) {
+			if (chapterLootWasGiven == NpcVariables::Value::NOT_GIVEN && randomizer.Random(0, 1000) < CHAMPION_CHANCE) {
 				isChampion = true;
 			}
 
@@ -89,8 +82,8 @@ namespace GOTHIC_ENGINE {
 
 			if (isChampion) {
 				makeChampion(npc);
-			} else if (chapterLootWasGiven != getCurrentChapter() && chapterLootWasGiven != CHAMPION_VALUE) {
-				npc->setNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX, getCurrentChapter());
+			} else if (chapterLootWasGiven != getCurrentChapter() && chapterLootWasGiven != NpcVariables::CHAMPION) {
+				npcVariables.setVariable(npcId, NpcVariables::CHAPTER_LOOT_GIVEN_AT, getCurrentChapter());
 			}
 		}
 	}

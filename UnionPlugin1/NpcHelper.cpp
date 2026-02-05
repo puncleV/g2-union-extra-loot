@@ -38,10 +38,11 @@ namespace GOTHIC_ENGINE {
 		auto addedValue = 150;
 		npc->level += CHAMPION_EXTRA_LEVEL;
 
-		npc->setNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX, CHAMPION_VALUE);
+		int npcId = npc->getNpcId();
+		npcVariables.setVariable(npcId, NpcVariables::CHAPTER_LOOT_GIVEN_AT, NpcVariables::CHAMPION);
 
 		if (randomizer.Random(0, 100) < CHAMPION_LP_CHANCE) {
-			npc->setNpcVar(AIVRX_NPC_LP, CHAMPION_LP_INCREASE);
+			npcVariables.setVariable(npcId, NpcVariables::LP_INCREASE, CHAMPION_LP_INCREASE);
 
 			addedValue += CHAMPION_STRENGHTEN_VALUE_PER_LP * CHAMPION_LP_INCREASE;
 		}
@@ -60,9 +61,9 @@ namespace GOTHIC_ENGINE {
 		auto currentId = npc->aiscriptvars[AIVAR_FOR_NPC_ID];
 		if (currentId == 0) {
 			npc->aiscriptvars[AIVAR_FOR_NPC_ID] = npcVariables.getNextNpcId();
+			npcVariables.setVariable(npc->aiscriptvars[AIVAR_FOR_NPC_ID], NpcVariables::CHAPTER_LOOT_GIVEN_AT, -1);
 		}
 
-		npcVariables.setVariable(npc->aiscriptvars[AIVAR_FOR_NPC_ID], NpcVariables::CHAPTER_LOOT_GIVEN_AT, 0);
 		return npc->aiscriptvars[AIVAR_FOR_NPC_ID];
 	}
 }

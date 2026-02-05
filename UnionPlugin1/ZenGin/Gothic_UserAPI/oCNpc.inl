@@ -6,11 +6,10 @@
 int addLootOnAssessEnemy(oCNpc*);
 int addLootOnAssessPlayer(oCNpc*);
 
-void setNpcVar(int, int);
-
-int getNpcVar(int);
+int getNpcId();
 bool isChampion();
 bool isBoss();
 bool isSummon();
 zCArray<oCNpc*> goThroughNpcsInRadius(float);
 void randomizeChestsInRadius(float);
+

@@ -50,9 +50,10 @@ namespace GOTHIC_ENGINE {
 				return 0;
 			}
 
-			auto chapterLootWasGiven = npc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX);
+			int npcId = npc->getNpcId();
+			auto chapterLootWasGiven = npcVariables.getVariable(npcId, NpcVariables::CHAPTER_LOOT_GIVEN_AT);
 
-			if (!perChapter && chapterLootWasGiven != 0) {
+			if (!perChapter && chapterLootWasGiven != 0 && chapterLootWasGiven != -1) {
 				return 0;
 			}
 

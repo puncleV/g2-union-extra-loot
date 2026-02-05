@@ -8,10 +8,12 @@ namespace GOTHIC_ENGINE {
     class NpcVariables {
     public:
         enum VariableKey {
-            CHAPTER_LOOT_GIVEN_AT = 0
+            CHAPTER_LOOT_GIVEN_AT = 0,
+            LP_INCREASE = 1
         };
         enum Value {
-            CHAMPION = 10
+            CHAMPION = 10,
+            NOT_GIVEN = -1
         };
     private:
         std::map<int, std::map<int, int>> npcIntVars;

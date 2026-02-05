@@ -40,10 +40,12 @@ namespace GOTHIC_ENGINE {
 		if (IS_DEBUG) {
 
 			if (focusNpc) {
-				ogame->game_text->Printwin("Loot given: " + Z focusNpc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX));
+				int npcId = focusNpc->getNpcId();
+				int lootGiven = npcVariables.getVariable(npcId, NpcVariables::CHAPTER_LOOT_GIVEN_AT);
+				ogame->game_text->Printwin("Loot given: " + Z lootGiven);
 				ogame->game_text->Printwin("Debug mode: " + Z IS_DEBUG);
 				ogame->game_text->Printwin("Npc Name: " + Z focusNpc->GetObjectName());
-				ogame->game_text->Printwin("Npc ID: " + Z focusNpc->aiscriptvars[AIVAR_FOR_NPC_ID]);
+				ogame->game_text->Printwin("Npc ID: " + Z npcId);
 			}
 
 			auto focusVob = player->GetFocusVob();
