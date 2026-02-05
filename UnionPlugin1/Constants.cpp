@@ -46,12 +46,13 @@ namespace GOTHIC_ENGINE {
 	auto BOSSIFY_CHAMPIONS = FALSE;
 	auto IS_DEBUG = FALSE;
 
+	zSTRING REMOVE_ITEMS_VOB_NAME = "";
+
 	auto AIVAR_FOR_NPC_ID = 99;
 
 	std::vector<zSTRING> ignoreLootNpcList = { "TOTEM", "CRAIT", "KHUBA", "SUMKHUBI", "PET_JINA", "LARES", "BILGOT", "PC_TH", "PC_PSIO", "PC_FIG", "PC_MAGE", "ALLIGATORJACK" };
 	auto AIV_IS_SUMMON_NPC = 91;
 	auto AIV_PARTYMEMBER = 15;
-	auto CHAMPION_VALUE = 10;
 
 	int getCurrentChapter() {
 		int retVal = 0;
