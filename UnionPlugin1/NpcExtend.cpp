@@ -73,6 +73,7 @@ namespace GOTHIC_ENGINE {
 		}
 
 		if (npc != oCNpc::player) {
+			assignIdToNpc(npc);
 			auto chapterLootWasGiven = npc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX);
 			auto isChampion = false;
 			

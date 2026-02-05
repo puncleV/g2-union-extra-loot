@@ -43,6 +43,7 @@ namespace GOTHIC_ENGINE {
 				ogame->game_text->Printwin("Loot given: " + Z focusNpc->getNpcVar(ADDITIONAL_LOOT_GIVEN_NPC_VAR_IDX));
 				ogame->game_text->Printwin("Debug mode: " + Z IS_DEBUG);
 				ogame->game_text->Printwin("Npc Name: " + Z focusNpc->GetObjectName());
+				ogame->game_text->Printwin("Npc ID: " + Z focusNpc->aiscriptvars[AIVAR_FOR_NPC_ID]);
 			}
 
 			auto focusVob = player->GetFocusVob();
@@ -69,6 +70,11 @@ namespace GOTHIC_ENGINE {
 	TSaveLoadGameInfo& SaveLoadGameInfo = UnionCore::SaveLoadGameInfo;
 
 	void Game_SaveBegin() {
+		int slot = SaveLoadGameInfo.slotID;
+		string saveName = TSaveLoadGameInfo::GetSaveSlotName(slot);
+		string savePath = zoptions->GetDirString(DIR_SAVEGAMES) + "\\" + Z saveName + "\\ExtraLootNpcData.sav";
+
+		npcVariables.saveToFile(savePath.ToChar());
 	}
 
 	void Game_SaveEnd() {
@@ -82,6 +88,7 @@ namespace GOTHIC_ENGINE {
 
 	void Game_LoadBegin_NewGame() {
 		LoadBegin();
+		npcVariables.clear();
 	}
 
 	void Game_LoadEnd_NewGame() {
@@ -90,6 +97,11 @@ namespace GOTHIC_ENGINE {
 
 	void Game_LoadBegin_SaveGame() {
 		LoadBegin();
+		int slot = SaveLoadGameInfo.slotID;
+		string saveName = TSaveLoadGameInfo::GetSaveSlotName(slot);
+		string savePath = zoptions->GetDirString(DIR_SAVEGAMES) + "\\" + Z saveName + "\\ExtraLootNpcData.sav";
+
+		npcVariables.loadFromFile(savePath.ToChar());
 	}
 
 	void Game_LoadEnd_SaveGame() {

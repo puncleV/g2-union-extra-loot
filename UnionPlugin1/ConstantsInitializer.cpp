@@ -37,5 +37,6 @@ namespace GOTHIC_ENGINE {
 		BOSSIFY_CHAMPIONS = zoptions->ReadBool("PUNCLEV_ADDITIONAL_LOOT", "BossifyChampions", FALSE);
 		IS_DEBUG = zoptions->ReadBool("PUNCLEV_ADDITIONAL_LOOT", "Debug", FALSE);
 		JSON_FILE_NAME = zoptions->ReadString("PUNCLEV_ADDITIONAL_LOOT", "JsonFileName", "punclev-utils.json");
+		AIVAR_FOR_NPC_ID = zoptions->ReadInt("PUNCLEV_ADDITIONAL_LOOT", "AivarForNpcId", 99);
 	}
 }

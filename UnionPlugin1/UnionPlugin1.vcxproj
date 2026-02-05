@@ -890,6 +890,7 @@ $(ALLUSERSPROFILE)\Union\SDK\Union\v1.0m\Build\incver.exe $(ProjectDir)</Command
     <ClInclude Include="NpcExtend.cpp" />
     <ClInclude Include="NpcHelper.cpp" />
     <ClInclude Include="Loot.cpp" />
+    <ClInclude Include="NpcVariables.cpp" />
     <ClCompile Include="Randomiser.cpp" />
     <ClInclude Include="RegisterCommands.cpp" />
     <ClCompile Include="ZenGin\Gothic_II_Addon\ClassDeclarators_G2A.cpp" />

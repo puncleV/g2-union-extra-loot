@@ -55,4 +55,14 @@ namespace GOTHIC_ENGINE {
 
 		return true;
 	}
+
+	int assignIdToNpc(oCNpc* npc) {
+		auto currentId = npc->aiscriptvars[AIVAR_FOR_NPC_ID];
+		if (currentId == 0) {
+			npc->aiscriptvars[AIVAR_FOR_NPC_ID] = npcVariables.getNextNpcId();
+		}
+
+		npcVariables.setVariable(npc->aiscriptvars[AIVAR_FOR_NPC_ID], NpcVariables::CHAPTER_LOOT_GIVEN_AT, 0);
+		return npc->aiscriptvars[AIVAR_FOR_NPC_ID];
+	}
 }
