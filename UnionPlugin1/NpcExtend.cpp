@@ -90,6 +90,20 @@ namespace GOTHIC_ENGINE {
 		return 0;
 	}
 
+	int deleteNpcVariables(oCNpc* npc) {
+		if (!npc) {
+			return 0;
+		}
+
+		int npcId = npc->getNpcId();
+		if (npcId <= 0) {
+			return 0;
+		}
+
+		npcVariables.deleteNpc(npcId);
+		return 1;
+	}
+
 	void RegisterExternals_punclev() {
 		parser->DefineExternal("punclev_loot_steal", addStealLoot, zPAR_TYPE_STRING, 0);
 		parser->DefineExternal("punclev_remove_all_items", removeAllItemsFromChest, zPAR_TYPE_INT, 0);
@@ -158,6 +172,7 @@ namespace GOTHIC_ENGINE {
 			if (!npc)
 				continue;
 			if (npc->IsDead())
+				deleteNpcVariables(npc);
 				continue;
 
 			goThroughNpcHandlers(npc);

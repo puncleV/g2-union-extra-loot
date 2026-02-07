@@ -43,6 +43,12 @@ namespace GOTHIC_ENGINE {
             lastGivenNpcId = 1;
         }
 
+        void deleteNpc(int npcId) {
+            if (npcIntVars.count(npcId)) {
+                npcIntVars.erase(npcId);
+            }
+        }
+
         bool saveToFile(const char* filepath) {
             FILE* file = fopen(filepath, "wb");
             if (!file) {
