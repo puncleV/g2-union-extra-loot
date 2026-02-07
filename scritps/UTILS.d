@@ -39,3 +39,12 @@ var string pv_steal_item_name;
 func void print_stolen_item() {
     print(concatstrings(punclev_lucky_steal_str, pv_steal_item_name));
 };
+
+const string punclev_lp_give = "Я стал опытнее: +";
+const string punclev_lp_given = "ЛП";
+
+var string pv_lp_given;
+
+func void print_pv_lp() {
+    print(concatstrings(concatstrings(punclev_lp_give, pv_lp_given), punclev_lp_given));
+};

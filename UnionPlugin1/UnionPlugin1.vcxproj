@@ -1748,6 +1748,7 @@ $(ALLUSERSPROFILE)\Union\SDK\Union\v1.0m\Build\incver.exe $(ProjectDir)</Command
     <ClInclude Include="ZenGin\zGothicAPI.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\scritps\UTILS.d" />
     <None Include=".build_settings.inl" />
     <None Include="Plugin.patch" />
     <None Include="ZenGin\Gothic_UserAPI\CGameManager.inl" />

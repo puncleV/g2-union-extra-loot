@@ -100,6 +100,17 @@ namespace GOTHIC_ENGINE {
 			return 0;
 		}
 
+		if (npcVariables.getVariable(npcId, NpcVariables::VariableKey::LP_INCREASE) > 0) {
+			player->learn_points += npcVariables.getVariable(npcId, NpcVariables::VariableKey::LP_INCREASE);
+
+			zCPar_Symbol* sym = parser->GetSymbol("PV_LP_GIVEN");
+
+			if (sym) {
+				sym->SetValue(Z npcVariables.getVariable(npcId, NpcVariables::VariableKey::LP_INCREASE), 0);
+			}
+			parser->CallFunc(parser->GetIndex("print_pv_lp"));
+		}
+
 		npcVariables.deleteNpc(npcId);
 		npc->aiscriptvars[AIVAR_FOR_NPC_ID] = 0;
 		return 1;

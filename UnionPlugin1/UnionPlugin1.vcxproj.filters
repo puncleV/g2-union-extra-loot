@@ -4703,6 +4703,9 @@
     <None Include="Plugin.patch">
       <Filter>Plugin\Workspace\Plugin</Filter>
     </None>
+    <None Include="..\scritps\UTILS.d">
+      <Filter>Plugin</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
