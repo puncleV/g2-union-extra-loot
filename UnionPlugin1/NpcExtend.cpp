@@ -101,6 +101,7 @@ namespace GOTHIC_ENGINE {
 		}
 
 		npcVariables.deleteNpc(npcId);
+		npc->aiscriptvars[AIVAR_FOR_NPC_ID] = 0;
 		return 1;
 	}
 
