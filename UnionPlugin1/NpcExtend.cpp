@@ -172,9 +172,10 @@ namespace GOTHIC_ENGINE {
 			npc = zDYNAMIC_CAST<oCNpc>(pVob);
 			if (!npc)
 				continue;
-			if (npc->IsDead())
+			if (npc->IsDead()) {
 				deleteNpcVariables(npc);
 				continue;
+			}
 
 			goThroughNpcHandlers(npc);
 		}

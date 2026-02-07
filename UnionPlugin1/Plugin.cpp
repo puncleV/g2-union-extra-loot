@@ -68,29 +68,33 @@ namespace GOTHIC_ENGINE {
 	void Game_MenuLoop() {
 	}
 
-	// Information about current saving or loading world
-	TSaveLoadGameInfo& SaveLoadGameInfo = UnionCore::SaveLoadGameInfo;
-
 	void Game_SaveBegin() {
-		int slot = SaveLoadGameInfo.slotID;
-		string saveName = TSaveLoadGameInfo::GetSaveSlotName(slot);
-		string savePath = zoptions->GetDirString(DIR_SAVEGAMES) + "\\" + Z saveName + "\\ExtraLootNpcData.sav";
-
+		string rootDir = zoptions->GetDirString(DIR_ROOT);
+		string dir = zoptions->GetDirString(zTOptionPaths::DIR_SAVEGAMES);
+		string savePath = string::Combine("%s\\%s\\current\\EXTRALOOTNPCDATA.SAV", rootDir, dir);
 		npcVariables.saveToFile(savePath.ToChar());
 	}
 
 	void Game_SaveEnd() {
 	}
 
+	TSaveLoadGameInfo& SaveLoadGameInfo = UnionCore::SaveLoadGameInfo;
+	int slot = SaveLoadGameInfo.slotID;
+
 	void LoadBegin() {
+		
 	}
 
 	void LoadEnd() {
+		npcVariables.clear();
+		string rootDir = zoptions->GetDirString(DIR_ROOT);
+		string dir = zoptions->GetDirString(zTOptionPaths::DIR_SAVEGAMES);
+		string savePath = string::Combine("%s\\%s\\current\\EXTRALOOTNPCDATA.SAV", rootDir, dir);
+		npcVariables.loadFromFile(savePath.ToChar());
 	}
 
 	void Game_LoadBegin_NewGame() {
 		LoadBegin();
-		npcVariables.clear();
 	}
 
 	void Game_LoadEnd_NewGame() {
@@ -99,11 +103,7 @@ namespace GOTHIC_ENGINE {
 
 	void Game_LoadBegin_SaveGame() {
 		LoadBegin();
-		int slot = SaveLoadGameInfo.slotID;
-		string saveName = TSaveLoadGameInfo::GetSaveSlotName(slot);
-		string savePath = zoptions->GetDirString(DIR_SAVEGAMES) + "\\" + Z saveName + "\\ExtraLootNpcData.sav";
 
-		npcVariables.loadFromFile(savePath.ToChar());
 	}
 
 	void Game_LoadEnd_SaveGame() {

@@ -18,7 +18,7 @@ namespace GOTHIC_ENGINE {
     private:
         std::map<int, std::map<int, int>> npcIntVars;
 		int lastGivenNpcId = 1;
-
+		bool initialized = false;
     public:
         void setVariable(int npcId, int key, int value) {
             npcIntVars[npcId][key] = value;
@@ -52,6 +52,8 @@ namespace GOTHIC_ENGINE {
         bool saveToFile(const char* filepath) {
             FILE* file = fopen(filepath, "wb");
             if (!file) {
+                ogame->game_text->Printwin(Z "NO FILE");
+
                 return false;
             }
 
