@@ -91,6 +91,9 @@ namespace GOTHIC_ENGINE {
 	}
 
 	int deleteNpcVariables(oCNpc* npc) {
+		if (!CLEANUP_NPCS) {
+			return 0;
+		}
 		if (!npc) {
 			return 0;
 		}
@@ -112,7 +115,7 @@ namespace GOTHIC_ENGINE {
 		}
 
 		npcVariables.deleteNpc(npcId);
-		npc->aiscriptvars[AIVAR_FOR_NPC_ID] = 0;
+		npc->aiscriptvars[AIVAR_FOR_NPC_ID] = -1;
 		return 1;
 	}
 
@@ -138,7 +141,7 @@ namespace GOTHIC_ENGINE {
 	}
 
 	void goThroughNpcHandlers(oCNpc* npc) {
-		if (!npc) {
+		if (!npc || npc->aiscriptvars[AIVAR_FOR_NPC_ID] == -1) {
 			return;
 		}
 
