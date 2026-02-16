@@ -2,6 +2,30 @@
 // Union SOURCE file
 
 namespace GOTHIC_ENGINE {
+	void giveLpToKiller(oCNpc* npc) {
+		int npcId = npc->getNpcId();
+
+		if (npcId <= 0) {
+			return;
+		}
+
+		oCNpc* killer = npc->enemy;
+
+		if (killer != player && !killer->aiscriptvars[AIV_PARTYMEMBER]) {
+			return;
+		}
+
+		if (npcVariables.getVariable(npcId, NpcVariables::VariableKey::LP_INCREASE) > 0) {
+			player->learn_points += npcVariables.getVariable(npcId, NpcVariables::VariableKey::LP_INCREASE);
+
+			zCPar_Symbol* sym = parser->GetSymbol("PV_LP_GIVEN");
+
+			if (sym) {
+				sym->SetValue(Z npcVariables.getVariable(npcId, NpcVariables::VariableKey::LP_INCREASE), 0);
+			}
+			parser->CallFunc(parser->GetIndex("print_pv_lp"));
+		}
+	}
 	bool addLootToNPC(oCNpc* npc, bool isChampion) {
 		auto lootGiven = false;
 		auto addedValue = 0;
@@ -103,17 +127,6 @@ namespace GOTHIC_ENGINE {
 			return 0;
 		}
 
-		if (npcVariables.getVariable(npcId, NpcVariables::VariableKey::LP_INCREASE) > 0) {
-			player->learn_points += npcVariables.getVariable(npcId, NpcVariables::VariableKey::LP_INCREASE);
-
-			zCPar_Symbol* sym = parser->GetSymbol("PV_LP_GIVEN");
-
-			if (sym) {
-				sym->SetValue(Z npcVariables.getVariable(npcId, NpcVariables::VariableKey::LP_INCREASE), 0);
-			}
-			parser->CallFunc(parser->GetIndex("print_pv_lp"));
-		}
-
 		npcVariables.deleteNpc(npcId);
 		npc->aiscriptvars[AIVAR_FOR_NPC_ID] = -1;
 		return 1;
@@ -187,6 +200,7 @@ namespace GOTHIC_ENGINE {
 			if (!npc)
 				continue;
 			if (npc->IsDead()) {
+				giveLpToKiller(npc);
 				deleteNpcVariables(npc);
 				continue;
 			}
