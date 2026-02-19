@@ -5,7 +5,7 @@
 #include <map>
 
 namespace GOTHIC_ENGINE {
-    class NpcVariables {
+    class SaveData {
     public:
         enum VariableKey {
             CHAPTER_LOOT_GIVEN_AT = 0,
@@ -17,29 +17,50 @@ namespace GOTHIC_ENGINE {
         };
     private:
         std::map<int, std::map<int, int>> npcIntVars;
-		int lastGivenNpcId = 1;
-		bool initialized = false;
+        std::map<zSTRING, int> itemsGivenCount;
+        int lastGivenNpcId = 1;
+        bool initialized = false;
     public:
         void setVariable(int npcId, int key, int value) {
             npcIntVars[npcId][key] = value;
         }
+        
         int getVariable(int npcId, int key) {
             if (npcIntVars.count(npcId) && npcIntVars[npcId].count(key)) {
                 return npcIntVars[npcId][key];
             }
-
             return -1;
         }
+        
         int getNextNpcId() {
             while (npcIntVars.count(lastGivenNpcId)) {
                 lastGivenNpcId++;
             }
-
             return lastGivenNpcId;
+        }
+
+        // Item tracking methods
+        int getItemGivenCount(const zSTRING& itemName) {
+            if (itemsGivenCount.count(itemName)) {
+                return itemsGivenCount[itemName];
+            }
+            return 0;
+        }
+
+        void incrementItemGiven(const zSTRING& itemName, int amount = 1) {
+            itemsGivenCount[itemName] += amount;
+        }
+
+        bool canGiveItem(const zSTRING& itemName, int maxPerGame) {
+            if (maxPerGame <= 0) {
+                return true; // No limit
+            }
+            return getItemGivenCount(itemName) < maxPerGame;
         }
 
         void clear() {
             npcIntVars.clear();
+            itemsGivenCount.clear();
             lastGivenNpcId = 1;
         }
 
@@ -52,13 +73,13 @@ namespace GOTHIC_ENGINE {
         bool saveToFile(const char* filepath) {
             FILE* file = fopen(filepath, "wb");
             if (!file) {
-                ogame->game_text->Printwin(Z "NO FILE");
-
                 return false;
             }
 
+            // Save NPC ID counter
             fwrite(&lastGivenNpcId, sizeof(int), 1, file);
 
+            // Save NPC variables
             int npcCount = npcIntVars.size();
             fwrite(&npcCount, sizeof(int), 1, file);
 
@@ -77,6 +98,23 @@ namespace GOTHIC_ENGINE {
                 }
             }
 
+            // Save items given count
+            int itemsCount = itemsGivenCount.size();
+            fwrite(&itemsCount, sizeof(int), 1, file);
+
+            for (auto& itemPair : itemsGivenCount) {
+                // Save item name length
+                int nameLen = itemPair.first.Length();
+                fwrite(&nameLen, sizeof(int), 1, file);
+                
+                // Save item name
+                fwrite(itemPair.first.ToChar(), sizeof(char), nameLen, file);
+                
+                // Save count
+                int count = itemPair.second;
+                fwrite(&count, sizeof(int), 1, file);
+            }
+
             fclose(file);
             return true;
         }
@@ -89,8 +127,10 @@ namespace GOTHIC_ENGINE {
 
             clear();
 
+            // Load NPC ID counter
             fread(&lastGivenNpcId, sizeof(int), 1, file);
 
+            // Load NPC variables
             int npcCount = 0;
             fread(&npcCount, sizeof(int), 1, file);
 
@@ -111,10 +151,37 @@ namespace GOTHIC_ENGINE {
                 }
             }
 
+            // Load items given count
+            int itemsCount = 0;
+            fread(&itemsCount, sizeof(int), 1, file);
+
+            for (int i = 0; i < itemsCount; i++) {
+                // Load item name length
+                int nameLen = 0;
+                fread(&nameLen, sizeof(int), 1, file);
+                
+                // Load item name
+                char* nameBuffer = new char[nameLen + 1];
+                fread(nameBuffer, sizeof(char), nameLen, file);
+                nameBuffer[nameLen] = '\0';
+                zSTRING itemName = nameBuffer;
+                delete[] nameBuffer;
+                
+                // Load count
+                int count = 0;
+                fread(&count, sizeof(int), 1, file);
+                
+                itemsGivenCount[itemName] = count;
+            }
+
             fclose(file);
             return true;
         }
     };
 
-	NpcVariables npcVariables;
+    SaveData saveData;
+    
+    // Backward compatibility alias
+    #define npcVariables saveData
+    #define NpcVariables SaveData
 }
