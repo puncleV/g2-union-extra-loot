@@ -9,9 +9,10 @@ namespace GOTHIC_ENGINE {
 		std::vector<zSTRING> npcs;
 		std::vector<zSTRING> ignoreNpcs;
 		std::vector<Loot> loots;
+		zSTRING world;
 	public:
-		//npcNames, _lootTable, bossessLoot, championsLoot, perChapter, chestsLoot, stealLoot, ignoreNpcNames
-		LootTable(std::vector <zSTRING> _npcs, std::vector<Loot> _loots, bool _boss, bool _champion, bool _perChapter, bool _chest, bool _steal, std::vector<zSTRING> _ignoreNpcs = {}) {
+		//npcNames, _lootTable, bossessLoot, championsLoot, perChapter, chestsLoot, stealLoot, ignoreNpcNames, worldName
+		LootTable(std::vector <zSTRING> _npcs, std::vector<Loot> _loots, bool _boss, bool _champion, bool _perChapter, bool _chest, bool _steal, std::vector<zSTRING> _ignoreNpcs = {}, zSTRING _world = "") {
 			npcs = _npcs;
 			loots = _loots;
 			boss = _boss;
@@ -20,6 +21,7 @@ namespace GOTHIC_ENGINE {
 			chest = _chest;
 			steal = _steal;
 			ignoreNpcs = _ignoreNpcs;
+			world = _world;
 		};
 
 		bool boss;
@@ -42,6 +44,17 @@ namespace GOTHIC_ENGINE {
 		int addToNpc(oCNpc* npc, bool isChampion = false, bool isSteal = false) {
 			if (ignoredNpcForLoot(npc) || chest) {
 				return 0;
+			}
+
+			// Check if world filter is set and matches current world
+			if (!world.IsEmpty()) {
+				oCWorld* currentWorld = ogame->GetGameWorld();
+				if (currentWorld) {
+					zSTRING worldName = currentWorld->GetWorldName();
+					if (!worldName.HasWordI(world)) {
+						return 0;
+					}
+				}
 			}
 
 			// Check if NPC is in ignore list
@@ -94,6 +107,17 @@ namespace GOTHIC_ENGINE {
 		void addRandomLootToChest(oCMobContainer* chestForLoot) {
 			if (!chest) {
 				return;
+			}
+
+			// Check if world filter is set and matches current world
+			if (!world.IsEmpty()) {
+				oCWorld* currentWorld = ogame->GetGameWorld();
+				if (currentWorld) {
+					zSTRING worldName = currentWorld->GetWorldName();
+					if (!worldName.HasWordI(world)) {
+						return;
+					}
+				}
 			}
 
 			auto nameMatch = true;

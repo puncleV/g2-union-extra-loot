@@ -61,6 +61,11 @@ namespace GOTHIC_ENGINE {
 					}
 				}
 
+				zSTRING worldName = "";
+				if (jsonFile[name].contains("world") && jsonFile[name]["world"].is_string()) {
+					worldName = utf8_to_ansi(jsonFile[name]["world"].get<std::string>()).c_str();
+				}
+
 				for (auto i = 0; i < jsonFile[name]["loot"].size(); i += 1) {
 					int chance = jsonFile[name]["loot"][i]["chance"];
 					int chanceOutOf = jsonFile[name]["loot"][i].value("chanceOutOf", 1000);
@@ -84,7 +89,7 @@ namespace GOTHIC_ENGINE {
 				auto perChapter = jsonFile[name].value("oncePerChapter", false);
 				auto stealLoot = jsonFile[name].value("steal", false);
 
-				lootTableList.push_back(LootTable(npcNames, _lootTable, bossessLoot, championsLoot, perChapter, chestsLoot, stealLoot, ignoreNpcNames));
+				lootTableList.push_back(LootTable(npcNames, _lootTable, bossessLoot, championsLoot, perChapter, chestsLoot, stealLoot, ignoreNpcNames, worldName));
 			}
 		}
 	};
