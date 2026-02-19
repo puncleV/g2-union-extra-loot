@@ -11,7 +11,7 @@ namespace GOTHIC_ENGINE {
 
 		oCNpc* killer = npc->enemy;
 
-		if (killer != player && !killer->aiscriptvars[AIV_PARTYMEMBER]) {
+		if (killer == NULL || killer != player && !killer->aiscriptvars[AIV_PARTYMEMBER]) {
 			return;
 		}
 
@@ -24,6 +24,7 @@ namespace GOTHIC_ENGINE {
 				sym->SetValue(Z npcVariables.getVariable(npcId, NpcVariables::VariableKey::LP_INCREASE), 0);
 			}
 			parser->CallFunc(parser->GetIndex("print_pv_lp"));
+			npcVariables.setVariable(npcId, NpcVariables::VariableKey::LP_INCREASE, 0);
 		}
 	}
 	bool addLootToNPC(oCNpc* npc, bool isChampion) {
@@ -164,7 +165,7 @@ namespace GOTHIC_ENGINE {
 			auto isChampion = false;
 
 
-			if (chapterLootWasGiven == NpcVariables::CHAMPION || chapterLootWasGiven >= getCurrentChapter()) {
+			if (chapterLootWasGiven == NpcVariables::CHAMPION || chapterLootWasGiven >= getCurrentChapter() || npc->IsDead()) {
 				return;
 			}
 
