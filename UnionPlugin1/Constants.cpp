@@ -54,30 +54,4 @@ namespace GOTHIC_ENGINE {
 	std::vector<zSTRING> ignoreLootNpcList = { "TOTEM", "CRAIT", "KHUBA", "SUMKHUBI", "PET_JINA", "LARES", "BILGOT", "PC_TH", "PC_PSIO", "PC_FIG", "PC_MAGE", "ALLIGATORJACK" };
 	auto AIV_IS_SUMMON_NPC = 91;
 	auto AIV_PARTYMEMBER = 15;
-
-	int getCurrentChapter() {
-		int retVal = 0;
-		zCPar_Symbol* ps = parser->GetSymbol("kapitel");
-		if (ps)
-			ps->GetValue(retVal, 0);
-		else
-			return -1;
-		return retVal;
-	}
-
-	bool ignoredNpcForLoot(oCNpc* npc) {
-		auto npcName = npc->GetObjectName();
-
-		if (npc->aiscriptvars[AIV_IS_SUMMON_NPC] == 13771 || npc->aiscriptvars[AIV_PARTYMEMBER]) {
-			return TRUE;
-		}
-
-		for (auto i = 0; i < ignoreLootNpcList.size(); i += 1) {
-			if (npcName.HasWordI(ignoreLootNpcList[i])) {
-				return TRUE;
-			}
-		}
-
-		return FALSE;
-	}
 }

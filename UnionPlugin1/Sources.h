@@ -6,13 +6,17 @@
 #include "Constants.cpp"
 #include "Randomiser.cpp"
 #include "NpcVariables.cpp"
-#include "helpers.cpp"
+#include "GameHelpers.cpp"
 #include "Loot.cpp"
 #include "LootTable.cpp"
 #include "ItemHelpers.cpp"
-#include "NpcHelper.cpp"
-#include "NpcExtend.cpp"
+#include "NpcStats.cpp"
+#include "NpcLifecycle.cpp"
+#include "NpcChampion.cpp"
+#include "NpcLoot.cpp"
+#include "NpcExtensions.cpp"
 #include "ContainerExtend.cpp"
+#include "InventoryOperations.cpp"
 #include "AddRandomNpcLoot.cpp"
 #include "AddRandomChestsLoot.cpp"
 #include "RegisterCommands.cpp"
@@ -20,5 +24,3 @@
 #include "JsonConfig.cpp"
 #include "Plugin.cpp"
 #pragma endregion
-
-// ...
