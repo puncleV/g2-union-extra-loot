@@ -73,8 +73,16 @@ namespace GOTHIC_ENGINE {
         int addItemToNpc(oCNpc* npc, bool steal = false) const {
             auto itemName = randomizer.getRandomArrayElement(possibleLootNames);
             
+            if (IS_DEBUG && maxPerGame > 0) {
+                int currentCount = saveData.getItemGivenCount(itemName);
+                ogame->game_text->Printwin("Trying " + itemName + " - current: " + Z currentCount + "/" + Z maxPerGame);
+            }
+            
             // Check maxPerGame limit if set
             if (maxPerGame > 0 && !saveData.canGiveItem(itemName, maxPerGame)) {
+                if (IS_DEBUG) {
+                    ogame->game_text->Printwin("BLOCKED: " + itemName + " at limit");
+                }
                 return -1; // Item limit reached
             }
             
@@ -118,6 +126,10 @@ namespace GOTHIC_ENGINE {
             // Track the actual amount given
             if (maxPerGame > 0) {
                 saveData.incrementItemGiven(itemName, item->amount);
+                if (IS_DEBUG) {
+                    int newCount = saveData.getItemGivenCount(itemName);
+                    ogame->game_text->Printwin("SUCCESS: Gave " + Z item->amount + "x " + itemName + " (total: " + Z newCount + "/" + Z maxPerGame + ")");
+                }
             }
 
             if (steal) {
@@ -139,12 +151,19 @@ namespace GOTHIC_ENGINE {
                 return 0;
             }
 
+            if (IS_DEBUG && maxPerGame > 0) {
+                ogame->game_text->Printwin("tryAddToNpc for " + npc->GetObjectName() + " (maxPerGame: " + Z maxPerGame + ")");
+            }
+
             auto sumValue = 0;
             if (randomizer.Random(0, probabilityOutOf) <= (probability * (EXTRA_LOOT_BASE_CHANCE / 100.))) {
                 if (amountMeansPicks) {
                     auto picks = randomizer.Random(1, maxAmount);
                     for (auto i = minAmount - 1; i < picks; i += 1) {
-                        sumValue += addItemToNpc(npc, steal);
+                        auto result = addItemToNpc(npc, steal);
+                        if (result > 0) {
+                            sumValue += result;
+                        }
                     }
                 }
                 else {

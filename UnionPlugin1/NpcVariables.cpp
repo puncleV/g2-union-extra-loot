@@ -17,7 +17,7 @@ namespace GOTHIC_ENGINE {
         };
     private:
         std::map<int, std::map<int, int>> npcIntVars;
-        std::map<zSTRING, int> itemsGivenCount;
+        std::map<std::string, int> itemsGivenCount;
         int lastGivenNpcId = 1;
         bool initialized = false;
     public:
@@ -41,14 +41,16 @@ namespace GOTHIC_ENGINE {
 
         // Item tracking methods
         int getItemGivenCount(const zSTRING& itemName) {
-            if (itemsGivenCount.count(itemName)) {
-                return itemsGivenCount[itemName];
+            std::string key = itemName.ToChar();
+            if (itemsGivenCount.count(key)) {
+                return itemsGivenCount[key];
             }
             return 0;
         }
 
         void incrementItemGiven(const zSTRING& itemName, int amount = 1) {
-            itemsGivenCount[itemName] += amount;
+            std::string key = itemName.ToChar();
+            itemsGivenCount[key] += amount;
         }
 
         bool canGiveItem(const zSTRING& itemName, int maxPerGame) {
@@ -103,12 +105,12 @@ namespace GOTHIC_ENGINE {
             fwrite(&itemsCount, sizeof(int), 1, file);
 
             for (auto& itemPair : itemsGivenCount) {
-                // Save item name length
-                int nameLen = itemPair.first.Length();
+                // Save item name length (std::string)
+                int nameLen = itemPair.first.length();
                 fwrite(&nameLen, sizeof(int), 1, file);
                 
-                // Save item name
-                fwrite(itemPair.first.ToChar(), sizeof(char), nameLen, file);
+                // Save item name (std::string)
+                fwrite(itemPair.first.c_str(), sizeof(char), nameLen, file);
                 
                 // Save count
                 int count = itemPair.second;
@@ -160,11 +162,11 @@ namespace GOTHIC_ENGINE {
                 int nameLen = 0;
                 fread(&nameLen, sizeof(int), 1, file);
                 
-                // Load item name
+                // Load item name as std::string
                 char* nameBuffer = new char[nameLen + 1];
                 fread(nameBuffer, sizeof(char), nameLen, file);
                 nameBuffer[nameLen] = '\0';
-                zSTRING itemName = nameBuffer;
+                std::string itemName = nameBuffer;
                 delete[] nameBuffer;
                 
                 // Load count
