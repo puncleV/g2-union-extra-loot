@@ -194,7 +194,7 @@ namespace GOTHIC_ENGINE {
 
     SaveData saveData;
     
-    // Backward compatibility alias
-    #define npcVariables saveData
-    #define NpcVariables SaveData
+    // Backward compatibility aliases without macros
+    SaveData& npcVariables = saveData;
+    using NpcVariables = SaveData;
 }
