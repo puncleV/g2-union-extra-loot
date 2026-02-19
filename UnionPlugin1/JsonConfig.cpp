@@ -54,6 +54,18 @@ namespace GOTHIC_ENGINE {
 					npcNames.push_back(utf8_to_ansi(jsonFile[name]["npcs"][j].get<std::string>()).c_str());
 				}
 
+				std::vector <zSTRING> ignoreNpcNames;
+				if (jsonFile[name].contains("ignore_npcs") && jsonFile[name]["ignore_npcs"].is_array()) {
+					for (auto j = 0; j < jsonFile[name]["ignore_npcs"].size(); j += 1) {
+						ignoreNpcNames.push_back(utf8_to_ansi(jsonFile[name]["ignore_npcs"][j].get<std::string>()).c_str());
+					}
+				}
+
+				zSTRING worldName = "";
+				if (jsonFile[name].contains("world") && jsonFile[name]["world"].is_string()) {
+					worldName = utf8_to_ansi(jsonFile[name]["world"].get<std::string>()).c_str();
+				}
+
 				for (auto i = 0; i < jsonFile[name]["loot"].size(); i += 1) {
 					int chance = jsonFile[name]["loot"][i]["chance"];
 					int chanceOutOf = jsonFile[name]["loot"][i].value("chanceOutOf", 1000);
@@ -63,12 +75,13 @@ namespace GOTHIC_ENGINE {
 						lootNames.push_back(utf8_to_ansi(jsonFile[name]["loot"][i]["itemNames"][j].get<std::string>()).c_str());
 					}
 
-					int minAmount = jsonFile[name]["loot"][i].value("minAmount", 1);
-					int maxAmount = jsonFile[name]["loot"][i].value("maxAmount", 1);
-					auto amountMeansPicks = jsonFile[name]["loot"][i].value("amountMeansPicks", false);
-					int valueOverride = jsonFile[name]["loot"][i].value("valueOverride", -1);
+				int minAmount = jsonFile[name]["loot"][i].value("minAmount", 1);
+				int maxAmount = jsonFile[name]["loot"][i].value("maxAmount", 1);
+				int maxPerLocation = jsonFile[name]["loot"][i].value("maxPerLocation", -1);
+				auto amountMeansPicks = jsonFile[name]["loot"][i].value("amountMeansPicks", false);
+				int valueOverride = jsonFile[name]["loot"][i].value("valueOverride", -1);
 
-					_lootTable.push_back(Loot(chance, chanceOutOf, lootNames, minAmount, maxAmount, amountMeansPicks, valueOverride));
+				_lootTable.push_back(Loot(chance, chanceOutOf, lootNames, minAmount, maxAmount, amountMeansPicks, valueOverride, maxPerLocation));
 				}
 
 				auto championsLoot = jsonFile[name].value("champion", false);
@@ -77,7 +90,7 @@ namespace GOTHIC_ENGINE {
 				auto perChapter = jsonFile[name].value("oncePerChapter", false);
 				auto stealLoot = jsonFile[name].value("steal", false);
 
-				lootTableList.push_back(LootTable(npcNames, _lootTable, bossessLoot, championsLoot, perChapter, chestsLoot, stealLoot));
+				lootTableList.push_back(LootTable(npcNames, _lootTable, bossessLoot, championsLoot, perChapter, chestsLoot, stealLoot, ignoreNpcNames, worldName));
 			}
 		}
 	};

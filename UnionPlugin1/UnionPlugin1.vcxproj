@@ -884,9 +884,9 @@ $(ALLUSERSPROFILE)\Union\SDK\Union\v1.0m\Build\incver.exe $(ProjectDir)</Command
     <ClCompile Include="Interface.cpp" />
     <ClInclude Include="ItemHelpers.cpp" />
     <ClInclude Include="JsonConfig.cpp" />
-    <ClInclude Include="Loot.cpp" />
     <ClInclude Include="NpcVariables.cpp" />
     <ClInclude Include="InventoryOperations.cpp" />
+    <ClInclude Include="Loot.cpp" />
     <ClInclude Include="NpcChampion.cpp" />
     <ClInclude Include="NpcExtensions.cpp" />
     <ClInclude Include="NpcLifecycle.cpp" />
@@ -2382,6 +2382,9 @@ $(ALLUSERSPROFILE)\Union\SDK\Union\v1.0m\Build\incver.exe $(ProjectDir)</Command
   </ItemGroup>
   <ItemGroup>
     <Image Include="union.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ru-readme.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

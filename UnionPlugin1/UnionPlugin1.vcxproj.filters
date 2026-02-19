@@ -2802,9 +2802,6 @@
     <ClInclude Include="JsonConfig.cpp">
       <Filter>Plugin\Workspace\Plugin</Filter>
     </ClInclude>
-    <ClInclude Include="Loot.cpp">
-      <Filter>Plugin\Workspace\Plugin</Filter>
-    </ClInclude>
     <ClInclude Include="RegisterCommands.cpp">
       <Filter>Plugin\Workspace\Plugin</Filter>
     </ClInclude>
@@ -4708,5 +4705,8 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="union.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ru-readme.txt" />
   </ItemGroup>
 </Project>
