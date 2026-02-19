@@ -167,7 +167,10 @@ namespace GOTHIC_ENGINE {
                     }
                 }
                 else {
-                    sumValue += addItemToNpc(npc, steal);
+                    auto result = addItemToNpc(npc, steal);
+                    if (result > 0) {
+                        sumValue += result;
+                    }
                 }
             }
 
