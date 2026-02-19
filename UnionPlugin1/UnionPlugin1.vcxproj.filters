@@ -2781,9 +2781,6 @@
       <Filter>Plugin\Workspace\Plugin</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
-    <ClInclude Include="helpers.cpp">
-      <Filter>Plugin\Workspace\Plugin</Filter>
-    </ClInclude>
     <ClInclude Include="LootTable.cpp">
       <Filter>Plugin\Workspace\Plugin</Filter>
     </ClInclude>
@@ -2793,16 +2790,7 @@
     <ClInclude Include="AddRandomChestsLoot.cpp">
       <Filter>Plugin\Workspace\Plugin</Filter>
     </ClInclude>
-    <ClInclude Include="NpcHelper.cpp">
-      <Filter>Plugin\Workspace\Plugin</Filter>
-    </ClInclude>
-    <ClInclude Include="NpcExtend.cpp">
-      <Filter>Plugin\Workspace\Plugin</Filter>
-    </ClInclude>
     <ClInclude Include="AddRandomNpcLoot.cpp">
-      <Filter>Plugin\Workspace\Plugin</Filter>
-    </ClInclude>
-    <ClInclude Include="Constants.cpp">
       <Filter>Plugin\Workspace\Plugin</Filter>
     </ClInclude>
     <ClInclude Include="ConstantsInitializer.cpp">
@@ -2823,6 +2811,14 @@
     <ClInclude Include="NpcVariables.cpp">
       <Filter>Plugin\Workspace\Plugin</Filter>
     </ClInclude>
+    <ClInclude Include="GameHelpers.cpp" />
+    <ClInclude Include="InventoryOperations.cpp" />
+    <ClInclude Include="NpcChampion.cpp" />
+    <ClInclude Include="NpcExtensions.cpp" />
+    <ClInclude Include="NpcLifecycle.cpp" />
+    <ClInclude Include="NpcLoot.cpp" />
+    <ClInclude Include="NpcStats.cpp" />
+    <ClInclude Include="Constants.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".build_settings.inl">

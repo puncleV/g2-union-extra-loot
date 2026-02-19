@@ -871,26 +871,27 @@ $(ALLUSERSPROFILE)\Union\SDK\Union\v1.0m\Build\incver.exe $(ProjectDir)</Command
   <ItemGroup>
     <ClInclude Include="AddRandomChestsLoot.cpp" />
     <ClInclude Include="AddRandomNpcLoot.cpp" />
-    <ClInclude Include="Constants.cpp" />
     <ClInclude Include="ConstantsInitializer.cpp" />
     <ClInclude Include="ContainerExtend.cpp" />
+    <ClInclude Include="Constants.cpp" />
     <ClCompile Include="DllMain.cpp" />
-    <ClInclude Include="helpers.cpp">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="LootTable.cpp">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="Plugin.cpp" />
+    <ClInclude Include="GameHelpers.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClInclude Include="ItemHelpers.cpp" />
     <ClInclude Include="JsonConfig.cpp" />
-    <ClInclude Include="NpcExtend.cpp" />
-    <ClInclude Include="NpcHelper.cpp" />
     <ClInclude Include="Loot.cpp" />
     <ClInclude Include="NpcVariables.cpp" />
+    <ClInclude Include="InventoryOperations.cpp" />
+    <ClInclude Include="NpcChampion.cpp" />
+    <ClInclude Include="NpcExtensions.cpp" />
+    <ClInclude Include="NpcLifecycle.cpp" />
+    <ClInclude Include="NpcLoot.cpp" />
+    <ClInclude Include="NpcStats.cpp" />
     <ClCompile Include="Randomiser.cpp" />
     <ClInclude Include="RegisterCommands.cpp" />
     <ClCompile Include="ZenGin\Gothic_II_Addon\ClassDeclarators_G2A.cpp" />

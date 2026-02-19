@@ -2,6 +2,7 @@
 // Union SOURCE file
 
 namespace GOTHIC_ENGINE {
+	// Increase NPC protection for a specific damage type
 	void increaseProtection(oCNpc* npc, oEIndexDamage protectionType, int strengthMultiplier) {
 		if (npc->protection[protectionType] != -1) {
 			auto maxIncreased = npc->protection[protectionType] * (ENEMY_DEFENCE_GROW_LIMIT_PERCENT / 100.);
@@ -10,18 +11,48 @@ namespace GOTHIC_ENGINE {
 		}
 	}
 
-	void increaseAtribute(oCNpc* npc, int attributeType, int strengthMultiplier) {
+	// Increase NPC attribute (strength, dexterity, etc.)
+	void increaseAttribute(oCNpc* npc, int attributeType, int strengthMultiplier) {
 		auto maxIncreased = npc->attribute[attributeType] * (ENEMY_STATS_GROW_LIMIT_PERCENT / 100.);
-		auto increasedAttribute =ENEMY_STATS_PER_MULTIPLIER * strengthMultiplier;
+		auto increasedAttribute = ENEMY_STATS_PER_MULTIPLIER * strengthMultiplier;
 
 		npc->attribute[attributeType] += min(increasedAttribute, maxIncreased);
 	}
 
+	// Ensure champion has minimum stats
+	void minChampionStats(oCNpc* npc) {
+		if (npc->attribute[NPC_ATR_HITPOINTSMAX] < CHAMPION_MIN_HP) {
+			npc->attribute[NPC_ATR_HITPOINTSMAX] = CHAMPION_MIN_HP;
+			npc->attribute[NPC_ATR_HITPOINTS] = CHAMPION_MIN_HP;
+		}
+		if (npc->attribute[NPC_ATR_STRENGTH] < CHAMPION_MIN_STATS) {
+			npc->attribute[NPC_ATR_STRENGTH] = CHAMPION_MIN_STATS;
+		}
+		if (npc->attribute[NPC_ATR_DEXTERITY] < CHAMPION_MIN_STATS) {
+			npc->attribute[NPC_ATR_DEXTERITY] = CHAMPION_MIN_STATS;
+		}
+	}
 
+	// Cap champion stats at maximum values
+	void maxChampionStats(oCNpc* npc) {
+		if (npc->attribute[NPC_ATR_HITPOINTSMAX] > CHAMPION_MAX_HP) {
+			npc->attribute[NPC_ATR_HITPOINTSMAX] = CHAMPION_MAX_HP;
+			npc->attribute[NPC_ATR_HITPOINTS] = CHAMPION_MAX_HP;
+		}
+		if (npc->attribute[NPC_ATR_STRENGTH] > CHAMPION_MAX_STATS) {
+			npc->attribute[NPC_ATR_STRENGTH] = CHAMPION_MAX_STATS;
+		}
+		if (npc->attribute[NPC_ATR_DEXTERITY] > CHAMPION_MAX_STATS) {
+			npc->attribute[NPC_ATR_DEXTERITY] = CHAMPION_MAX_STATS;
+		}
+	}
+
+	// Strengthen NPC based on loot value given
 	void strengthenNpc(oCNpc* npc, int itemValue = 1) {
 		if (npc == player || !SHOULD_STRENGHTEN_ENEMIES) {
 			return;
 		}
+
 		auto adjustedItemValue = itemValue;
 
 		if (adjustedItemValue < MIN_STRENGHTEN_VALUE) {
@@ -48,8 +79,8 @@ namespace GOTHIC_ENGINE {
 		npc->attribute[NPC_ATR_HITPOINTSMAX] += limitedAdditionalHp;
 		npc->attribute[NPC_ATR_HITPOINTS] += limitedAdditionalHp;
 
-		increaseAtribute(npc, NPC_ATR_STRENGTH, addStrengthMultiplier);
-		increaseAtribute(npc, NPC_ATR_DEXTERITY, addStrengthMultiplier);
+		increaseAttribute(npc, NPC_ATR_STRENGTH, addStrengthMultiplier);
+		increaseAttribute(npc, NPC_ATR_DEXTERITY, addStrengthMultiplier);
 
 		increaseProtection(npc, oEDamageIndex_Blunt, addStrengthMultiplier);
 		increaseProtection(npc, oEDamageIndex_Edge, addStrengthMultiplier);
