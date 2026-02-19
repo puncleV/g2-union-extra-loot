@@ -886,6 +886,7 @@ $(ALLUSERSPROFILE)\Union\SDK\Union\v1.0m\Build\incver.exe $(ProjectDir)</Command
     <ClInclude Include="JsonConfig.cpp" />
     <ClInclude Include="NpcVariables.cpp" />
     <ClInclude Include="InventoryOperations.cpp" />
+    <ClInclude Include="Loot.cpp" />
     <ClInclude Include="NpcChampion.cpp" />
     <ClInclude Include="NpcExtensions.cpp" />
     <ClInclude Include="NpcLifecycle.cpp" />
