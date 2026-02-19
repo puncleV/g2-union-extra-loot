@@ -12,7 +12,7 @@ namespace GOTHIC_ENGINE {
         int probabilityOutOf;
         int minAmount;
         int maxAmount;
-        int maxPerGame;
+        int maxPerLocation;
         int valueOverride;
         bool amountMeansPicks;
 
@@ -41,15 +41,15 @@ namespace GOTHIC_ENGINE {
             return item;
         }
 
-        // Get available items (not at maxPerGame limit)
+        // Get available items (not at maxPerLocation limit)
         std::vector<zSTRING> getAvailableItems() const {
-            if (maxPerGame <= 0) {
+            if (maxPerLocation <= 0) {
                 return possibleLootNames; // No limit, return all
             }
 
             std::vector<zSTRING> available;
             for (const auto& itemName : possibleLootNames) {
-                if (saveData.canGiveItem(itemName, maxPerGame)) {
+                if (saveData.canGiveItem(itemName, maxPerLocation)) {
                     available.push_back(itemName);
                 }
             }
@@ -59,7 +59,7 @@ namespace GOTHIC_ENGINE {
     public:
         std::vector <zSTRING> possibleLootNames;
 
-        Loot(int _chanceWeight, int _chanceUpperbound, std::vector <zSTRING> _possibleLootNames, int _minAmount = 1, int _maxAmount = 1, bool _amountMeansPicks = 1, int _valueOverride = -1, int _maxPerGame = -1) {
+        Loot(int _chanceWeight, int _chanceUpperbound, std::vector <zSTRING> _possibleLootNames, int _minAmount = 1, int _maxAmount = 1, bool _amountMeansPicks = 1, int _valueOverride = -1, int _maxPerLocation = -1) {
             possibleLootNames = _possibleLootNames;
             probability = _chanceWeight;
             probabilityOutOf = _chanceUpperbound;
@@ -67,19 +67,19 @@ namespace GOTHIC_ENGINE {
             maxAmount = _maxAmount;
             amountMeansPicks = _amountMeansPicks;
             valueOverride = _valueOverride;
-            maxPerGame = _maxPerGame;
+            maxPerLocation = _maxPerLocation;
         };
 
         int addItemToNpc(oCNpc* npc, bool steal = false) const {
             auto itemName = randomizer.getRandomArrayElement(possibleLootNames);
             
-            if (IS_DEBUG && maxPerGame > 0) {
+            if (IS_DEBUG && maxPerLocation > 0) {
                 int currentCount = saveData.getItemGivenCount(itemName);
-                ogame->game_text->Printwin("Trying " + itemName + " - current: " + Z currentCount + "/" + Z maxPerGame);
+                ogame->game_text->Printwin("Trying " + itemName + " - current: " + Z currentCount + "/" + Z maxPerLocation);
             }
             
-            // Check maxPerGame limit if set
-            if (maxPerGame > 0 && !saveData.canGiveItem(itemName, maxPerGame)) {
+            // Check maxPerLocation limit if set
+            if (maxPerLocation > 0 && !saveData.canGiveItem(itemName, maxPerLocation)) {
                 if (IS_DEBUG) {
                     ogame->game_text->Printwin("BLOCKED: " + itemName + " at limit");
                 }
@@ -93,10 +93,10 @@ namespace GOTHIC_ENGINE {
                 return value;
             }
 
-            // Adjust amount if it would exceed maxPerGame limit
-            if (maxPerGame > 0) {
+            // Adjust amount if it would exceed maxPerLocation limit
+            if (maxPerLocation > 0) {
                 int currentCount = saveData.getItemGivenCount(itemName);
-                int remainingAllowed = maxPerGame - currentCount;
+                int remainingAllowed = maxPerLocation - currentCount;
                 
                 if (remainingAllowed <= 0) {
                     item->Release();
@@ -124,11 +124,11 @@ namespace GOTHIC_ENGINE {
             }
 
             // Track the actual amount given
-            if (maxPerGame > 0) {
+            if (maxPerLocation > 0) {
                 saveData.incrementItemGiven(itemName, item->amount);
                 if (IS_DEBUG) {
                     int newCount = saveData.getItemGivenCount(itemName);
-                    ogame->game_text->Printwin("SUCCESS: Gave " + Z item->amount + "x " + itemName + " (total: " + Z newCount + "/" + Z maxPerGame + ")");
+                    ogame->game_text->Printwin("SUCCESS: Gave " + Z item->amount + "x " + itemName + " (total: " + Z newCount + "/" + Z maxPerLocation + ")");
                 }
             }
 
@@ -151,8 +151,8 @@ namespace GOTHIC_ENGINE {
                 return 0;
             }
 
-            if (IS_DEBUG && maxPerGame > 0) {
-                ogame->game_text->Printwin("tryAddToNpc for " + npc->GetObjectName() + " (maxPerGame: " + Z maxPerGame + ")");
+            if (IS_DEBUG && maxPerLocation > 0) {
+                ogame->game_text->Printwin("tryAddToNpc for " + npc->GetObjectName() + " (maxPerLocation: " + Z maxPerLocation + ")");
             }
 
             auto sumValue = 0;

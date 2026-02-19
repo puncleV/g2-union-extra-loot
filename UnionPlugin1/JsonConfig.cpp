@@ -75,13 +75,13 @@ namespace GOTHIC_ENGINE {
 						lootNames.push_back(utf8_to_ansi(jsonFile[name]["loot"][i]["itemNames"][j].get<std::string>()).c_str());
 					}
 
-					int minAmount = jsonFile[name]["loot"][i].value("minAmount", 1);
-					int maxAmount = jsonFile[name]["loot"][i].value("maxAmount", 1);
-					int maxPerGame = jsonFile[name]["loot"][i].value("maxPerGame", -1);
-					auto amountMeansPicks = jsonFile[name]["loot"][i].value("amountMeansPicks", false);
-					int valueOverride = jsonFile[name]["loot"][i].value("valueOverride", -1);
+				int minAmount = jsonFile[name]["loot"][i].value("minAmount", 1);
+				int maxAmount = jsonFile[name]["loot"][i].value("maxAmount", 1);
+				int maxPerLocation = jsonFile[name]["loot"][i].value("maxPerLocation", -1);
+				auto amountMeansPicks = jsonFile[name]["loot"][i].value("amountMeansPicks", false);
+				int valueOverride = jsonFile[name]["loot"][i].value("valueOverride", -1);
 
-					_lootTable.push_back(Loot(chance, chanceOutOf, lootNames, minAmount, maxAmount, amountMeansPicks, valueOverride, maxPerGame));
+				_lootTable.push_back(Loot(chance, chanceOutOf, lootNames, minAmount, maxAmount, amountMeansPicks, valueOverride, maxPerLocation));
 				}
 
 				auto championsLoot = jsonFile[name].value("champion", false);

@@ -40,8 +40,19 @@ namespace GOTHIC_ENGINE {
         }
 
         // Item tracking methods
+        std::string getItemKey(const zSTRING& itemName) {
+            // Combine world name with item name for per-location tracking
+            oCWorld* currentWorld = ogame->GetGameWorld();
+            std::string worldName = "";
+            if (currentWorld) {
+                worldName = currentWorld->GetWorldName().ToChar();
+            }
+            std::string key = worldName + "_" + std::string(itemName.ToChar());
+            return key;
+        }
+
         int getItemGivenCount(const zSTRING& itemName) {
-            std::string key = itemName.ToChar();
+            std::string key = getItemKey(itemName);
             if (itemsGivenCount.count(key)) {
                 return itemsGivenCount[key];
             }
@@ -49,15 +60,15 @@ namespace GOTHIC_ENGINE {
         }
 
         void incrementItemGiven(const zSTRING& itemName, int amount = 1) {
-            std::string key = itemName.ToChar();
+            std::string key = getItemKey(itemName);
             itemsGivenCount[key] += amount;
         }
 
-        bool canGiveItem(const zSTRING& itemName, int maxPerGame) {
-            if (maxPerGame <= 0) {
+        bool canGiveItem(const zSTRING& itemName, int maxPerLocation) {
+            if (maxPerLocation <= 0) {
                 return true; // No limit
             }
-            return getItemGivenCount(itemName) < maxPerGame;
+            return getItemGivenCount(itemName) < maxPerLocation;
         }
 
         void clear() {
