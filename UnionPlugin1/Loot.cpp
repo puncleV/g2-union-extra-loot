@@ -71,7 +71,16 @@ namespace GOTHIC_ENGINE {
         };
 
         int addItemToNpc(oCNpc* npc, bool steal = false) const {
-            auto itemName = randomizer.getRandomArrayElement(possibleLootNames);
+            auto lootNames = getAvailableItems();
+			
+            if (lootNames.empty()) {
+                if (IS_DEBUG) {
+                    ogame->game_text->Printwin("No available items to add (all at limit)");
+                }
+                return -1; // No items available
+			}
+
+            auto itemName = randomizer.getRandomArrayElement(lootNames);
             
             if (IS_DEBUG && maxPerLocation > 0) {
                 int currentCount = saveData.getItemGivenCount(itemName);

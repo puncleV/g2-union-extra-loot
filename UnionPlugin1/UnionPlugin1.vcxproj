@@ -2382,6 +2382,9 @@ $(ALLUSERSPROFILE)\Union\SDK\Union\v1.0m\Build\incver.exe $(ProjectDir)</Command
   <ItemGroup>
     <Image Include="union.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="ru-readme.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
