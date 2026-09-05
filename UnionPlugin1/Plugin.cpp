@@ -56,8 +56,19 @@ namespace GOTHIC_ENGINE {
 		}
 
 		if (focusNpc) {
-			if (focusNpc->isChampion() && !focusNpc->name[0].HasWordI("Champ")) {
-				focusNpc->name[0] += Z " Champion";
+			if (focusNpc->isChampion()) {
+				zSTRING championText;
+				zCPar_Symbol* ps = parser->GetSymbol("punclev_champion_text");
+				if (ps) {
+					ps->GetValue(championText, 0);
+				}
+				else {
+					championText = "Champion";
+				}
+
+				if (!championText.IsEmpty() && !focusNpc->name[0].HasWordI(championText)) {
+					focusNpc->name[0] += Z " " + championText;
+				}
 			}
 		}
 	}

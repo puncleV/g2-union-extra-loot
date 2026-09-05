@@ -56,6 +56,48 @@ namespace GOTHIC_ENGINE {
             return available;
         }
 
+        // Prepare item with amount adjusted for maxPerLocation limit
+        // Returns nullptr if item cannot be given (at limit or error)
+        oCItem* prepareItemWithLimit(const zSTRING& itemName, int& outAmount) const {
+            if (IS_DEBUG && maxPerLocation > 0) {
+                int currentCount = saveData.getItemGivenCount(itemName);
+                ogame->game_text->Printwin("Trying " + itemName + " - current: " + Z currentCount + "/" + Z maxPerLocation);
+            }
+
+            // Check maxPerLocation limit if set
+            if (maxPerLocation > 0 && !saveData.canGiveItem(itemName, maxPerLocation)) {
+                if (IS_DEBUG) {
+                    ogame->game_text->Printwin("BLOCKED: " + itemName + " at limit");
+                }
+                return nullptr;
+            }
+
+            auto item = getItemWithAmount(itemName);
+
+            if (item == nullptr) {
+                return nullptr;
+            }
+
+            // Adjust amount if it would exceed maxPerLocation limit
+            if (maxPerLocation > 0) {
+                int currentCount = saveData.getItemGivenCount(itemName);
+                int remainingAllowed = maxPerLocation - currentCount;
+
+                if (remainingAllowed <= 0) {
+                    item->Release();
+                    return nullptr;
+                }
+
+                // Cap the amount to not exceed limit
+                if (item->amount > remainingAllowed) {
+                    item->amount = remainingAllowed;
+                }
+            }
+
+            outAmount = item->amount;
+            return item;
+        }
+
     public:
         std::vector <zSTRING> possibleLootNames;
 
@@ -70,90 +112,58 @@ namespace GOTHIC_ENGINE {
             maxPerLocation = _maxPerLocation;
         };
 
-        int addItemToNpc(oCNpc* npc, bool steal = false) const {
-            auto lootNames = getAvailableItems();
-			
-            if (lootNames.empty()) {
-                if (IS_DEBUG) {
-                    ogame->game_text->Printwin("No available items to add (all at limit)");
-                }
-                return -1; // No items available
+		int addItemToNpc(oCNpc* npc, bool steal = false) const {
+			auto lootNames = getAvailableItems();
+
+			if (lootNames.empty()) {
+				if (IS_DEBUG) {
+					ogame->game_text->Printwin("No available items to add (all at limit)");
+				}
+				return -1; // No items available
 			}
 
-            auto itemName = randomizer.getRandomArrayElement(lootNames);
-            
-            if (IS_DEBUG && maxPerLocation > 0) {
-                int currentCount = saveData.getItemGivenCount(itemName);
-                ogame->game_text->Printwin("Trying " + itemName + " - current: " + Z currentCount + "/" + Z maxPerLocation);
-            }
-            
-            // Check maxPerLocation limit if set
-            if (maxPerLocation > 0 && !saveData.canGiveItem(itemName, maxPerLocation)) {
-                if (IS_DEBUG) {
-                    ogame->game_text->Printwin("BLOCKED: " + itemName + " at limit");
-                }
-                return -1; // Item limit reached
-            }
-            
-            auto item = getItemWithAmount(itemName);
-            auto value = -1;
+			auto itemName = randomizer.getRandomArrayElement(lootNames);
+			int itemAmount = 0;
+			auto item = prepareItemWithLimit(itemName, itemAmount);
 
-            if (item == nullptr) {
-                return value;
-            }
+			if (item == nullptr) {
+				return -1;
+			}
 
-            // Adjust amount if it would exceed maxPerLocation limit
-            if (maxPerLocation > 0) {
-                int currentCount = saveData.getItemGivenCount(itemName);
-                int remainingAllowed = maxPerLocation - currentCount;
-                
-                if (remainingAllowed <= 0) {
-                    item->Release();
-                    return -1;
-                }
-                
-                // Cap the amount to not exceed limit
-                if (item->amount > remainingAllowed) {
-                    item->amount = remainingAllowed;
-                }
-            }
+			auto value = -1;
+			if (valueOverride >= 0) {
+				value = valueOverride * item->amount;
+			}
+			else {
+				value = (item->value ? item->value : 1) * item->amount;
+			}
 
-            if (valueOverride >= 0) {
-                value = valueOverride * item->amount;
-            }
-            else {
-                value = (item->value ? item->value : 1) * item->amount;
-            }
+			if (SHOULD_ADD_LOOT_TO_PLAYER) {
+				player->PutInInv(item);
+			}
+			else {
+				npc->PutInInv(item);
+			}
 
-            if (SHOULD_ADD_LOOT_TO_PLAYER) {
-                player->PutInInv(item);
-            }
-            else {
-                npc->PutInInv(item);
-            }
+			saveData.incrementItemGiven(itemName, item->amount);
+			if (IS_DEBUG) {
+				int newCount = saveData.getItemGivenCount(itemName);
+				ogame->game_text->Printwin("SUCCESS: Gave " + Z item->amount + "x " + itemName + " (total: " + Z newCount + "/" + Z maxPerLocation + ")");
+			}
 
-            // Track the actual amount given
-            if (maxPerLocation > 0) {
-                saveData.incrementItemGiven(itemName, item->amount);
-                if (IS_DEBUG) {
-                    int newCount = saveData.getItemGivenCount(itemName);
-                    ogame->game_text->Printwin("SUCCESS: Gave " + Z item->amount + "x " + itemName + " (total: " + Z newCount + "/" + Z maxPerLocation + ")");
-                }
-            }
+			if (steal) {
+				zCPar_Symbol* sym = parser->GetSymbol("PV_STEAL_ITEM_NAME");
 
-            if (steal) {
-                zCPar_Symbol* sym = parser->GetSymbol("PV_STEAL_ITEM_NAME");
+				if (sym) {
+					sym->SetValue(Z item->GetName(0), 0);
+				}
+				parser->CallFunc(parser->GetIndex("PRINT_STOLEN_ITEM"));
+			}
 
-                if (sym) {
-                    sym->SetValue(Z item->GetName(0), 0);
-                }
-                parser->CallFunc(parser->GetIndex("PRINT_STOLEN_ITEM"));
-            }
+			item->Release();
 
-            item->Release();
-
-            return value;
-        }
+			return value;
+		}
 
         int tryAddToNpc(oCNpc* npc, bool steal = false) const {
             if (!npc) {
@@ -187,9 +197,19 @@ namespace GOTHIC_ENGINE {
         };
 
         bool addItemToChest(oCMobContainer* chest) {
-            auto itemName = randomizer.getRandomArrayElement(possibleLootNames);
-            auto item = getItemWithAmount(itemName);
-            
+            auto lootNames = getAvailableItems();
+
+            if (lootNames.empty()) {
+                if (IS_DEBUG) {
+                    ogame->game_text->Printwin("No available items to add to chest (all at limit)");
+                }
+                return false;
+            }
+
+            auto itemName = randomizer.getRandomArrayElement(lootNames);
+            int itemAmount = 0;
+            auto item = prepareItemWithLimit(itemName, itemAmount);
+
             if (item == nullptr) {
                 return false;
             }
@@ -199,6 +219,12 @@ namespace GOTHIC_ENGINE {
             }
             else {
                 chest->Insert(item);
+            }
+
+            saveData.incrementItemGiven(itemName, item->amount);
+            if (IS_DEBUG && maxPerLocation > 0) {
+                int newCount = saveData.getItemGivenCount(itemName);
+                ogame->game_text->Printwin("SUCCESS: Added " + Z item->amount + "x " + itemName + " to chest (total: " + Z newCount + "/" + Z maxPerLocation + ")");
             }
 
             item->Release();

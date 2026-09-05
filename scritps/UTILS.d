@@ -42,6 +42,7 @@ func void print_stolen_item() {
 
 const string punclev_lp_give = "Я стал опытнее: +";
 const string punclev_lp_given = "ЛП";
+const string punclev_champion_text = "Чемпион";
 
 var string pv_lp_given;
 
